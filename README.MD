@@ -1,8 +1,8 @@
 # About this repo:
 
-This repo contains our solutions to the excercies from Ovidiu Calin's wonderfull book `Deep Learning Architectures, A Mathematical Approach`. Solutions to the chapter excercies are found under the dir ../solutions/. If you found errors, please contact us.
+This repo contains our solutions to the excercises from Ovidiu Calin's wonderfull book `Deep Learning Architectures, A Mathematical Approach`. Solutions to the chapter excercies are found under the dir ../solutions/. If you found errors, please contact us.
 
 To contact us:
 
-Ricardo Fuentes:
+Ricardo Fuentes: ricardofuentes@ciencias.unam.mx
 Enki Barra M: enki.barmel@ciencias.unam.mx
