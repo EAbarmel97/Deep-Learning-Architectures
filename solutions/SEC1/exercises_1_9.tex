@@ -34,8 +34,16 @@ money exceeding the reserve found $M$ is invested. Let $k = e ^ {r t}$, where $r
 
 
 (a) Given a continous function $f: [0,1] \rightarrow \mathbb{R}$, find a linear function $L(x) = ax + b$ with $L(0) = f(0)$ and such that 
-$\frac{1}{2} \int^{1}_{0}(f(x) - L(x))^2 dx$ is minimized.\\
-(b) Given a continous function $f: [0,1] \times [0,1] \rightarrow \mathbb{R}$
+$\frac{1}{2} \int^{1}_{0}(L(x) - f(x))^2 dx$ is minimized.\\
+(b) Given a continous function $f: [0,1] \times [0,1] \rightarrow \mathbb{R}$, find a linear function $L(x,y) = ax + by + c$ with $L(0,0) = f(0,0)$ and 
+such that the error $\frac{1}{2} \int_{[0,1]^2}(L(x,y) - f(x,y))^2 dx$ is minimized.
 
 \section*{Exercise 1.9.4}
+
+
+For any compact $K \subset \mathbb{R}^n$ we associate the symetric matrix $\displaystyle \rho_{ij} = \int_{K} x_i x_j d x_1 \dots d x_n$ \\
+\\
+The invertiblity of the matrix $(\rho_{ij})$ depends both on the shape of $K$ and the dimension $n$. \\
+(a)Show that if $n = 2$ then $det(\rho_{ij}) \neq 0$ for any compact $K \subset \mathbb{R}^2$.\\
+(b)Asume $K = [0,1]^n$. Show that $det(\rho_{ij}) \neq 0 \text{, for any $n \geq 1$}$.
 \end{document}
