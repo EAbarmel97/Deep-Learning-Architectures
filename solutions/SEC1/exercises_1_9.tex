@@ -74,14 +74,18 @@ production starts after the critical daily level $b$ is meet. This is, $x - b > 
 \end{equation*}
 
 \subsection*{1.9.1 (b)}
-The learning problem can be stated like this: "Given a vector of road variable capacities $\pmb{\text{c}}$ and a daily critical $b$, provided that the production 
+The learning problem can be stated like this: "Given a vector of road variable capacities $\pmb{\text{c}}$ and a daily critical level $b$, provided that the production 
 of the $n$ factories is expressed by the vector $\pmb{\text{p}}$. The goal is find a vector $\pmb{\text{p}}^\star$ and a scalar $b^\star$ such that the ideal revenue
-$r(\pmb{\text{p}})$ is close that provided by the data $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$ (obtained in 1.9.1 (a))". In other words, the pair $(\pmb{\text{c}}^\star,b^\star)$ minimizes the distance between \\
+$r(\pmb{\text{p}})$ is close that provided by the data $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$ (obtained in 1.9.1 (a))". In other words, the pair $(\pmb{\text{c}}^\star,b^\star)$ minimizes the distance between
+$r(\pmb{\text{p}})$ and $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$. In symbols: 
 \begin{equation*}
     \hspace*{-10cm}(\pmb{\text{c}}^\star,b^\star) = \argmin_{\tiny\pmb{\text{c}} \in \mathbb{R}^n \text{, } p \in \mathbb{R}} \displaystyle \int_{\mathcal{K}} (r(\pmb{\text{p}}) - L_{r}(\pmb{\text{p}};\pmb{\text{c}},b))^2 d \pmb{\text{p}}.
 \end{equation*} 
 
 \subsection*{1.9.2 (a)}
+If $\pmb{\text{w}} := (w_1 \ldots w_n)$ encodes the adjustable rates of deposit corresponding to each of the $n$ finantial \\
+institutions and $\pmb{\text{x}} := (x_1 \ldots x_n)$ the wealth of each of the $n$ institutions, the money in the fund is expressed by $x = \pmb{\text{w}} \cdot \pmb{\text{x}}$. It's known that the fund is set to function if the revenue exceds a given capital 
+$M$, then 
 
 \subsection*{1.9.2 (b)}
 
