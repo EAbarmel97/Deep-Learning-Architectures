@@ -7,9 +7,10 @@
 \usepackage{lmodern}
 \usepackage{tcolorbox}
 \renewcommand{\theenumi}{\alph{enumi}} 
-\newcommand{\solvedByEnki}{*^{E}} 
-\newcommand{\solvedByRicardo}{*^{R}}
+\newcommand{\solvedByEnki}{$*^{E}$} 
+\newcommand{\solvedByRicardo}{$*^{R}$}
 
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 
@@ -45,11 +46,11 @@ money exceeding the reserve found $M$ is invested. Let $k = e ^ {r t}$, where $r
 \end{enumerate}
 
 \section*{Exercise 1.9.4}
-For any compact $K \subset \mathbb{R}^n$ we associate the symetric matrix $\displaystyle \rho_{ij} = \int_{K} x_i x_j d x_1 \dots d x_n$ \\
+For any compact $K \subset \mathbb{R}^n$ we associate the symetric matrix $\displaystyle \rho_{ij} = \int_{K} x_i x_j d x_1 \dots d x_n$ The invertiblity of \\
 \\
-Find the formula for the investment.The invertiblity of the matrix $(\rho_{ij})$ depends both on the shape of $K$ and the dimension $n$.
+the matrix $(\rho_{ij})$ depends both on the shape of $K$ and the dimension $n$.
 \begin{enumerate}
-    \item Show that if $n = 2$ then $\text{det}(\rho_{ij}) \neq 0$ for any compact $K \subset \mathbb{R}^2$.
+    \item Show that if $n = 2$ then $\text{det}(\rho_{ij}) \neq 0$, for any compact $K \subset \mathbb{R}^2$.
     \item Asume $K = [0,1]^n$. Show that $\text{det}(\rho_{ij}) \neq 0 \text{, for any $n \geq 1$}$.
 \end{enumerate}
 
@@ -58,5 +59,30 @@ Find the formula for the investment.The invertiblity of the matrix $(\rho_{ij})$
 \begin{center}    
     \section*{SOLUTIONS}
 \end{center}
+
+\subsection*{1.9.1 (a)}
+Let $\pmb{\text{c}} := (c_1 ,\ldots, c_n)$ and $\pmb{\text{p}} := (x_1 ,\ldots, x_n)$ the roads variable capacities and the produced quantities, respectively. Then $x = \pmb{\text{c}} \cdot \pmb{\text{p}}$. Suppose the cost of product per item is $k$, so if the 
+production starts after the critical daily level $b$ is meet. This is, $x - b > 0 $. It is clear that the revenue $r$ will be given by the formula: \\
+\begin{equation*}
+    \hspace*{-10cm} L_{r}(\pmb{\text{p}};\pmb{\text{c}},b) = 
+        \left\{
+        \begin{aligned}
+            & k ( \pmb{\text{c}} \cdot \pmb{\text{p}} - b), & \text{if } \pmb{\text{c}} \cdot \pmb{\text{p}} - b > 0\\
+            & 0, & \text{ otherwise}.
+        \end{aligned}
+        \right.
+\end{equation*}
+
+\subsection*{1.9.1 (b)}
+The learning problem can be stated like this: "Given a vector of road variable capacities $\pmb{\text{c}}$ and a daily critical $b$, provided that the production 
+of the $n$ factories is expressed by the vector $\pmb{\text{p}}$. The goal is find a vector $\pmb{\text{p}}^\star$ and a scalar $b^\star$ such that the ideal revenue
+$r(\pmb{\text{p}})$ is close that provided by the data $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$ (obtained in 1.9.1 (a))". In other words, the pair $(\pmb{\text{c}}^\star,b^\star)$ minimizes the distance between \\
+\begin{equation*}
+    \hspace*{-10cm}(\pmb{\text{c}}^\star,b^\star) = \argmin_{\tiny\pmb{\text{c}} \in \mathbb{R}^n \text{, } p \in \mathbb{R}} \displaystyle \int_{\mathcal{K}} (r(\pmb{\text{p}}) - L_{r}(\pmb{\text{p}};\pmb{\text{c}},b))^2 d \pmb{\text{p}}.
+\end{equation*} 
+
+\subsection*{1.9.2 (a)}
+
+\subsection*{1.9.2 (b)}
 
 \end{document}
