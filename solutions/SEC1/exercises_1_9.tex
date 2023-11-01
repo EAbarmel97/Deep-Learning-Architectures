@@ -100,7 +100,7 @@ $M$ and that the investment grows proportional to $e^{r t}$(profit per investmen
 
 \subsection*{1.9.2 (b)}
 Let $I(\pmb{\text{x}}) = x = \pmb{\text{w}} \cdot \pmb{\text{x}}$ be the ideal investment, $L_{I}(\pmb{\text{x}};\pmb{\text{w}},M)$ given in 1.9.2 (b). Then the learning problem 
-can be stated as follows: "Given the vector of wealth of the $n$ institutions $\pmb{\text{x}}$, the vector of adjustatable rates of deposit $\pmb{\text{w}}$ and that inversions are placed 
+can be stated as follows: "Given the vector of wealth of the $n$ institutions $\pmb{\text{x}}$, the vector of adjustable rates of deposit $\pmb{\text{w}}$ and that inversions are placed 
 in the fund if the capital exceeds the quantity $M$. It is needed to find a tuple $(\pmb{\text{w}}^\star,M)$ that minimizes the distance (in the $\mathcal{L}_2$ sense) between the functions
 $I(\pmb{\text{x}})$ and $L_{I}(\pmb{\text{x}};\pmb{\text{w}},M)$" \\
 \\
@@ -109,12 +109,22 @@ In mathematical terms this means that: \begin{equation*}
 \end{equation*} 
 
 \subsection*{1.9.3 (a)}
-It follows from the contrain $f(0) = L(0)$ that $b = f(0)$, that said, the task is now to find an $a^\star$ such that\\
+It follows from the constrain $f(0) = L(0)$ that $b = f(0)$, that said, the task is now to find an $a^\star$ such that\\
 $\displaystyle a^\star = \argmin_{ \tiny a \in \mathbb{R}} {\lVert f(x) - L(x) \rVert}^2_{\mathcal{L}_2([0,1])}$. Now, let $C(a) := {\lVert f(x) - L(x) \rVert}^2_{\mathcal{L}_2([0,1])}$, then $C(a)$ has the most explicit form: 
 \begin{equation*}
     C(a) = \displaystyle \int_{[0,1]} (f(x) - ax -f(0))^2 d x.
 \end{equation*}
 The extremizing $a^\star$ can be found by computing critical points and applying the second derivative test to determine the nature of the critical point. Then one has: \\
 
-$\frac{d}{da} C(a) = \displaystyle\int_{[0,1]} -2(f(x) - ax -f(0)) x d x = a \displaystyle \int_{[0,1]} 2x^2 d x +  \displaystyle\int_{[0,1]} 2(f(0) - f(x)) x d x$
+$\frac{d}{da} C(a) = \displaystyle\int_{[0,1]} -2(f(x) - ax -f(0)) x d x = a \displaystyle \int_{[0,1]} 2x^2 d x +  \displaystyle\int_{[0,1]} 2(f(0) - f(x)) x d x$.  To find the critical \\
+point $a^\star$ we solve the equation $\frac{d}{da} C(a) = 0$. Solving for $a$ one finds that such extrema is meet at: 
+\begin{equation*}
+    \hspace{2cm}a^\star = \displaystyle\frac{\displaystyle\int_{[0,1]} (f(x) - f(0)) x d x}{\displaystyle \int_{[0,1]} x^2 d x}. \text{ Now, lets compute the second derivative to determine the nature}
+\end{equation*} of this critical point. A straight-forward calculation for finding the second derivative yields: \newline
+\\
+$\frac{d^2}{d x^2} C(a) = 2 \displaystyle \int_{[0,1]} x^2 d x$. Because the even function $2x^2$ satisfies $2x^2 > 0 \text{, } \forall x \in [0,1]$ and the interval of integration is not symetric, is clear that $ \frac{d^2}{d x^2} C(a) = 2 \displaystyle \int_{[0,1]} x^2 d x > 0 \text{, } \forall a \in \mathbb{R}$. From this follows 
+that $a^\star$ is a minimum. Then, $L(x) = \displaystyle\frac{\displaystyle\int_{[0,1]} (f(t) - f(0)) t d t}{\displaystyle \int_{[0,1]} t^2 d t}x + f(0)$.
+
+\subsection*{1.9.3 (b)}
+
 \end{document}
