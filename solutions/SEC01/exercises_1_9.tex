@@ -6,12 +6,14 @@
 \usepackage{blindtext}
 \usepackage{lmodern}
 \usepackage{tcolorbox}
+\usepackage{hyperref}
+
 \pagestyle{empty}
 \renewcommand{\theenumi}{\alph{enumi}} 
+\DeclareMathOperator*{\argmin}{arg\,min}
 %\newcommand{\solvedByEnki}{$*^{E}$} 
 %\newcommand{\solvedByRicardo}{$*^{R}$}
 
-\DeclareMathOperator*{\argmin}{arg\,min}
 
 \begin{document}
 
@@ -128,7 +130,7 @@ that $a^\star$ is a minimum. Then, $L(x) = \displaystyle\frac{\displaystyle\int_
 The condition $f(0,0) = L(0,0)$ implies $b = f(0,0)$.Lets be more explicit by writing $L(x,y;a,b)$. The goal is \\
 to find $(a^\star, b^\star)$ satisfying $\displaystyle (a^\star, b^\star) = \argmin_{ \tiny a \in \mathbb{R}, b \in \mathbb{R}} {\lVert f(x,y) - L(x,y;a,b) \rVert}^2_{\mathcal{L}_2([0,1]^2)}$. If $C(a,b) = {\lVert f(x,y) - L(x,y;a,b) \rVert}^2_{\mathcal{L}_2([0,1]^2)}$, it's necessary to solve the linear system: 
 \\
-\begin{equation*}
+\begin{equation}
     \hspace*{-10cm}
         \left\{
         \begin{aligned}
@@ -136,13 +138,89 @@ to find $(a^\star, b^\star)$ satisfying $\displaystyle (a^\star, b^\star) = \arg
             & \frac{\partial}{\partial b} C(a,b) = 0.
         \end{aligned}
         \right.
-\end{equation*}
+\end{equation}
 Lets now compute both partial derivatives. For $a$ we have: \\
 \begin{equation*}
         \begin{aligned}
-            & \frac{\partial}{\partial a} C(a,b) = \displaystyle\int_{[0,1]^2} -2(f(x,y) - ax -by-f(0,0)) x d x d y  \\
+             \frac{\partial}{\partial a} C(a,b) &= \displaystyle\int_{[0,1]^2} -2(f(x,y) - ax -by-f(0,0)) x d x d y  \\
             &= a \displaystyle\int_{[0,1]^2} 2x^2 d x d y + b\displaystyle\int_{[0,1]^2} 2xy d x d y + \displaystyle\int_{[0,1]^2} 2(f(0,0) - f(x,y)) x d x d y 
         \end{aligned}
 \end{equation*}
-
+Likewise, for $b$ we find: 
+\begin{equation*}
+    \begin{aligned}
+         \frac{\partial}{\partial b} C(a,b) &= \displaystyle\int_{[0,1]^2} -2(f(x,y) - ax -by-f(0,0)) y d x d y  \\
+        &= a \displaystyle\int_{[0,1]^2} 2xy d x d y + b\displaystyle\int_{[0,1]^2} 2y^2 d x d y + \displaystyle\int_{[0,1]^2} 2(f(0,0) - f(x,y)) y d x d y.
+    \end{aligned}
+\end{equation*}
+\\
+System $(1)$ is equivalent to: 
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        a \displaystyle\int_{[0,1]^2} 2x^2 d x d y + b \displaystyle\int_{[0,1]^2} 2xy d x d y &= \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) x d x d y  \\
+        a \displaystyle\int_{[0,1]^2} 2xy d x d y + b \displaystyle\int_{[0,1]^2} 2y^2 d x d y &= \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) y d x d y \\
+    \end{aligned}
+    \right.
+\end{equation}
+Because the function $L(x,y;a,b)$ is continous, then the mixed partial derivatives coincide. It's easy to verify $\frac{\partial^2}{\partial a \partial b} C(a,b) =  \displaystyle\int_{[0,1]^2} 2xy d x d y$. Similarly, is 
+straight-forward to see that \\
+$\frac{\partial^2}{\partial a^2} C(a,b) = \displaystyle\int_{[0,1]^2} 2x^2 d x d y$  and $\frac{\partial^2}{\partial b^2} C(a,b) =  \displaystyle\int_{[0,1]^2} 2y^2 d x d y$. Then, system $(2)$ can be represented in the 
+following matricial form:
+\begin{equation}
+        \displaystyle\begin{aligned}
+        \begin{bmatrix}
+            \displaystyle\int_{[0,1]^2} 2x^2 d x d y & \displaystyle\int_{[0,1]^2} 2xy d x d y\\
+            \\
+            \displaystyle\int_{[0,1]^2} 2xy d x d y & \displaystyle\int_{[0,1]^2} 2y^2 d x d y
+        \end{bmatrix} 
+        \begin{bmatrix}
+            a\\
+            \\
+            b
+        \end{bmatrix} 
+        =
+        \begin{bmatrix}
+            \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) x d x d y\\
+            \\
+            \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) y d x d y
+        \end{bmatrix} 
+    \end{aligned}
+\end{equation} 
+Lets denote $H_{C}$ the matrix on the l.h.s of the equation $(3)$. By the \href{https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality}{Cauchy–Bunyakovsky–Schwarz inequality} 
+follows that:\\
+\\
+$\text{det}( H_{C}) = 4 \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - 4 \displaystyle\int_{[0,1]^2} xy d x d y> 0$. Since $\text{det}( H_{C}) \neq 0$ there's a unique solution \\
+\\
+to the system $(3)$. Such solutions are given explicitly by:\\
+\begin{equation}
+    \begin{aligned}
+        a^\star&=
+        \displaystyle \frac{ 
+            \text{det}\begin{bmatrix}
+                \displaystyle\int_{[0,1]^2} x^2 d x d y & \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y\\
+                \\
+                \displaystyle\int_{[0,1]^2} xy d x d y & \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y
+            \end{bmatrix}
+            }
+            {
+             \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - \displaystyle\int_{[0,1]^2} xy d x d y
+            }\\
+        \\
+        b^\star &=
+       \displaystyle \frac{ 
+           \text{det}\begin{bmatrix}
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y & \displaystyle\int_{[0,1]^2} x^2 d x d y \\
+               \\
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y & \displaystyle\int_{[0,1]^2} xy d x d y &
+           \end{bmatrix}
+           }
+           {
+            \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - \displaystyle\int_{[0,1]^2} xy d x d y
+           }
+    \end{aligned}
+\end{equation}\\
+Note that $(1,1)$ minor of $\text{det}( H_{C})$ also has positive determinant, then by the \href{https://en.wikipedia.org/wiki/Sylvester%27s_criterion}{Sylvester's criterion} $H_{C}$ is positively defined, and the critical point $(a^\star,b^\star)$ is a minimum. 
+\\
+\subsection*{1.9.4 (a)}
 \end{document}
