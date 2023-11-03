@@ -14,7 +14,6 @@
 %\newcommand{\solvedByEnki}{$*^{E}$} 
 %\newcommand{\solvedByRicardo}{$*^{R}$}
 
-
 \begin{document}
 
 \begin{center}
@@ -190,9 +189,7 @@ following matricial form:
 Lets denote $H_{C}$ the matrix on the l.h.s of the equation $(3)$. By the \href{https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality}{Cauchy–Bunyakovsky–Schwarz inequality} 
 follows that:\\
 \\
-$\text{det}( H_{C}) = 4 \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - 4 \displaystyle\int_{[0,1]^2} xy d x d y> 0$. Since $\text{det}( H_{C}) \neq 0$ there's a unique solution \\
-\\
-to the system $(3)$. Such solutions are given explicitly by:\\
+$\text{det}( H_{C}) = 4 \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - 4 (\displaystyle\int_{[0,1]^2} xy d x d y )^2 > 0$. Since $\text{det}( H_{C}) \neq 0$ there's a unique solution to the system $(3)$. Such solutions are given explicitly by:\\
 \begin{equation}
     \begin{aligned}
         a^\star&=
@@ -204,23 +201,34 @@ to the system $(3)$. Such solutions are given explicitly by:\\
             \end{bmatrix}
             }
             {
-             \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - \displaystyle\int_{[0,1]^2} xy d x d y
+              \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - (\displaystyle\int_{[0,1]^2} xy d x d y )^2
             }\\
         \\
         b^\star &=
        \displaystyle \frac{ 
            \text{det}\begin{bmatrix}
-                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y & \displaystyle\int_{[0,1]^2} x^2 d x d y \\
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y & \displaystyle\int_{[0,1]^2} xy d x d y \\
                \\
-                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y & \displaystyle\int_{[0,1]^2} xy d x d y &
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y & \displaystyle\int_{[0,1]^2} y^2 d x d y &
            \end{bmatrix}
            }
            {
-            \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - \displaystyle\int_{[0,1]^2} xy d x d y
+             \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - (\displaystyle\int_{[0,1]^2} xy d x d y )^2
            }
     \end{aligned}
 \end{equation}\\
 Note that $(1,1)$ minor of $\text{det}( H_{C})$ also has positive determinant, then by the \href{https://en.wikipedia.org/wiki/Sylvester%27s_criterion}{Sylvester's criterion} $H_{C}$ is positively defined, and the critical point $(a^\star,b^\star)$ is a minimum. 
 \\
 \subsection*{1.9.4 (a)}
+For the $n = 2$ case we have:\\
+\begin{equation*}
+    \pmb{\text{P}} = \begin{bmatrix}
+        \displaystyle\int_{K} x_1^2 d x_1 d x_2 & \displaystyle\int_{K} x_1 x_2 d x_1 d x_2\\
+       \\
+       \displaystyle\int_{K} x_1 x_2 d x_1 d x_2 & \displaystyle\int_{K} x_2^2 d x_1 d x_2 
+    \end{bmatrix} \text{. Once again, by the Cauchy–Bunyakovsky–Schwarz inequality}
+\end{equation*}\\
+\\
+follows that $\text{det}(\pmb{\text{P}}) = \displaystyle\int_{K} x_1^2d x_1 d x_2  \displaystyle\int_{K} x_2^2 d x_1 d x_2  - (\displaystyle\int_{K} x_1 x_2 d x_1 d x_2 )^2 > 0$. The equality can not occure because that would imply $K$ is section of line which contradicts the arbitrairiness of $K$. \ $\qedsymbol{}$
+\subsection*{1.9.4 (b)}
 \end{document}
