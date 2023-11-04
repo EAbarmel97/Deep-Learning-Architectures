@@ -1,0 +1,289 @@
+\documentclass{exam}
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ragged2e}
+\usepackage{blindtext}
+\usepackage{lmodern}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\pagestyle{empty}
+\renewcommand{\theenumi}{\alph{enumi}} 
+\DeclareMathOperator*{\argmin}{arg\,min}
+%\newcommand{\solvedByEnki}{$*^{E}$} 
+%\newcommand{\solvedByRicardo}{$*^{R}$}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Large Exercises 1.9}    
+\end{center}
+
+\section*{Exercise 1.9.1}
+A factory has $n$ suppliers that produce quantities $x_1 \dots x_n$ per day. The factory is connected with suppliers by a system of roads, which
+can be at variable capacities $c_1 \dots c_n$, so that the factory is supplied
+daily the amount $x = c_1 x_1 + \dots + c_n x_n$.
+\begin{enumerate}
+    \item Given that the factory production process starts when the supply reaches the critical daily level $b$, write a formula for the daily factory revenue.
+    \item Formulate the problem as a learning problem.
+\end{enumerate}   
+
+\section*{Exercise 1.9.2}
+A number of finantial institutions, each having a wealth $x_i$, deposit amounts of money in a fund, at some adjustable rates of 
+deposit $w_i$, so the money in the fund is given by $x = x_1 w_1 + \dots + x_n w_n$. The fund is \\
+set up to function as in the following: as long a sthe fund has less than a certain reserve fund $M$, the fund manager does not invest. Only the
+money exceeding the reserve found $M$ is invested. Let $k = e ^ {r t}$, where $r$ and $t$ denote the investment rate of return and time of investment, respectively.
+\begin{enumerate}
+    \item Find the formula for the investment.
+    \item Formulate the problem as a learning problem.
+\end{enumerate}
+
+\section*{Exercise 1.9.3}
+\begin{enumerate}
+    \item Given a continous function $f: [0,1] \rightarrow \mathbb{R}$, find a linear function $L(x) = ax + b$ with $L(0) = f(0)$ and such that 
+    $\frac{1}{2} \int^{1}_{0}(L(x) - f(x))^2 dx$ is minimized.
+    \item  Given a continous function $f: [0,1] \times [0,1] \rightarrow \mathbb{R}$, find a linear function $L(x,y) = ax + by + c$ with $L(0,0) = f(0,0)$ and 
+    such that the error $\frac{1}{2} \int_{[0,1]^2}(L(x,y) - f(x,y))^2 dx$ is minimized
+\end{enumerate}
+
+\section*{Exercise 1.9.4}
+For any compact $K \subset \mathbb{R}^n$ we associate the symetric matrix $\displaystyle \rho_{ij} = \int_{K} x_i x_j d x_1 \dots d x_n$ The invertiblity of \\
+\\
+the matrix $(\rho_{ij})$ depends both on the shape of $K$ and the dimension $n$.
+\begin{enumerate}
+    \item Show that if $n = 2$ then $\text{det}(\rho_{ij}) \neq 0$, for any compact $K \subset \mathbb{R}^2$.
+    \item Asume $K = [0,1]^n$. Show that $\text{det}(\rho_{ij}) \neq 0 \text{, for any $n \geq 1$}$.
+\end{enumerate}
+
+\newpage
+
+\begin{center}    
+    \section*{SOLUTIONS}
+\end{center}
+
+\subsection*{1.9.1 (a)}
+Let $\pmb{\text{c}} := (c_1 ,\ldots, c_n)$ and $\pmb{\text{p}} := (x_1 ,\ldots, x_n)$ the roads variable capacities and the produced quantities, respectively. Then $x = \pmb{\text{c}} \cdot \pmb{\text{p}}$. Suppose the cost of product per item is $k$, so if the 
+production starts after the critical daily level $b$ is meet. This is, $x - b > 0 $. It is clear that the revenue $L_{r}$ will be given by the formula: \\
+\begin{equation*}
+    \hspace*{-7cm} L_{r}(\pmb{\text{p}};\pmb{\text{c}},b) = 
+        \left\{
+        \begin{aligned}
+            & k ( \pmb{\text{c}} \cdot \pmb{\text{p}} - b), & \text{if } \pmb{\text{c}} \cdot \pmb{\text{p}} - b > 0\\
+            & 0,  \text{ otherwise}.
+        \end{aligned}
+        \right.
+\end{equation*}
+
+\subsection*{1.9.1 (b)}
+The learning problem can be stated like this: "Given a vector of road variable capacities $\pmb{\text{c}}$ and a daily critical level $b$, provided that the production 
+of the $n$ factories is expressed by the vector $\pmb{\text{p}}$. The goal is find a vector $\pmb{\text{p}}^\star$ and a scalar $b^\star$ such that the ideal revenue
+$r(\pmb{\text{p}}) = \pmb{\text{c}} \cdot \pmb{\text{p}} $ is close that provided by the data $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$ (obtained in 1.9.1 (a))". In other words, the pair $(\pmb{\text{c}}^\star,b^\star)$ minimizes the distance (in the $\mathcal{L}_2$ sense)
+between $r(\pmb{\text{p}})$ and $L_{r}(\pmb{\text{p}};\pmb{\text{c}},b)$. In symbols: \\
+\begin{equation*}
+    \hspace*{-7cm}(\pmb{\text{c}}^\star,b^\star) = \argmin_{\tiny\pmb{\text{c}} \in \mathbb{R}^n \text{, } p \in \mathbb{R}} \displaystyle \int_{\mathcal{K}} (r(\pmb{\text{p}}) - L_{r}(\pmb{\text{p}};\pmb{\text{c}},b))^2 d \pmb{\text{p}}.
+\end{equation*} 
+
+\subsection*{1.9.2 (a)}
+If $\pmb{\text{w}} := (w_1 \ldots w_n)$ encodes the adjustable rates of deposit corresponding to each of the $n$ finantial \\
+institutions and $\pmb{\text{x}} := (x_1 \ldots x_n)$ the wealth of each of the $n$ institutions, the money in the fund is expressed by $x = \pmb{\text{w}} \cdot \pmb{\text{x}}$. It's known that the fund is set to function if the revenue exceds a given capital 
+$M$ and that the investment grows proportional to $e^{r t}$(profit per investment), then it is clear that the invesment is given by the formula: \\
+\begin{equation*}
+    \hspace*{-7cm} L_{I}(\pmb{\text{x}};\pmb{\text{w}},M) = 
+        \left\{
+        \begin{aligned}
+            & e^{r t} ( \pmb{\text{w}} \cdot \pmb{\text{x}} - M), \text{ if }   \pmb{\text{w}} \cdot \pmb{\text{x}}  > M \\
+            & 0, \text{ otherwise}.
+        \end{aligned}
+        \right.
+\end{equation*}
+
+\subsection*{1.9.2 (b)}
+Let $I(\pmb{\text{x}}) = x = \pmb{\text{w}} \cdot \pmb{\text{x}}$ be the ideal investment, $L_{I}(\pmb{\text{x}};\pmb{\text{w}},M)$ given in 1.9.2 (b). Then the learning problem 
+can be stated as follows: "Given the vector of wealth of the $n$ institutions $\pmb{\text{x}}$, the vector of adjustable rates of deposit $\pmb{\text{w}}$ and that inversions are placed 
+in the fund if the capital exceeds the quantity $M$. It is needed to find a tuple $(\pmb{\text{w}}^\star,M)$ that minimizes the distance (in the $\mathcal{L}_2$ sense) between the functions
+$I(\pmb{\text{x}})$ and $L_{I}(\pmb{\text{x}};\pmb{\text{w}},M)$" \\
+\\
+In mathematical terms this means that: \begin{equation*} 
+    (\pmb{\text{w}}^\star,M^\star) = \argmin_{\tiny\pmb{\text{w}} \in \mathbb{R}^n \text{, } M \in \mathbb{R}} \displaystyle \int_{\mathcal{K}} (I(\pmb{\text{x}}) - L_{I}(\pmb{\text{x}};\pmb{\text{c}},M))^2 d \pmb{\text{x}}.
+\end{equation*} 
+
+\subsection*{1.9.3 (a)}
+It follows from the constrain $f(0) = L(0)$ that $b = f(0)$. From now on the notation $L(x;a)$ will be used. That said, the task is now to find an $a^\star$ such that\\
+$\displaystyle a^\star = \argmin_{ \tiny a \in \mathbb{R}} {\lVert f(x) - L(x;a) \rVert}^2_{\mathcal{L}_2([0,1])}$. Now, let $C(a) := {\lVert f(x) - L(x;a) \rVert}^2_{\mathcal{L}_2([0,1])}$, then $C(a)$ has the most explicit form: 
+\begin{equation*}
+    C(a) = \displaystyle \int_{[0,1]} (f(x) - ax -f(0))^2 d x.
+\end{equation*}
+The extremizing $a^\star$ can be found by computing critical points and applying the second derivative test to determine the nature of the critical point. Then one has: \\
+
+$\frac{d}{da} C(a) = \displaystyle\int_{[0,1]} -2(f(x) - ax -f(0)) x d x = a \displaystyle \int_{[0,1]} 2x^2 d x +  \displaystyle\int_{[0,1]} 2(f(0) - f(x)) x d x$.  To find the critical \\
+point $a^\star$ we solve the equation $\frac{d}{da} C(a) = 0$. Solving for $a$ one finds that such extrema is meet at: 
+\begin{equation*}
+    \hspace{2cm}a^\star = \displaystyle\frac{\displaystyle\int_{[0,1]} (f(x) - f(0)) x d x}{\displaystyle \int_{[0,1]} x^2 d x}. \text{ Now, lets compute the second derivative to determine the nature}
+\end{equation*} of this critical point. A straight-forward calculation for finding the second derivative yields: \newline
+\\
+$\frac{d^2}{d x^2} C(a) = 2 \displaystyle \int_{[0,1]} x^2 d x$. Because the even function $2x^2$ satisfies $2x^2 > 0 \text{, } \forall x \in [0,1]$ and the interval of integration is not symetric, is clear that $\frac{d^2}{d x^2} C(a) = 2 \displaystyle \int_{[0,1]} x^2 d x > 0 \text{, } \forall a \in \mathbb{R}$. From this follows 
+that $a^\star$ is a minimum. Then, $L(x) = \displaystyle\frac{\displaystyle\int_{[0,1]} (f(t) - f(0)) t d t}{\displaystyle \int_{[0,1]} t^2 d t}x + f(0)$.
+
+\subsection*{1.9.3 (b)}
+The condition $f(0,0) = L(0,0)$ implies $b = f(0,0)$.Lets be more explicit by writing $L(x,y;a,b)$. The goal is \\
+to find $(a^\star, b^\star)$ satisfying $\displaystyle (a^\star, b^\star) = \argmin_{ \tiny a \in \mathbb{R}, b \in \mathbb{R}} {\lVert f(x,y) - L(x,y;a,b) \rVert}^2_{\mathcal{L}_2([0,1]^2)}$. If $C(a,b) = {\lVert f(x,y) - L(x,y;a,b) \rVert}^2_{\mathcal{L}_2([0,1]^2)}$, it's necessary to solve the linear system: 
+\\
+\begin{equation}
+    \hspace*{-10cm}
+        \left\{
+        \begin{aligned}
+            & \frac{\partial}{\partial a} C(a,b) = 0\\
+            & \frac{\partial}{\partial b} C(a,b) = 0.
+        \end{aligned}
+        \right.
+\end{equation}
+Lets now compute both partial derivatives. For $a$ we have: \\
+\begin{equation*}
+        \begin{aligned}
+             \frac{\partial}{\partial a} C(a,b) &= \displaystyle\int_{[0,1]^2} -2(f(x,y) - ax -by-f(0,0)) x d x d y  \\
+            &= a \displaystyle\int_{[0,1]^2} 2x^2 d x d y + b\displaystyle\int_{[0,1]^2} 2xy d x d y + \displaystyle\int_{[0,1]^2} 2(f(0,0) - f(x,y)) x d x d y 
+        \end{aligned}
+\end{equation*}
+Likewise, for $b$ we find: 
+\begin{equation*}
+    \begin{aligned}
+         \frac{\partial}{\partial b} C(a,b) &= \displaystyle\int_{[0,1]^2} -2(f(x,y) - ax -by-f(0,0)) y d x d y  \\
+        &= a \displaystyle\int_{[0,1]^2} 2xy d x d y + b\displaystyle\int_{[0,1]^2} 2y^2 d x d y + \displaystyle\int_{[0,1]^2} 2(f(0,0) - f(x,y)) y d x d y.
+    \end{aligned}
+\end{equation*}
+\\
+System $(1)$ is equivalent to: 
+\begin{equation}
+    \left\{
+    \begin{aligned}
+        a \displaystyle\int_{[0,1]^2} 2x^2 d x d y + b \displaystyle\int_{[0,1]^2} 2xy d x d y &= \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) x d x d y  \\
+        a \displaystyle\int_{[0,1]^2} 2xy d x d y + b \displaystyle\int_{[0,1]^2} 2y^2 d x d y &= \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) y d x d y \\
+    \end{aligned}
+    \right.
+\end{equation}
+Because the function $L(x,y;a,b)$ is continous, then the mixed partial derivatives coincide. It's easy to verify $\frac{\partial^2}{\partial a \partial b} C(a,b) =  \displaystyle\int_{[0,1]^2} 2xy d x d y$. Similarly, is 
+straight-forward to see that \\
+$\frac{\partial^2}{\partial a^2} C(a,b) = \displaystyle\int_{[0,1]^2} 2x^2 d x d y$  and $\frac{\partial^2}{\partial b^2} C(a,b) =  \displaystyle\int_{[0,1]^2} 2y^2 d x d y$. Then, system $(2)$ can be represented in the 
+following matricial form: 
+\begin{equation}
+        \displaystyle\begin{aligned}
+        \begin{bmatrix}
+            \displaystyle\int_{[0,1]^2} 2x^2 d x d y & \displaystyle\int_{[0,1]^2} 2xy d x d y\\[1.2em]
+            \displaystyle\int_{[0,1]^2} 2xy d x d y & \displaystyle\int_{[0,1]^2} 2y^2 d x d y
+        \end{bmatrix} 
+        \begin{bmatrix}
+            a\\
+            b
+        \end{bmatrix} 
+        =
+        \begin{bmatrix}
+            \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) x d x d y\\[1.2em]
+            \displaystyle\int_{[0,1]^2} 2(f(x,y) - f(0,0)) y d x d y
+        \end{bmatrix} 
+    \end{aligned}
+\end{equation}
+Lets denote $H_{C}$ the matrix on the l.h.s of the equation $(3)$. By the \href{https://en.wikipedia.org/wiki/Cauchy%E2%80%93Schwarz_inequality}{Cauchy–Bunyakovsky–Schwarz inequality} 
+follows that:\\
+\\
+$\text{det}( H_{C}) = 4 \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - 4 (\displaystyle\int_{[0,1]^2} xy d x d y )^2 > 0$. Since $\text{det}( H_{C}) \neq 0$ there's a unique solution to the system $(3)$. Such solutions are given explicitly by:\\
+\begin{equation}
+    \begin{aligned}
+        a^\star&=
+        \displaystyle \frac{ 
+            \text{det}\begin{bmatrix}
+                \displaystyle\int_{[0,1]^2} x^2 d x d y & \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y\\[1.2em]
+                \displaystyle\int_{[0,1]^2} xy d x d y & \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y
+            \end{bmatrix}
+            }
+            {
+              \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - (\displaystyle\int_{[0,1]^2} xy d x d y )^2
+            }\\
+        \\
+        b^\star &=
+       \displaystyle \frac{ 
+           \text{det}\begin{bmatrix}
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) x d x d y & \displaystyle\int_{[0,1]^2} xy d x d y \\[1.2em]
+                \displaystyle\int_{[0,1]^2} (f(x,y) - f(0,0)) y d x d y & \displaystyle\int_{[0,1]^2} y^2 d x d y
+           \end{bmatrix}
+           }
+           {
+             \displaystyle\int_{[0,1]^2} x^2 d x d y \displaystyle\int_{[0,1]^2} y^2 d x d y  - (\displaystyle\int_{[0,1]^2} xy d x d y )^2
+           }
+    \end{aligned}
+\end{equation}\\
+\arraystretch{1.7} 
+Note that $(1,1)$ minor of $\text{det}( H_{C})$ also has positive determinant, then by \href{https://en.wikipedia.org/wiki/Sylvester%27s_criterion}{Sylvester's criterion} $H_{C}$ is positively defined, and the critical point $(a^\star,b^\star)$ is a minimum. 
+\\
+\subsection*{1.9.4 (a)}
+For the $n = 2$ case we have:\\
+\begin{equation*}
+    \pmb{\text{P}} = \begin{bmatrix}
+        \displaystyle\int_{K} x_1^2 d x_1 d x_2 & \displaystyle\int_{K} x_1 x_2 d x_1 d x_2\\[1.2em]
+       \displaystyle\int_{K} x_1 x_2 d x_1 d x_2 & \displaystyle\int_{K} x_2^2 d x_1 d x_2 
+    \end{bmatrix} \text{. Once again, by the Cauchy–Bunyakovsky–Schwarz inequality}
+\end{equation*}
+follows that $\text{det}(\pmb{\text{P}}) = \displaystyle\int_{K} x_1^2d x_1 d x_2  \displaystyle\int_{K} x_2^2 d x_1 d x_2  - (\displaystyle\int_{K} x_1 x_2 d x_1 d x_2 )^2 > 0$. The equality can not occur because that would imply $K$ is a section of line which contradicts the arbitrairiness of $K$. \ $\qedsymbol{}$
+\subsection*{1.9.4 (b)}
+Note that for $\forall i,j \in \{1 \dots n \}$ if $i = j,$ $ \ \pmb{\text{P}}_{ii} = \displaystyle \int^1_0 \dots \int^1_0 x^2_i d x_1 \dots d x_n$. By \href{https://en.wikipedia.org/wiki/Fubini%27s_theorem}{Fubini's theorem} the integral reduces to:
+\begin{equation*}
+    \hspace{-5.65cm}\pmb{\text{P}}_{ii} = \displaystyle \int^1_0 x^2_i d x_i \int^1_0 \prod^n_{k \neq i} d x_k = \frac{1}{3} \text{. On the other hand, for $i\neq j$ one has:}
+\end{equation*}    
+\begin{equation*}
+    \pmb{\text{P}}_{ij} = \displaystyle \int^1_0 x_i x_j d x_i \int^1_0 d x_1 \dots d x_n = \displaystyle \int^1_0 x_i d x_i \int^1_0 x_j d x_j \int^1_0 \dots \int^1_0 \prod^n_{\text{$k \neq i$, $k \neq j$}} d x_k = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4} \text{.}
+\end{equation*}
+This implies the matrix $\pmb{\text{P}}$  is represented by: 
+\begin{equation*}
+     \displaystyle \pmb{\text{P}} =  \displaystyle\begin{bmatrix}
+        \frac{1}{3} & \frac{1}{4}  & \cdots & \frac{1}{4} \\[1.2em]
+        \frac{1}{4}  & \frac{1}{3}  & \cdots & \frac{1}{4} \\
+        \vdots  & \vdots  & \ddots & \vdots  \\
+        \frac{1}{4}  & \frac{1}{4}  & \cdots & \frac{1}{3} 
+      \end{bmatrix}
+\end{equation*} \\
+It's easy due to the simple expression of  $\pmb{\text{P}}$. The quantity $\text{det}(\pmb{\text{P}})$ will be found using elementary transformations on the row, 
+to which the determinant is invariant. Having said that, if all the other $n-1$ rows are added to the first one gets:
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle \text{det}(\pmb{\text{P}}) &=  \displaystyle\begin{bmatrix}
+            \frac{1}{3} & \frac{1}{4}  & \cdots & \frac{1}{4} \\[1.2em]
+            \frac{1}{4}  & \frac{1}{3}  & \cdots & \frac{1}{4} \\
+            \vdots  & \vdots  & \ddots & \vdots  \\
+            \frac{1}{4}  & \frac{1}{4}  & \cdots & \frac{1}{3} 
+          \end{bmatrix}
+         = \text{ det}\displaystyle\begin{bmatrix}
+             \frac{1}{3} + (n-1)\frac{1}{4}&  \frac{1}{3} + (n-1)\frac{1}{4}  & \cdots & \frac{1}{3} + (n-1)\frac{1}{4}\\[1.2em]
+             \frac{1}{4}  & \frac{1}{3}  & \cdots & \frac{1}{4} \\
+             \vdots  & \vdots  & \ddots & \vdots  \\
+             \frac{1}{4}  & \frac{1}{4}  & \cdots & \frac{1}{3} 
+            \end{bmatrix}\\
+         \\
+         &= (\frac{1}{3} + (n-1)\frac{1}{4})\text{ det}\begin{bmatrix}
+             1 & 1 & \cdots & 1\\[1.2em]
+            \frac{1}{4}  & \frac{1}{3}  & \cdots & \frac{1}{4} \\
+            \vdots  & \vdots  & \ddots & \vdots  \\
+            \frac{1}{4}  & \frac{1}{4}  & \cdots & \frac{1}{3} 
+           \end{bmatrix}
+    \end{aligned}    
+\end{equation*}
+Substracting $1/4$ times the first row to every other column the later transform into: 
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle \text{det}(\pmb{\text{P}})
+         &= (\frac{1}{3} + (n-1)\frac{1}{4})\text{ det}\begin{bmatrix}
+            1 & 1 & \cdots & 1\\[1.2em]
+           \frac{1}{4}  & \frac{1}{3}  & \cdots & \frac{1}{4} \\
+           \vdots  & \vdots  & \ddots & \vdots  \\
+           \frac{1}{4}  & \frac{1}{4}  & \cdots & \frac{1}{3} 
+          \end{bmatrix}
+         &= (\frac{1}{3} + (n-1)\frac{1}{4})\text{ det}\begin{bmatrix}
+             1 & 1 & \cdots & 1\\[1.2em]
+             0 & \frac{1}{3} - \frac{1}{4}   & \cdots & 0\\
+            \vdots  & \vdots  & \ddots & \vdots  \\
+            0 & 0  & \cdots & \frac{1}{3} - \frac{1}{4} 
+           \end{bmatrix}\\
+         \\
+        &=(\frac{1}{3} + (n-1)\frac{1}{4})(\frac{1}{3} - \frac{1}{4})^{n-1} \neq 0.
+    \end{aligned}
+\end{equation*}\hspace{10cm}$\qedsymbol{}$
+\end{document}
