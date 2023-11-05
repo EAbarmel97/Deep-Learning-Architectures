@@ -57,8 +57,19 @@ Show that the softmax function is invariant with respect to the addition of cons
 This property is used in practice by replacing $\pmb{c} = - \text{max}_i y_i$, fact that leads to a more stable numerically variant of this function.
 
 \section*{Exercise 2.5.7}
-Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \frac{y_i}{A}$
+Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \frac{y^2_i}{\lVert y \rVert }$. Show that: 
+\begin{enumerate}
+    \item $0 \leq \rho(y)_i \leq 1$ and $\sum_i \rho(y)_i = 1$.
+    \item The function $\rho$ is invariant with to multiplication by nonzero constant, i.e., $\rho(\lambda y ) = \rho(y)$ for any $\lambda \in \mathbb{R}/{0}$. Taking $\lambda = \frac{1}{\text{max}_i y_i}$ leads in practice to a more stable version of this function. 
+\end{enumerate}
 
 \section*{Exercise 2.5.8 (cosine squasher)}
-Show that teh function 
+Show that the function $\varphi(x) = \frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2}))1_{\tiny [-\frac{\pi}{2}, \frac{\pi}{2}]}(x) + 1_{\tiny (\frac{\pi}{2}, \infty)}(x)$ is a 
+squashing function.
+
+\section*{Exercise 2.5.9}
+\begin{enumerate}
+    \item Show that any squashinf function is a sigmoidal function.
+    \item Give an example of a sigmoidal function which is not a squashing function.
+\end{enumerate}
 \end{document}  
