@@ -29,5 +29,36 @@ Let $S(x)$ and $H(x)$ denote the bipolar step fucntion and the Heaviside functio
 \begin{enumerate}
     \item $S(x) = 2H(x) - 1 $
     \item $ReLU(x) = \frac{1}{2}x(S(x) + 1)$
-\end{enumerate}    
+\end{enumerate}
+\section*{Exercise 2.5.3}
+Show that the softplus function,$sp(x)$, satisfies the following properties:
+\begin{enumerate}
+    \item $sp^\prime(x) = \sigma(x)\text{, where } \frac{1}{1 + e^-x}$
+    \item Show that $sp(x)$ is invertible with inverse $sp^-1(x) = \text{ln}(e^x - 1)$
+    \item Use the softplus function to show teh formula $\sigma(x) = 1 - \sigma(-x)$
+\end{enumerate}
+
+\section*{Exercise 2.5.4}
+Show that $\text{tanh}(x) = 2\sigma(2x) - 1 $
+
+\section*{Exercise 2.5.5}
+Show that the softsign function,$so(x)$, satisfies the following properties:
+\begin{enumerate}
+    \item Its sctrictly increasing;
+    \item Its is onto $(-1,1)$, with the inverse $so^-1(x) = \frac{1}{1 - |x|}$, for $|x| < 1$.
+    \item $so(|x|)$ is subadditive, i.e., $so(|x+y|) \leq so(|x|) + so(|y|)$. 
+\end{enumerate}
+
+\section*{Exercise 2.5.6}
+Show that the softmax function is invariant with respect to the addition of constant vectors $\pmb{c} = (c_1 \ldots c_n)^{T}$, i.e., \\
+\begin{equation*}
+    softmax(y + \pmb{c}) = softmax(y).
+\end{equation*}\\
+This property is used in practice by replacing $\pmb{c} = - \text{max}_i y_i$, fact that leads to a more stable numerically variant of this function.
+
+\section*{Exercise 2.5.7}
+Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \frac{y_i}{A}$
+
+\section*{Exercise 2.5.8 (cosine squasher)}
+Show that teh function 
 \end{document}  
