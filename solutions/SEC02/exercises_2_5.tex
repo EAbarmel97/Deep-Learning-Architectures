@@ -33,7 +33,7 @@ Let $S(x)$ and $H(x)$ denote the bipolar step fucntion and the Heaviside functio
 \section*{Exercise 2.5.3}
 Show that the softplus function,$sp(x)$, satisfies the following properties:
 \begin{enumerate}
-    \item $sp^\prime(x) = \sigma(x)\text{, where } \frac{1}{1 + e^-x}$
+    \item $sp^\prime(x) = \sigma(x)\text{, where } \frac{1}{1 + e^{-x}}$
     \item Show that $sp(x)$ is invertible with inverse $sp^{-1}(x) = \text{ln}(e^x - 1)$
     \item Use the softplus function to show teh formula $\sigma(x) = 1 - \sigma(-x)$
 \end{enumerate}
@@ -72,4 +72,32 @@ squashing function.
     \item Show that any squashinf function is a sigmoidal function.
     \item Give an example of a sigmoidal function which is not a squashing function.
 \end{enumerate}
+
+\newpage
+
+\begin{center}    
+    \section*{SOLUTIONS}
+\end{center}
+
+\subsection*{2.5.1 (a)}
+Computing the derivative of $\sigma$ we find: $\sigma^\prime(x) = \frac{d}{dx} \frac{1}{ 1 + e^{-x}} = \frac{d}{dx} \frac{e^x}{ 1 + e^{x}} = \frac{e^x}{(1 + e^{x})^2}$. From the inequality $1 \leq (1+e^x)^2$ and the non-negativeness of the exponential function follows that 
+$0 \leq \frac{e^x}{(1 + e^{x})^2}$. \\
+\\
+Now lets prove that in $x=0$ the function has a local maximum in $[-1,1]$, this will imply $0 \leq \frac{e^x}{(1 + e^{x})^2} \leq \sigma^\prime(0)$, $\sigma^\prime(0) = \frac{1}{4}$. By computing the first derivative of $\sigma^\prime$ we find: 
+$\sigma^{\prime\prime}(x) = e^{x}\frac{1-e^{x}}{(1 + e^{x})^3}$. The critical will be found by solving the equation $\sigma^{\prime\prime}(x) = 0$. \\
+\\
+From $\sigma^{\prime\prime}(x) = e^{x}\frac{1-e^{x}}{(1 + e^{x})^3} = 0$ follows that $1 - e^x = 0$, is straigth-forward to check that \\
+the solution is $x=0$. It rests to determine the nature of the extremizing point. To achieve this goal is necessary to calculate the second derivative of $\sigma^{\prime}$.
+\begin{equation*}     
+        \begin{aligned}
+            \sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
+            &= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
+        \end{aligned}
+\end{equation*}
+\\
+We clearly have $\sigma^{\prime\prime\prime}(0) < 0$, then $x = 0$ is a local maximum for $\sigma^\prime$, i.e $\forall x \in [-1, 1], \ \sigma^\prime(x) \leq \frac{1}{4}$. On the other hand,
+the function $\sigma^\prime$ decreases on the intervals $(-\infty,-1)$ and $(1, \infty)$ this implies that:\\
+\\
+$\displaystyle\sup_{x \in (1,\infty)}\sigma^{\prime}(x) = \displaystyle\frac{e}{(1 + e)^2} = \displaystyle\frac{e^{-1}}{(1 + e^{-1})^2} = \sup_{x \in (-\infty,-1)} \sigma^{\prime}(x)$.
+From the fact that $\displaystyle\frac{e}{(1 + e)^2} < \frac{1}{4}$ follows that $ 0 \leq \sigma^\prime(x) \leq \frac{1}{4}$ is valid $\forall x \in \mathbb{R}$. 
 \end{document}  
