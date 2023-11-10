@@ -99,11 +99,27 @@ We clearly have $\sigma^{\prime\prime\prime}(0) < 0$, then $x = 0$ is a local ma
 the function $\sigma^\prime$ decreases on the intervals $(-\infty,-1)$ and $(1, \infty)$ this implies that:\\
 \\
 $\displaystyle\sup_{x \in (1,\infty)}\sigma^{\prime}(x) = \displaystyle\frac{e}{(1 + e)^2} = \displaystyle\frac{e^{-1}}{(1 + e^{-1})^2} = \sup_{x \in (-\infty,-1)} \sigma^{\prime}(x)$.
-From the fact that $\displaystyle\frac{e}{(1 + e)^2} < \frac{1}{4}$ follows that $ 0 \leq \sigma^\prime(x) \leq \frac{1}{4}$ is valid $\forall x \in \mathbb{R}$. 
+From the fact that $\displaystyle\frac{e}{(1 + e)^2} < \frac{1}{4}$ follows that $ 0 \leq \sigma^\prime(x) \leq \frac{1}{4}$ is valid $\forall x \in \mathbb{R}. \text{ \ \qedsymbol{}}$\\
 
 \subsection*{2.5.1 (b)}
-From the expression $\sigma_c(x) = \frac{1}{1 + e^{-cx}}$, $c > 0$ one finds that $\sigma^{\prime}_c(x) = \frac{d}{d x} \frac{e^{cx}}{1 + e^{cx}} = c \frac{e^{cx}}{1 + e^{cx}}$. By the chain rule it can be easily verified that all the computations 
+The inequality changes to: $ 0 \leq \sigma^\prime_c(x) \leq \frac{c}{4}, \ \forall x \in \mathbb{R}$. From the expression $\sigma_c(x) = \frac{1}{1 + e^{-cx}}$, $c > 0$ one finds that $\sigma^{\prime}_c(x) = \frac{d}{d x} \frac{e^{cx}}{1 + e^{cx}} = \displaystyle c \frac{e^{cx}}{(1 + e^{cx})^2}$. By the chain rule it can be easily verified that all the computations 
 made for $\sigma^{\prime}(x)$ in 2.5.1.a, can by applied to $\sigma^{\prime}_c(x)$, having in mind the relationship $\sigma^{\prime}_c(x) = c \sigma^{\prime}(cx)$. \\
 \\
-Then, one finds: $\sigma^{\prime\prime}_c(x) = c^{2} \sigma^{\prime\prime}(cx)$
+Then, one finds: $\sigma^{\prime\prime}_c(x) = c^{2} e^{cx}\frac{1-e^{cx}}{(1 + e^{cx})^3}$, this implies that $x=0$ is a critical point. Using the same relationship is clear that $\sigma^{\prime\prime\prime}_c(x) \Big|_{x=0} = c^{3}\frac{e^{cx} \{ 1 - 4e^{cx} + e^{2cx} \}}{(1 + e^{cx})^{4}} \Big|_{x=0} < 0$. Then, $x=0$ is a maximum. \\
+\\
+Arguing like in 2.5.1.a that on the interval $[-1,1]$, $\sigma^{\prime}_c(0) = \frac{c}{4}$ is a local maximum. More over, the function $\sigma^\prime_c$ decreases on the intervals
+$(-\infty,-1)$ and $(1, \infty)$, implying: \newline
+\begin{equation*}
+    \displaystyle\sup_{x \in (1,\infty)}\sigma^{\prime}_c(x) = \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} = \displaystyle\frac{ce^{-c}}{(1 + e^{-c})^2} = \sup_{x \in (-\infty,-1)} \sigma^{\prime}_c(x)
+\end{equation*}
+\newline
+Lets now prove the inequality $ \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} < \frac{c}{4}$. We have: 
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} &= \displaystyle\frac{c}{\frac{(1 + e^{c})^2}{\displaystyle e^{\frac{2c}{2}}}} = \displaystyle\frac{c}{(\frac{1 + e^{c}}{\displaystyle e^{\frac{c}{2}}})^2}\\
+        &= \displaystyle \frac{c}{(e^{-\frac{c}{2}} + e^{\frac{c}{2}})^2} < \displaystyle \frac{c}{(1 - \frac{c}{2} + 1 + \frac{c}{2})^2} = \frac{c}{4}
+    \end{aligned}
+\end{equation*}
+Where we have used the inequality $1 + x \leq e^x, \ \forall x \in \mathbb{R}$. The later shows $\sigma^{\prime}_c(0)$ is a global maximum, \newline 
+i.e $0 \leq \sigma^\prime_c(x) \leq \frac{c}{4}$ is valid $\forall x \in \mathbb{R}. \text{ \ \qedsymbol{}}$
 \end{document}  
