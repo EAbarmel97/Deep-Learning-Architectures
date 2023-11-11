@@ -6,6 +6,7 @@
 \usepackage{blindtext}
 \usepackage{lmodern}
 \usepackage{tcolorbox}
+\usepackage{hyperref}
 
 \pagestyle{empty}
 \renewcommand{\theenumi}{\alph{enumi}} 
@@ -162,4 +163,22 @@ $ReLU(x) = \frac{1}{2}(x + x S(x)) = \frac{1}{2}x(1 + S(x)). \ \qedsymbol{}$
 \subsection*{2.5.3 (a)}
 The identity inmeadiatly follows from the application of the chain rule to the function $\text{ln}(1 + e^x)$. In fact, we have: 
 $sp^\prime(x) = \frac{d}{d x }\text{ln}(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}}. \ \qedsymbol{}$
+
+\subsection*{2.5.3 (b)}
+The function $e^x$ is well known to never be zero, then $1 + e^x > 0, \forall x \in \mathbb{R}$. This implies $sp^{\prime}(x) \neq 0, \forall x \in \mathbb{R}$. Then by the \href{https://en.wikipedia.org/wiki/Inverse_function_theorem}{inverse function theorem} the function is 
+invertible. We can now compute its inverse, which is given by:
+\begin{equation*}
+    sp(x) = y = \text{ln}(e^x + 1 ) \implies e^y = e^x + 1 \implies x = sp^{-1}(y) = \text{ln}(e^y - 1). \ \qedsymbol{}
+\end{equation*}
+
+\subsection*{2.5.3 (c)}
+From the \href{https://mathworld.wolfram.com/FundamentalTheoremsofCalculus.html}{fundamental theorem of calculus}, and the relation proved in 2.5.3.a: 
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle\int^{x}_{-\infty} sp^{\prime\prime}(u) du = \Big|^{x}_{u = \infty}sp^{\prime}(u) = \sigma(x) - \sigma(-\infty) = \sigma{}\\
+    \end{aligned}
+\end{equation*}
+
+\subsection*{2.5.4 (a)}
+
 \end{document} 
