@@ -146,7 +146,7 @@ From the Heaviside function definition one has:
 \end{equation*}
 
 \subsection*{2.5.2 (b)}
-We know $ReLU(X):= \text{max}(0,x)$. Consider the identities $\text{max}(0,x) = \frac{1}{2} \{ x + |x| \}$, \\
+We know $ReLU(x):= \text{max}(0,x)$. Consider the identities $\text{max}(0,x) = \frac{1}{2} \{ x + |x| \}$, \\
 \begin{equation*}
     |x| = 
     \begin{aligned}
@@ -162,7 +162,7 @@ $ReLU(x) = \frac{1}{2}(x + x S(x)) = \frac{1}{2}x(1 + S(x)). \ \qedsymbol{}$
 
 \subsection*{2.5.3 (a)}
 The identity inmeadiatly follows from the application of the chain rule to the function $\text{ln}(1 + e^x)$. In fact, we have: 
-$sp^\prime(x) = \frac{d}{d x }\text{ln}(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}}. \ \qedsymbol{}$
+$sp^\prime(x) = \frac{d}{d x }\text{ln}(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}} = \sigma(x). \ \qedsymbol{}$
 
 \subsection*{2.5.3 (b)}
 The function $e^x$ is well known to never be zero, then $1 + e^x > 0, \forall x \in \mathbb{R}$. This implies $sp^{\prime}(x) \neq 0, \forall x \in \mathbb{R}$. Then by the \href{https://en.wikipedia.org/wiki/Inverse_function_theorem}{inverse function theorem} the function is 
@@ -185,5 +185,14 @@ $\frac{d}{d x } \left[ x + sp(-x) \right] = 1 - \sigma(-x) = \frac{d}{d x}sp(x) 
 \end{equation*}
 
 \subsection*{2.5.4 (a)}
+From the tanh definition we have:
+\begin{equation*}
+    \begin{aligned}
+        \text{tanh}(x):= \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} &= \frac{e^x}{e^{x} + e^{-x}} - \frac{e^{-x}}{e^{x} + e^{-x}} = \frac{e^{2x}}{e^{2x} + 1} - \frac{e^{-x}}{e^{x} + e^{-x}} \\
+        &= \sigma(2x) - \frac{e^{-x}}{e^{-x}(1 + e^{2x})} = \sigma(2x) - \frac{1}{1 + e^{2x}} \\
+        &= \sigma(2x) - \frac{1 + e^{2x} - e^{2x}}{1 + e^{2x}} = \sigma(2x) - \{1 - \frac{e^{2x}}{1 + e^{2x}} \}\\
+        &= \sigma(2x) - \{1 - \sigma(2x)\} = 2\sigma(2x) - 1\text{.\ \ $\qedsymbol{}$}
+    \end{aligned}    
+\end{equation*}
 
 \end{document} 
