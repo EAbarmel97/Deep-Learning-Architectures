@@ -172,10 +172,15 @@ invertible. We can now compute its inverse, which is given by:
 \end{equation*}
 
 \subsection*{2.5.3 (c)}
-From the \href{https://mathworld.wolfram.com/FundamentalTheoremsofCalculus.html}{fundamental theorem of calculus}, and the relation proved in 2.5.3.a: 
+Let $F(x) :=  x + sp(-x) - sp(x)$. It happens that derivative of $F$ is 0, then by the chain rule, the linearity of the derivative operator and the relationship 
+proved in 2.5.3.a yield: \newline
+\\
+$\frac{d}{d x } \left[ x + sp(-x) \right] = 1 - \sigma(-x) = \frac{d}{d x}sp(x) = \sigma(x)$. Lets now prove the claim aforementioned to complete the proof. We have: 
 \begin{equation*}
     \begin{aligned}
-        \displaystyle\int^{x}_{-\infty} sp^{\prime\prime}(u) du = \Big|^{x}_{u = \infty}sp^{\prime}(u) = \sigma(x) - \sigma(-\infty) = \sigma{}\\
+        \frac{d}{d x } F(x) &= \frac{d}{d x } \left[ x + sp(-x) - sp(x)\right] = \frac{d}{d x } \left[ x + \text{ln}(\frac{e^{-x} + 1 }{e^x + 1})\right]\\
+         &= 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{d}{d x }\left[\frac{e^{-x} + 1 }{e^{x} + 1}\right] = 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-e^{-x}(e^x + 1) - e^x(1 + e^{-x})}{(e^{x} + 1)^2}\\
+         &= 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-e^{-x}(e^x + 1) - (1 + e^{x})}{(e^{x} + 1)^2} = 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-(e^x + 1)(1 + e^{x})}{(e^{x} + 1)^2} = 1 - 1 = 0. \text{\ \ \qedsymbol{}}
     \end{aligned}
 \end{equation*}
 
