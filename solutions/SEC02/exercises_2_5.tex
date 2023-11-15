@@ -161,7 +161,7 @@ We know $ReLU(x):= \text{max}(0,x)$. Consider the identities $\text{max}(0,x) = 
 $ReLU(x) = \frac{1}{2}(x + x S(x)) = \frac{1}{2}x(1 + S(x)). \ \qedsymbol{}$
 
 \subsection*{2.5.3 (a)}
-The identity inmeadiatly follows from the application of the chain rule to the function $\text{ln}(1 + e^x)$. In fact, we have: 
+The identity immediately follows from the application of the chain rule to the function $\text{ln}(1 + e^x)$. In fact, we have: 
 $sp^\prime(x) = \frac{d}{d x }\text{ln}(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}} = \sigma(x). \ \qedsymbol{}$
 
 \subsection*{2.5.3 (b)}
@@ -195,4 +195,37 @@ From the tanh definition we have:
     \end{aligned}    
 \end{equation*}
 
-\end{document} 
+\subsection*{2.5.5 (a)}
+\underline{CASE $x > 0$}:\newline
+Taking the derivative of $so(x)$ we find: $\frac{d}{d x} so(x) = \frac{d}{d x} \frac{x}{1 + x} =  \frac{1(1 + x) - x(1)}{(1 + x)^{2}} = \frac{1}{(1 + x)^{2}} > 0$. 
+This implies \\ $so(x)$ is strictly increasing on the interval $(0,\infty)$.\\
+\\
+\underline{CASE $x < 0$}:\newline
+Taking the derivative of $so(x)$: $\frac{d}{d x} so(x) = \frac{d}{d x} \frac{x}{1 - x} =  \frac{1(1 - x) + x(1)}{(1 - x)^{2}} = \frac{1}{(1 - x)^{2}} > 0$. 
+Therefore, the function\\ $so(x)$ is strictly increasing on the interval $(-\infty,0)$.\\
+\\
+\underline{CASE $x < y, x < 0, y > 0 $}: \newline
+Let $u, u^{\prime} \in (x,y)$ with $u < 0, u^{\prime} > 0$. Then is clear that $u < u^{\prime}$ From the condition $u < |u|$ follows that $u u^{\prime} = u |u^{\prime}| < |u||u^{\prime}|$. Summing this inequality to the inequality $u < u^{\prime}$ we get:
+$u + u|u^{\prime}| = u(1 + |u^{\prime}|) < u^{\prime} + |u||u^{\prime}| = u^{\prime}(1 + |u|)$ which implies $\frac{u}{1 + |u|} < \frac{u^{\prime}}{ 1 + |u^{\prime}|}$, i.e  $so$ is strictly incresing on intervals of the 
+type $(x,y), x < 0, y > 0$.\\
+\\
+The aforementioned 3 cases imply $so(x), \ \forall x \in \mathbb{R}$ is sctrictly increasing. \ $\qedsymbol{}$
+
+\subsection*{2.5.5 (b)}
+From $x < 1 + |x|$ follows $\frac{x}{1 + |x|} < 1, \ \forall x \in \mathbb{R}^{>0}$. To get the inequality $-1 < \frac{x}{1 + |x|}$ apply the second inequality to $u$ and then 
+multiply by $-1$. In summary, we have that the image of $so(x)$ is the interval $(-1,1)$\\
+\\
+On the other hand, note that $S(x) = S(so(x))$. Now, let $u \in (-1,1), u > 0$. Suppose there is a $x$ such that $so(x) = u$, we have:
+\begin{equation*}
+    \begin{aligned}
+        u = \frac{x}{1 + |x|} \implies x = u + |x| u = u (1 + x) \implies x(1 - u) = u \implies x = \frac{u}{1 - u} = so^{-1}(u)
+    \end{aligned}    
+\end{equation*}
+If in the contrary, $u < 0$, suppose it exists an $x$ such that $so(x) = u$:
+\begin{equation*}
+    \begin{aligned}
+        u = \frac{x}{1 + |x|} \implies x = u - x u = u (1 - x) \implies x(1 + u) = u \implies x = \frac{u}{1 + u} = so^{-1}(u)
+    \end{aligned}    
+\end{equation*}
+Both cases can be complactly written as: $x = so^{-1}(u) = \frac{u}{1 - |u|}$. \ $\qedsymbol{}$
+\end{document}
