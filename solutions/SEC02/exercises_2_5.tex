@@ -237,4 +237,18 @@ From 2.5.5.a and by the triangle inequality ($|x + y| < |x| + |y|$) follows:
                     &\leq \frac{|x|}{1 + |x|} + \frac{|y|}{1 + |y|} = so(|x|) + so(|y|). \ \ \qedsymbol{}
     \end{aligned}    
 \end{equation*}
+
+\subsection*{2.5.6 (a)}
+To be more consistent with notation lets write $\displaystyle softmax(\pmb{\text{c}};y):= \frac{(e^{c_1 + y}, \ldots ,e^{c_j + y}, \ldots ,e^{c_n + y} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j + y}}$ i.e $softmax$ with a scalar shift, instead of $softmax(y + \pmb{\text{c}})$. Because otherwise, one should be precise 
+to define objects of the type $y + \pmb{\text{c}}$ with $y \in \mathbb{R}, \ \pmb{\text{c}} \in \mathbb{R}^n$. That said, $softmax(\pmb{\text{c}};0) = softmax(\pmb{\text{c}})$; Continuing with the proof, from the functional form of the function $softmax(y;\pmb{\text{c}})$ it is clear that:
+
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle softmax(\pmb{\text{c}};y) &= \frac{(e^{c_1 + y}, \ldots ,e^{c_j + y}, \ldots ,e^{c_n + y} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j + y}} \\
+                    &=\frac{(e^{c_1} e^{y}, \ldots ,e^{c_j} e^{y}, \ldots ,e^{c_n} e^{y} )}{e^{y}\displaystyle\sum^{n}_{j = 0 }e^{c_j}} = \frac{e^{y}(e^{c_1} , \ldots ,e^{c_j}, \ldots ,e^{c_n})}{e^{y}\displaystyle\sum^{n}_{j = 0 }e^{c_j}} \\
+                    &= \frac{(e^{c_1}, \ldots ,e^{c_j}, \ldots ,e^{c_n} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j}} = softmax(\pmb{\text{c}};0).\ \ \qedsymbol{}
+    \end{aligned}    
+\end{equation*}
+
+
 \end{document}
