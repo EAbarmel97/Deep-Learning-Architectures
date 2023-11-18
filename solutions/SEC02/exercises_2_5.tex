@@ -58,7 +58,7 @@ Show that the softmax function is invariant with respect to the addition of cons
 This property is used in practice by replacing $\pmb{c} = - \text{max}_i y_i$, fact that leads to a more stable numerically variant of this function.
 
 \section*{Exercise 2.5.7}
-Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \frac{y^2_i}{\lVert y \rVert }$. Show that: 
+Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \displaystyle\frac{y^2_i}{\lVert y \rVert^{2} }$. Show that: 
 \begin{enumerate}
     \item $0 \leq \rho(y)_i \leq 1$ and $\sum_i \rho(y)_i = 1$.
     \item The function $\rho$ is invariant with to multiplication by nonzero constant, i.e., $\rho(\lambda y ) = \rho(y)$ for any $\lambda \in \mathbb{R}/{0}$. Taking $\lambda = \frac{1}{\text{max}_i y_i}$ leads in practice to a more stable version of this function. 
@@ -250,5 +250,18 @@ to define objects of the type $y + \pmb{\text{c}}$ with $y \in \mathbb{R}, \ \pm
     \end{aligned}    
 \end{equation*}
 
+\subsection*{2.5.7 (a)}
+By the definition of the $L_2$ norm follows the claim. Indeed $\forall \ \pmb{\text{y}} \in \mathbb{R}^n/\{\pmb{0}\}$:
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle 0 &\leq y^2_{k} \leq \lVert \pmb{\text{y}} \rVert^{2} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \leq \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \leq 1
+    \end{aligned}    
+\end{equation*}
+
+\begin{equation*} 
+    \begin{aligned}
+        \displaystyle\lVert \pmb{\text{y}} \rVert^{2} &= \sum^{n}_{k = 0} y^2_{k} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \implies \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} = 1.  \ \ \qedsymbol{}
+    \end{aligned}    
+\end{equation*}
 
 \end{document}
