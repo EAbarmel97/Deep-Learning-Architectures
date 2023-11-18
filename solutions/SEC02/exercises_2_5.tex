@@ -268,8 +268,17 @@ $\displaystyle \rho(\pmb{ \lambda \text{y}})_{k} = \displaystyle\frac{(\lambda y
     \item $\displaystyle\lim_{x \to \infty}\varphi(x) = \lim_{x \to \infty} 1_{\tiny (\frac{\pi}{2}, \infty)}(x) = 1$  
     \item $\displaystyle\lim_{x \to -\infty}\varphi(x) = \lim_{x \to -\infty}\frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2}))1_{\tiny [-\frac{\pi}{2}, \frac{\pi}{2}]}(x) = 0$
 \end{itemize}
-Lets now prove that the function is not decreasing. On the intervals $(\frac{\pi}{2}, \infty)$ and $(-\infty, \frac{-\pi}{2})$ is evidently non decreasing. On the other hand, $\forall \ x \in [\frac{-\pi}{2}, \frac{\pi}{2}]$ we have: 
+Lets now prove that the function is not decreasing. On the intervals $(\frac{\pi}{2}, \infty)$ and $(-\infty, \frac{-\pi}{2})$ is evidently non decreasing. On the other hand, $\forall \ x \in [\frac{-\pi}{2}, \frac{\pi}{2}]$ we have: \\
+\\
+$\frac{d}{ d x}\frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2})) = - \frac{1}{2}sin(x + \frac{3\pi}{2}) = - \frac{1}{2}(cos(x)sin(\frac{3\pi}{2}) + cos(\frac{3\pi}{2})sin(x)) = \frac{1}{2}cos(x)$. \\
+\\
+It is well known that $cos(x)$ is positive on the interval $[\frac{-\pi}{2}, \frac{\pi}{2}]$, then the function $\varphi$ is non decreasing on the interval $[\frac{-\pi}{2}, \frac{\pi}{2}]$ (Because its derivative is postive on such interval). Then, $\varphi(x)$ is a squashing function. 
 
 \subsection*{2.5.9 (a)}
 The claim is obvious, it follows from the fact that by definition a squashing function is a nondecreasing sigmoidal function. 
+
+\subsection*{2.5.9 (b)}
+It is enough to give a function that is non increasing, but satisfies the sigmoidal condition. An example of such type of functions is: 
+
+
 \end{document}
