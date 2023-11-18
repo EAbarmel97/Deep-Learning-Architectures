@@ -252,16 +252,24 @@ to define objects of the type $y + \pmb{\text{c}}$ with $y \in \mathbb{R}, \ \pm
 
 \subsection*{2.5.7 (a)}
 By the definition of the $L_2$ norm follows the claim. Indeed $\forall \ \pmb{\text{y}} \in \mathbb{R}^n/\{\pmb{0}\}$:
-\begin{equation*}
-    \begin{aligned}
-        \displaystyle 0 &\leq y^2_{k} \leq \lVert \pmb{\text{y}} \rVert^{2} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \leq \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \leq 1
-    \end{aligned}    
-\end{equation*}
+\begin{itemize}
+    \item $\displaystyle 0 \leq y^2_{k} \leq \lVert \pmb{\text{y}} \rVert^{2} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \leq \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \leq 1$
+    \item $\displaystyle\lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} y^2_{k} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert \pmb{\text{y}} \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \implies \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} = 1.  \ \ \qedsymbol{}$
+\end{itemize} 
 
-\begin{equation*} 
-    \begin{aligned}
-        \displaystyle\lVert \pmb{\text{y}} \rVert^{2} &= \sum^{n}_{k = 0} y^2_{k} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \implies \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} = 1.  \ \ \qedsymbol{}
-    \end{aligned}    
-\end{equation*}
+\subsection{2.5.7 (b)}
+The claim follows easily by the properties of the norm. Let $\forall \lambda \neq 0$:\\
+\\
+$\displaystyle \rho(\pmb{ \lambda \text{y}})_{k} = \displaystyle\frac{(\lambda y_{k})^2}{\lVert \lambda \pmb{\text{y}} \rVert^{2} } = \displaystyle\frac{(\lambda y_{k})^2}{\lVert \lambda \pmb{\text{y}} \rVert^{2} } = \displaystyle\frac{\lambda^2 (y_{k}^2)}{\lambda^2 \lVert \pmb{\text{y}} \rVert^{2} } = \rho(\pmb{ \text{y}})_{k}. \ \qedsymbol{}$
 
+\subsection*{2.5.8 (a)}
+ First, from the function definition is evident that is sigmoidal. Indeed:
+\begin{itemize}
+    \item $\displaystyle\lim_{x \to \infty}\varphi(x) = \lim_{x \to \infty} 1_{\tiny (\frac{\pi}{2}, \infty)}(x) = 1$  
+    \item $\displaystyle\lim_{x \to -\infty}\varphi(x) = \lim_{x \to -\infty}\frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2}))1_{\tiny [-\frac{\pi}{2}, \frac{\pi}{2}]}(x) = 0$
+\end{itemize}
+Lets now prove that the function is not decreasing. On the intervals $(\frac{\pi}{2}, \infty)$ and $(-\infty, \frac{-\pi}{2})$ is evidently non decreasing. On the other hand, $\forall \ x \in [\frac{-\pi}{2}, \frac{\pi}{2}]$ we have: 
+
+\subsection*{2.5.9 (a)}
+The claim is obvious, it follows from the fact that by definition a squashing function is a nondecreasing sigmoidal function. 
 \end{document}
