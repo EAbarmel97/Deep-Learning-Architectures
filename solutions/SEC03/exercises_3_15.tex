@@ -27,13 +27,23 @@ Let $p, \ p_i, \ q, \ q_i$ be density functions on $\mathbb{R}$ and $\alpha \in 
 \end{enumerate}
 
 \section*{Exercise 3.15.2}
-Show that the cross entropy satifies the following inequality
-\begin{enumerate}
-    \item $S(p,q) \geq 1 - \displaystyle\int p(x) q(x) d x $.
-\end{enumerate}
+Show that the cross entropy satifies the following inequality\\
+\begin{equation*}
+    S(p,q) \geq 1 - \displaystyle\int p(x) q(x) d x
+\end{equation*}    
 
 \section*{Exercise 3.15.3}
-Let p a fixed density. 
+Let $p$ a fixed density. Show that the symetric relative entropy \\
+\begin{equation*}
+    D_{KL}(p \lVert q) +  D_{KL}(q \lVert p )
+\end{equation*}\\
+reaches its minimun for $p = q$, and the minimum is equal to zero. 
+
+\section*{Exercise 3.15.4}
+Consider two exponential densities, $p_1 = \xi^1 e^{\xi^1 x}$ and $p_2 = \xi^2 e^{\xi^2 x}$, $x \geq 0$.
+\begin{enumerate}
+    \item Show that $D_{KL}(p_1 \lVert p_2) = \displaystyle \frac{\xi^2}{\xi^1} - \text{ln}{\xi^2}{\xi^1} - 1$.  
+\end{enumerate}    
 % % Solutions to other exercises in Chapter X...
 
 \newpage
@@ -42,18 +52,18 @@ Let p a fixed density.
     \section*{SOLUTIONS}
 \end{center}
 
-\subsection*{x.y.1 (a)}
+\subsection*{3.15.1 (a)}
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
 dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
 id est laborum et dolorum fuga.
-\begin{proof}
-    \begin{equation*}     
-        \begin{aligned}
-            \sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
-            &= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
-        \end{aligned}
-\end{equation*}
-\end{proof}
+%\begin{proof}
+    %\begin{equation*}     
+        %\begin{aligned}
+            %\sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
+            %&= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
+        %\end{aligned}
+%\end{equation*}
+%\end{proof}
 \subsection*{x.y.2 (a)}
 Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est 
 eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, 
