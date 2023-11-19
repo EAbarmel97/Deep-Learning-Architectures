@@ -6,6 +6,8 @@
 \usepackage{blindtext}
 \usepackage{lmodern}
 \usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{pgfplots}
 
 \pagestyle{empty}
 \renewcommand{\theenumi}{\alph{enumi}} 
@@ -25,4 +27,277 @@
 \end{enumerate}  
 
 \section*{Exercise 2.5.2}
+Let $S(x)$ and $H(x)$ denote the bipolar step fucntion and the Heaviside function, respectively. Show that: \\
+\begin{enumerate}
+    \item $S(x) = 2H(x) - 1 $
+    \item $ReLU(x) = \frac{1}{2}x(S(x) + 1)$
+\end{enumerate}
+\section*{Exercise 2.5.3}
+Show that the softplus function, $sp(x)$, satisfies the following properties:
+\begin{enumerate}
+    \item $sp^\prime(x) = \sigma(x)\text{, where } \sigma(x) = \frac{1}{1 + e^{-x}}$
+    \item Show that $sp(x)$ is invertible with inverse $sp^{-1}(x) = \text{ln}(e^x - 1)$
+    \item Use the softplus function to show the formula $\sigma(x) = 1 - \sigma(-x)$
+\end{enumerate}
+
+\section*{Exercise 2.5.4}
+Show that $\text{tanh}(x) = 2\sigma(2x) - 1 $
+
+\section*{Exercise 2.5.5}
+Show that the softsign function, $so(x)$, satisfies the following properties:
+\begin{enumerate}
+    \item Its sctrictly increasing;
+    \item Its is onto $(-1,1)$, with the inverse $so^{-1}(x) = \frac{x}{1 - |x|}$, for $|x| < 1$.
+    \item $so(|x|)$ is subadditive, i.e., $so(|x+y|) \leq so(|x|) + so(|y|)$. 
+\end{enumerate}
+
+\section*{Exercise 2.5.6}
+Show that the softmax function is invariant with respect to the addition of constant vectors $\pmb{c} = (c_1 \ldots c_n)^{T}$, i.e., \\
+\begin{equation*}
+    softmax(y + \pmb{c}) = softmax(y).
+\end{equation*}\\
+This property is used in practice by replacing $\pmb{c} = - \text{max}_i y_i$, fact that leads to a more stable numerically variant of this function.
+
+\section*{Exercise 2.5.7}
+Let $\rho: \mathbb{R}^n \rightarrow \mathbb{R}^n$ defined by $\rho(y) \in \mathbb{R}^n$, with $\rho(y)_i = \displaystyle\frac{y^2_i}{\lVert y \rVert^{2} }$. Show that: 
+\begin{enumerate}
+    \item $0 \leq \rho(y)_i \leq 1$ and $\sum_i \rho(y)_i = 1$.
+    \item The function $\rho$ is invariant with to multiplication by nonzero constant, i.e., $\rho(\lambda y ) = \rho(y)$ for any $\lambda \in \mathbb{R}/{0}$. Taking $\lambda = \frac{1}{\text{max}_i y_i}$ leads in practice to a more stable version of this function. 
+\end{enumerate}
+
+\section*{Exercise 2.5.8 (cosine squasher)}
+Show that the function $\varphi(x) = \frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2}))1_{\tiny [-\frac{\pi}{2}, \frac{\pi}{2}]}(x) + 1_{\tiny (\frac{\pi}{2}, \infty)}(x)$ is a 
+squashing function.
+
+\section*{Exercise 2.5.9}
+\begin{enumerate}
+    \item Show that any squashing function is a sigmoidal function.
+    \item Give an example of a sigmoidal function which is not a squashing function.
+\end{enumerate}
+
+\newpage
+
+\begin{center}    
+    \section*{SOLUTIONS}
+\end{center}
+
+\subsection*{2.5.1 (a)}
+Computing the derivative of $\sigma$ we find: $\sigma^\prime(x) = \frac{d}{dx} \frac{1}{ 1 + e^{-x}} = \frac{d}{dx} \frac{e^x}{ 1 + e^{x}} = \frac{e^x}{(1 + e^{x})^2}$. From the inequality $1 \leq (1+e^x)^2$ and the non-negativeness of the exponential function follows that 
+$0 \leq \frac{e^x}{(1 + e^{x})^2}$. \\
+\\
+Now lets prove that in $x=0$ the function has a local maximum in $[-1,1]$, this will imply $0 \leq \frac{e^x}{(1 + e^{x})^2} \leq \sigma^\prime(0)$, $\sigma^\prime(0) = \frac{1}{4}$. By computing the first derivative of $\sigma^\prime$ we find: 
+$\sigma^{\prime\prime}(x) = e^{x}\frac{1-e^{x}}{(1 + e^{x})^3}$. The critical will be found by solving the equation $\sigma^{\prime\prime}(x) = 0$. \\
+\\
+From $\sigma^{\prime\prime}(x) = e^{x}\frac{1-e^{x}}{(1 + e^{x})^3} = 0$ follows that $1 - e^x = 0$, is straigth-forward to check that \\
+the solution is $x=0$. It rests to determine the nature of the extremizing point. To achieve this goal is necessary to calculate the second derivative of $\sigma^{\prime}$.
+\begin{equation*}     
+        \begin{aligned}
+            \sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
+            &= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
+        \end{aligned}
+\end{equation*}
+\\
+We clearly have $\sigma^{\prime\prime\prime}(0) < 0$, then $x = 0$ is a local maximum for $\sigma^\prime$, i.e $\forall x \in [-1, 1], \ \sigma^\prime(x) \leq \frac{1}{4}$. On the other hand,
+the function $\sigma^\prime$ decreases on the intervals $(-\infty,-1)$ and $(1, \infty)$ this implies that:\\
+\\
+$\displaystyle\sup_{x \in (1,\infty)}\sigma^{\prime}(x) = \displaystyle\frac{e}{(1 + e)^2} = \displaystyle\frac{e^{-1}}{(1 + e^{-1})^2} = \sup_{x \in (-\infty,-1)} \sigma^{\prime}(x)$.
+From the fact that $\displaystyle\frac{e}{(1 + e)^2} < \frac{1}{4}$ follows that $ 0 \leq \sigma^\prime(x) \leq \frac{1}{4}$ is valid $\forall x \in \mathbb{R}. \text{ \ \qedsymbol{}}$\\
+
+\subsection*{2.5.1 (b)}
+The inequality changes to: $ 0 \leq \sigma^\prime_c(x) \leq \frac{c}{4}, \ \forall x \in \mathbb{R}$. From the expression $\sigma_c(x) = \frac{1}{1 + e^{-cx}}$, $c > 0$ one finds that $\sigma^{\prime}_c(x) = \frac{d}{d x} \frac{e^{cx}}{1 + e^{cx}} = \displaystyle c \frac{e^{cx}}{(1 + e^{cx})^2}$. By the chain rule it can be easily verified that all the computations 
+made for $\sigma^{\prime}(x)$ in 2.5.1.a, can by applied to $\sigma^{\prime}_c(x)$, having in mind the relationship $\sigma^{\prime}_c(x) = c \sigma^{\prime}(cx)$. \\
+\\
+Then, one finds: $\sigma^{\prime\prime}_c(x) = c^{2} e^{cx}\frac{1-e^{cx}}{(1 + e^{cx})^3}$, this implies that $x=0$ is a critical point. Using the same relationship is clear that $\sigma^{\prime\prime\prime}_c(x) \Big|_{x=0} = c^{3}\frac{e^{cx} \{ 1 - 4e^{cx} + e^{2cx} \}}{(1 + e^{cx})^{4}} \Big|_{x=0} < 0$. Then, $x=0$ is a maximum. \\
+\\
+Arguing like in 2.5.1.a, on the interval $[-1,1]$, $\sigma^{\prime}_c(0) = \frac{c}{4}$ is a local maximum. More over, the function $\sigma^\prime_c$ decreases on the intervals
+$(-\infty,-1)$ and $(1, \infty)$, implying: \newline
+\begin{equation*}
+    \displaystyle\sup_{x \in (1,\infty)}\sigma^{\prime}_c(x) = \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} = \displaystyle\frac{ce^{-c}}{(1 + e^{-c})^2} = \sup_{x \in (-\infty,-1)} \sigma^{\prime}_c(x)
+\end{equation*}
+\newline
+Lets now prove the inequality $ \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} < \frac{c}{4}$. We have: 
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle\frac{ce^{c}}{(1 + e^{c})^2} &= \displaystyle\frac{c}{\frac{(1 + e^{c})^2}{\displaystyle e^{\frac{2c}{2}}}} = \displaystyle\frac{c}{(\frac{1 + e^{c}}{\displaystyle e^{\frac{c}{2}}})^2}\\
+        &= \displaystyle \frac{c}{(e^{-\frac{c}{2}} + e^{\frac{c}{2}})^2} < \displaystyle \frac{c}{(1 - \frac{c}{2} + 1 + \frac{c}{2})^2} = \frac{c}{4}
+    \end{aligned}
+\end{equation*}
+Where we have used the inequality $1 + x \leq e^x, \ \forall x \in \mathbb{R}$. The later shows $\sigma^{\prime}_c(0)$ is a global maximum, \newline 
+i.e $0 \leq \sigma^\prime_c(x) \leq \frac{c}{4}$ is valid $\forall x \in \mathbb{R}. \text{ \ \qedsymbol{}}$
+
+\subsection*{2.5.2 (a)}
+From the Heaviside function definition one has: 
+\begin{equation*}
+    \begin{aligned}
+        2H(x) -1 &= 
+        \left\{
+        \begin{aligned}
+            &2 - 1 \text{ if } x > 0 \\
+            &2(0)-1 \text{ otherwise}
+        \end{aligned}
+        \right. \\
+        &= \left\{
+            \begin{aligned}
+                &1 \text{ if } x > 0 \\
+                &-1 \text{ otherwise}
+            \end{aligned}
+        \right. \ 
+        = S(x). \text{ \ \qedsymbol{}}
+    \end{aligned}    
+\end{equation*}
+
+\subsection*{2.5.2 (b)}
+We know $ReLU(x):= \text{max}(0,x)$. Consider the identities $\text{max}(0,x) = \frac{1}{2} \{ x + |x| \}$, \\
+\begin{equation*}
+    |x| = 
+    \begin{aligned}
+        \left\{
+        \begin{aligned}
+            &1 x \text{ if } x > 0 \\
+            &-1 x \text{ otherwise}
+        \end{aligned}
+        \right. = x S(x) \text{. Substituting the last identity into the first one yields: }
+    \end{aligned}
+\end{equation*}
+$ReLU(x) = \frac{1}{2}(x + x S(x)) = \frac{1}{2}x(1 + S(x)). \ \qedsymbol{}$
+
+\subsection*{2.5.3 (a)}
+The identity immediately follows from the application of the chain rule to the function $\text{ln}(1 + e^x)$. In fact, we have: 
+$sp^\prime(x) = \frac{d}{d x }\text{ln}(1 + e^x) = \frac{e^x}{1 + e^x} = \frac{1}{1 + e^{-x}} = \sigma(x). \ \qedsymbol{}$
+
+\subsection*{2.5.3 (b)}
+The function $e^x$ is well known to never be zero, then $1 + e^x > 0, \forall x \in \mathbb{R}$. This implies $sp^{\prime}(x) \neq 0, \forall x \in \mathbb{R}$. Then by the \href{https://en.wikipedia.org/wiki/Inverse_function_theorem}{inverse function theorem} the function is 
+invertible. We can now compute its inverse, which is given by:
+\begin{equation*}
+    sp(x) = y = \text{ln}(e^x + 1 ) \implies e^y = e^x + 1 \implies x = sp^{-1}(y) = \text{ln}(e^y - 1). \ \qedsymbol{}
+\end{equation*}
+
+\subsection*{2.5.3 (c)}
+Let $F(x) :=  x + sp(-x) - sp(x)$. It happens that derivative of $F$ is 0, then by the chain rule, the linearity of the derivative operator and the relationship 
+proved in 2.5.3.a yield: \newline
+\\
+$\frac{d}{d x } \left[ x + sp(-x) \right] = 1 - \sigma(-x) = \frac{d}{d x}sp(x) = \sigma(x)$. Lets now prove the claim aforementioned to complete the proof. We have: 
+\begin{equation*}
+    \begin{aligned}
+        \frac{d}{d x } F(x) &= \frac{d}{d x } \left[ x + sp(-x) - sp(x)\right] = \frac{d}{d x } \left[ x + \text{ln}(\frac{e^{-x} + 1 }{e^x + 1})\right]\\
+         &= 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{d}{d x }\left[\frac{e^{-x} + 1 }{e^{x} + 1}\right] = 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-e^{-x}(e^x + 1) - e^x(1 + e^{-x})}{(e^{x} + 1)^2}\\
+         &= 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-e^{-x}(e^x + 1) - (1 + e^{x})}{(e^{x} + 1)^2} = 1 + \frac{e^x + 1 }{e^{-x} + 1}\frac{-(e^x + 1)(1 + e^{x})}{(e^{x} + 1)^2} = 1 - 1 = 0. \text{\ \ \qedsymbol{}}
+    \end{aligned}
+\end{equation*}
+
+\subsection*{2.5.4 (a)}
+From the tanh definition we have:
+\begin{equation*}
+    \begin{aligned}
+        \text{tanh}(x):= \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}} &= \frac{e^x}{e^{x} + e^{-x}} - \frac{e^{-x}}{e^{x} + e^{-x}} = \frac{e^{2x}}{e^{2x} + 1} - \frac{e^{-x}}{e^{x} + e^{-x}} \\
+        &= \sigma(2x) - \frac{e^{-x}}{e^{-x}(1 + e^{2x})} = \sigma(2x) - \frac{1}{1 + e^{2x}} \\
+        &= \sigma(2x) - \frac{1 + e^{2x} - e^{2x}}{1 + e^{2x}} = \sigma(2x) - \{1 - \frac{e^{2x}}{1 + e^{2x}} \}\\
+        &= \sigma(2x) - \{1 - \sigma(2x)\} = 2\sigma(2x) - 1\text{.\ \ $\qedsymbol{}$}
+    \end{aligned}    
+\end{equation*}
+
+\subsection*{2.5.5 (a)}
+\underline{CASE $x > 0$}:\newline
+Taking the derivative of $so(x)$ we find: $\frac{d}{d x} so(x) = \frac{d}{d x} \frac{x}{1 + x} =  \frac{1(1 + x) - x(1)}{(1 + x)^{2}} = \frac{1}{(1 + x)^{2}} > 0$. 
+This implies \\ $so(x)$ is strictly increasing on the interval $(0,\infty)$.\\
+\\
+\underline{CASE $x < 0$}:\newline
+Taking the derivative of $so(x)$: $\frac{d}{d x} so(x) = \frac{d}{d x} \frac{x}{1 - x} =  \frac{1(1 - x) + x(1)}{(1 - x)^{2}} = \frac{1}{(1 - x)^{2}} > 0$. 
+Therefore, the function\\ $so(x)$ is strictly increasing on the interval $(-\infty,0)$.\\
+\\
+\underline{CASE $x < y, x < 0, y > 0 $}: \newline
+Let $u, u^{\prime} \in (x,y)$ with $u < 0, u^{\prime} > 0$. Then is clear that $u < u^{\prime}$ From the condition $u < |u|$ follows that $u u^{\prime} = u |u^{\prime}| < |u||u^{\prime}|$. Summing this inequality to the inequality $u < u^{\prime}$ we get:
+$u + u|u^{\prime}| = u(1 + |u^{\prime}|) < u^{\prime} + |u||u^{\prime}| = u^{\prime}(1 + |u|)$ which implies $\frac{u}{1 + |u|} < \frac{u^{\prime}}{ 1 + |u^{\prime}|}$, i.e  $so$ is strictly incresing on intervals of the 
+type $(x,y), x < 0, y > 0$.\\
+\\
+The aforementioned 3 cases imply $so(x), \ \forall x \in \mathbb{R}$ is sctrictly increasing. \ $\qedsymbol{}$
+
+\subsection*{2.5.5 (b)}
+From $x < 1 + |x|$ follows $\frac{x}{1 + |x|} < 1, \ \forall x \in \mathbb{R}^{>0}$. To get the inequality $-1 < \frac{x}{1 + |x|}$ apply the second inequality to $u$ and then 
+multiply by $-1$. In summary, we have that the image of $so(x)$ is the interval $(-1,1)$\\
+\\
+On the other hand, note that $S(x) = S(so(x))$. Now, let $u \in (-1,1), u > 0$. Suppose there is a $x$ such that $so(x) = u$, we have:
+\begin{equation*}
+    \begin{aligned}
+        u = \frac{x}{1 + |x|} \implies x = u + |x| u = u (1 + x) \implies x(1 - u) = u \implies x = \frac{u}{1 - u} = so^{-1}(u)
+    \end{aligned}    
+\end{equation*}
+If in the contrary, $u < 0$, suppose it exists an $x$ such that $so(x) = u$:
+\begin{equation*}
+    \begin{aligned}
+        u = \frac{x}{1 + |x|} \implies x = u - x u = u (1 - x) \implies x(1 + u) = u \implies x = \frac{u}{1 + u} = so^{-1}(u)
+    \end{aligned}    
+\end{equation*}
+Both cases can be complactly written as: $x = so^{-1}(u) = \frac{u}{1 - |u|}$. \ $\qedsymbol{}$
+
+\subsection*{2.5.5 (c)}
+From 2.5.5.a and by the triangle inequality ($|x + y| < |x| + |y|$) follows:
+\begin{equation*}
+    \begin{aligned}
+        so(|x + y|) &\leq so(|x| + |y|) = \frac{|x| + |y|}{1 + |x| + |y|} = \frac{|x|}{1 + |x| + |y|} + \frac{|y|}{1 + |x| + |y|} \\
+                    &\leq \frac{|x|}{1 + |x|} + \frac{|y|}{1 + |y|} = so(|x|) + so(|y|). \ \ \qedsymbol{}
+    \end{aligned}    
+\end{equation*}
+
+\subsection*{2.5.6 (a)}
+To be more consistent with notation lets write $\displaystyle softmax(\pmb{\text{c}};y):= \frac{(e^{c_1 + y}, \ldots ,e^{c_j + y}, \ldots ,e^{c_n + y} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j + y}}$ i.e $softmax$ with a scalar shift, instead of $softmax(y + \pmb{\text{c}})$. Because otherwise, one should be precise 
+to define objects of the type $y + \pmb{\text{c}}$ with $y \in \mathbb{R}, \ \pmb{\text{c}} \in \mathbb{R}^n$. That said, $softmax(\pmb{\text{c}};0) = softmax(\pmb{\text{c}})$; Continuing with the proof, from the functional form of the function $softmax(y;\pmb{\text{c}})$ it is clear that:
+
+\begin{equation*}
+    \begin{aligned}
+        \displaystyle softmax(\pmb{\text{c}};y) &= \frac{(e^{c_1 + y}, \ldots ,e^{c_j + y}, \ldots ,e^{c_n + y} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j + y}} \\
+                    &=\frac{(e^{c_1} e^{y}, \ldots ,e^{c_j} e^{y}, \ldots ,e^{c_n} e^{y} )}{e^{y}\displaystyle\sum^{n}_{j = 0 }e^{c_j}} = \frac{e^{y}(e^{c_1} , \ldots ,e^{c_j}, \ldots ,e^{c_n})}{e^{y}\displaystyle\sum^{n}_{j = 0 }e^{c_j}} \\
+                    &= \frac{(e^{c_1}, \ldots ,e^{c_j}, \ldots ,e^{c_n} )}{\displaystyle\sum^{n}_{j = 0 }e^{c_j}} = softmax(\pmb{\text{c}};0).\ \ \qedsymbol{}
+    \end{aligned}    
+\end{equation*}
+
+\subsection*{2.5.7 (a)}
+By the definition of the $L_2$ norm follows the claim. Indeed $\forall \ \pmb{\text{y}} \in \mathbb{R}^n/\{\pmb{0}\}$:
+\begin{itemize}
+    \item $\displaystyle 0 \leq y^2_{k} \leq \lVert \pmb{\text{y}} \rVert^{2} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert y \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \leq \lVert \pmb{\text{y}} \rVert^{2} \implies 0 \leq \rho(\pmb{\text{y}})_{k} \leq 1$
+    \item $\displaystyle\lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} y^2_{k} =  \sum^{n}_{k = 0} \frac{y^2_i}{\lVert \pmb{\text{y}} \rVert^{2} } \lVert \pmb{\text{y}} \rVert^{2} = \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} \lVert \pmb{\text{y}} \rVert^{2} \implies \sum^{n}_{k = 0} \rho(\pmb{\text{y}})_{k} = 1.  \ \ \qedsymbol{}$
+\end{itemize} 
+
+\subsection{2.5.7 (b)}
+The claim follows easily by the properties of the norm. Let $\forall \lambda \neq 0$:\\
+\\
+$\displaystyle \rho(\pmb{ \lambda \text{y}})_{k} = \displaystyle\frac{(\lambda y_{k})^2}{\lVert \lambda \pmb{\text{y}} \rVert^{2} } = \displaystyle\frac{(\lambda y_{k})^2}{\lVert \lambda \pmb{\text{y}} \rVert^{2} } = \displaystyle\frac{\lambda^2 (y_{k}^2)}{\lambda^2 \lVert \pmb{\text{y}} \rVert^{2} } = \rho(\pmb{ \text{y}})_{k}. \ \qedsymbol{}$
+
+\subsection*{2.5.8 (a)}
+ First, from the function definition is evident that is sigmoidal. Indeed:
+\begin{itemize}
+    \item $\displaystyle\lim_{x \to \infty}\varphi(x) = \lim_{x \to \infty} 1_{\tiny (\frac{\pi}{2}, \infty)}(x) = 1$  
+    \item $\displaystyle\lim_{x \to -\infty}\varphi(x) = \lim_{x \to -\infty}\frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2}))1_{\tiny [-\frac{\pi}{2}, \frac{\pi}{2}]}(x) = 0$
+\end{itemize}
+Lets now prove that the function is not decreasing. On the intervals $(\frac{\pi}{2}, \infty)$ and $(-\infty, \frac{-\pi}{2})$ is evidently non decreasing. On the other hand, $\forall \ x \in [\frac{-\pi}{2}, \frac{\pi}{2}]$ we have: \\
+\\
+$\frac{d}{ d x}\frac{1}{2}(1 + \text{cos}(x + \frac{3\pi}{2})) = - \frac{1}{2}sin(x + \frac{3\pi}{2}) = - \frac{1}{2}(cos(x)sin(\frac{3\pi}{2}) + cos(\frac{3\pi}{2})sin(x)) = \frac{1}{2}cos(x)$. \\
+\\
+It is well known that $cos(x)$ is positive on the interval $[\frac{-\pi}{2}, \frac{\pi}{2}]$, then the function $\varphi$ is non decreasing on the interval $[\frac{-\pi}{2}, \frac{\pi}{2}]$ (Because its derivative is postive on such interval). Then, $\varphi(x)$ is a squashing function. 
+
+\subsection*{2.5.9 (a)}
+The claim is obvious, it follows from the fact that by definition a squashing function is a nondecreasing sigmoidal function. 
+
+\subsection*{2.5.9 (b)}
+It is enough to give a function that is non increasing, but satisfies the sigmoidal condition. An example of such type of functions is:
+$\theta(x):= (-x^2 + 2)1_{\tiny [-\sqrt{2},1]}(x) + 1_{\tiny (1, \infty)}(x)$\\
+\\
+\begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$x$},
+      ylabel={$\theta(x)$},
+      axis lines=middle,
+      enlargelimits=true,
+      legend pos=north east,
+    ]
+      % Piece-wise continuous function
+      \addplot[blue, thick, domain=-sqrt(2):1, samples=100] {(-x^2 + 2)};
+      \addplot[blue, thick, domain=1:3, samples=100] {1};
+      \addplot[blue, thick, domain=-3:-sqrt(2), samples=100] {0};
+    
+    \end{axis}
+\end{tikzpicture}
+\\
+As one can see from the picture the function is clearly non-incresing and satisfies the sigmoidal condition, i.e by definition its limits in $+\infty$ and 
+$-\infty$ are $1$ and $-1$, respectively.
 \end{document}
