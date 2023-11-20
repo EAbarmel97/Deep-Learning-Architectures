@@ -37,13 +37,74 @@ Let $p$ a fixed density. Show that the symetric relative entropy \\
 \begin{equation*}
     D_{KL}(p \lVert q) +  D_{KL}(q \lVert p )
 \end{equation*}\\
-reaches its minimun for $p = q$, and the minimum is equal to zero. 
+reaches its minimum for $p = q$, and the minimum is equal to zero. 
 
 \section*{Exercise 3.15.4}
 Consider two exponential densities, $p_1 = \xi^1 e^{\xi^1 x}$ and $p_2 = \xi^2 e^{\xi^2 x}$, $x \geq 0$.
 \begin{enumerate}
     \item Show that $D_{KL}(p_1 \lVert p_2) = \displaystyle \frac{\xi^2}{\xi^1} - \text{ln}{\xi^2}{\xi^1} - 1$.  
+    \item Verify $D_{KL}(p_1 \lVert p_2) \neq D_{KL}(p_2 \lVert p_2 )$.
+    \item Show that the triangle inequality doesn't hold for three arbitrary densities. 
 \end{enumerate}    
+
+\section*{Exercise 3.15.5}
+Let $X$ be a discrete random variable. Show the inequality\\
+\begin{equation*}
+    H(X) \geq 0.
+\end{equation*}\\
+
+\section*{Exercise 3.15.7}
+We asume the target variable $Z$ is $\mathcal{E}$-mesurable. What is mean squared error function in this case?
+
+\section*{Exercise 3.15.8}
+Asume that a neural network has an input-output function $f_{w,b}$ linear in $w$ and $b$. Show that the cost function $(3.3.1)$ reaches its minimum for a 
+unique pair $(w^{\star},b^{\star})$, which can be computed explicitly. 
+
+\section*{Exercise 3.15.9}
+Show that the Shannon entropy can be retrived from the Reyni entropy as\\
+\begin{equation*}
+    H(p) = \lim_{\alpha \to 1} H_{\alpha}(x).
+\end{equation*}\\
+
+\section*{Exercise 3.15.10}
+Let $\phi_\sigma(x) = \displaystyle \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{t^2}{2\sigma^2}}$. Consider the convolution 
+operation $(f \ast g)(x) :=  \displaystyle\int f(t) g(x - t) dt $.
+\begin{enumerate}
+    \item Show that $\phi_{\sigma} \ast \phi_{\sigma} = \phi_{\sigma\sqrt{2}}$;
+    \item Find $\phi_{\sigma} \ast \phi_{\sigma^{\prime}}$ in the case $\sigma \neq \sigma^{\prime}$.
+\end{enumerate}
+
+\section*{Exercise 3.15.11}
+Consider two probability densitie, $p(x)$ and $q(x)$. The Cauchy-Schwartz divergence is defined by 
+\begin{equation*}
+    D_{CS}(p,q) := -\text{ln}(\displaystyle\frac{\int p(x) q(x) d x}{\sqrt{\int p(x)^2 d x } \sqrt{\int q(x)^2 d x }})
+\end{equation*}.\\
+Show the following: 
+\begin{enumerate}
+    \item $D_{CS}(p,q) = 0$ if and only if $p = q$;
+    \item $D_{CS}(p,q) \geq 0$;
+    \item $D_{CS}(p,q) = D_{CS}(q,p)$;
+    \item $D_{CS}(p,q) = \displaystyle-\text{ln}\int pq d x  - \frac{1}{2}H_2(p) - \frac{1}{2}H_2(q)$, where $H_2(\cdot)$ denotes the quadratic Reyni entropy.
+\end{enumerate}
+
+\section*{Exercise 3.15.12}
+\begin{enumerate}
+    \item Show that for any function $f \in L^{1}[0,1]$ we have the inequality $\lVert \text{tanh}(f) \rVert_{1} \leq \lVert f \rVert_{1}$.
+    \item Show that for any function $f \in L^{2} [0,1]$ we have the inequality $\lVert \text{tanh} \rVert_{2} \leq \lVert f \rVert_{2}$.
+\end{enumerate}
+
+\section*{Exercise 3.15.13}
+Consider two distributions on the sample space $\mathcal{X} = \{ x_1, x_2\}$ given by 
+\begin{equation*}
+    p = \begin{pmatrix}
+        x_1 & x_2 \\
+        \frac{1}{2} & \frac{1}{2}
+        \end{pmatrix}, \ q = \begin{pmatrix}
+            x_1 & x_2\\
+            \frac{1}{2} & \frac{2}{3}
+            \end{pmatrix}
+\end{equation*}
+Consider the function $\phi: \mathcal{X} \to \mathbb{R}^2$ defined by $\phi(x_1) = (0,1)$ $\phi(x_2) = (1,0)$. Find the maximum mean discrepancy between $p$ and $q$.
 % % Solutions to other exercises in Chapter X...
 
 \newpage
