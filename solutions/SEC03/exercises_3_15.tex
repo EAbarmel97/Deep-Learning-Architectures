@@ -115,7 +115,7 @@ Consider the function $\phi: \mathcal{X} \to \mathbb{R}^2$ defined by $\phi(x_1)
 \end{center}
 
 \subsection*{3.15.1 (a)}
-The claim follows from he linearity of the integral operator. In symbols we have:\\
+The claim follows from the linearity of the integral operator. In symbols we have:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
@@ -123,6 +123,29 @@ The claim follows from he linearity of the integral operator. In symbols we have
             &=S(p_1,q) + S(p_2,q).
         \end{aligned}    
     \end{equation*}
+\end{proof}
+
+\subsection*{3.15.1 (b)}
+From the linearity of the integral operator, and the property $c \ \text{ln}(x) = \text{ln}(x^{c})$ we have:
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            S(\alpha p,q) &= -\displaystyle\int_{\mathbb{R}}   \alpha p(x) \text{ln}q(x) dx = - \alpha \int_{\mathbb{R}} p(x) \text{ln}q(x) dx = \alpha S(p,q) \\
+            &= -\displaystyle\int_{\mathbb{R}}   \alpha p(x) \text{ln}q(x) dx = -\displaystyle\int_{\mathbb{R}} p(x) \text{ln}q(x)^{\alpha} dx = S(p,q^{\alpha}).
+        \end{aligned}    
+    \end{equation*}
+\end{proof}
+
+
+\subsection*{3.15.1 (c)}
+Using the addition identity for the logarithms we get: 
+\begin{proof}
+\begin{equation*}
+    \begin{aligned}
+        S(\alpha p,q_1 q_2) &= -\displaystyle\int_{\mathbb{R}}   \alpha p(x) \text{ln}q(x) dx = - \alpha \int_{\mathbb{R}} p(x) \text{ln}q(x) dx = \alpha S(p,q) \\
+        &= -\displaystyle\int_{\mathbb{R}}   \alpha p(x) \text{ln}q(x) dx = -\displaystyle\int_{\mathbb{R}} p(x) \text{ln}q(x)^{\alpha} dx = S(p,q^{\alpha}).
+    \end{aligned}    
+\end{equation*}
 \end{proof}
 
 %At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
