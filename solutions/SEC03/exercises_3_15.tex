@@ -177,7 +177,7 @@ By direct calculation we find:
         \begin{aligned}
            D_{KL}(p_1 \lVert p_2) &= S(p_1,p_2) - H(p_1) = -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^2e^{-\xi^2 x}) dx  -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^1e^{-\xi^1 x}) \\
            &= -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^2) dx + \displaystyle\int_{\mathbb{R}}  \xi^{1} e^{-\xi^1 x} \xi^{2} x d x + \displaystyle\int_{\mathbb{R}} \xi^1 e^{-\xi^1 x} \text{ln}(\xi^1) dx  - \displaystyle\int_{\mathbb{R}} \xi^{1}e^{-\xi^{1}x} \xi^{1} x d x \\
-           &= - (\text{ln}(\xi^{2}) - \text{ln}(\xi^{1}))\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} dx + (\xi^{1} - \xi^{2})\displaystyle\int_{\mathbb{R}} \xi^1 x e^{-\xi^1 x} dx \\ 
+           &= - (\text{ln}(\xi^{2}) - \text{ln}(\xi^{1}))\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} dx + (\xi^{2} - \xi^{1})\displaystyle\int_{\mathbb{R}} \xi^1 x e^{-\xi^1 x} dx \\ 
            &= - (\text{ln}(\xi^{2}) - \text{ln}(\xi^{1}))\mathbb{E}_{\tiny X \sim exp(\xi^{1})}\left[1\right] + (\xi^{2} - \xi^{1})\mathbb{E}_{\tiny X \sim exp(\xi^{1})}\left[ X \right] = - \text{ln}\frac{\xi^{2}}{\xi^{1}} + (\xi^{2} - \xi^{1})\frac{1}{\xi^{1}} \\
            &= - \text{ln}\frac{\xi^{2}}{\xi^{1}} + \frac{\xi^{2}}{\xi^{1}} - 1
         \end{aligned}
