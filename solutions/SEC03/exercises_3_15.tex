@@ -160,6 +160,15 @@ By the inequality $\text{ln}(x) \leq x - 1, \ \forall x \in \mathbb{R}^{+}$, and
 \end{proof}
 
 \subsection*{3.15.3}
+Noting that $D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) = 2 D_{JS}(p \lVert q ) $ is obvious then, that\\
+\begin{proof}
+    $\text{min} \ \{ D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) \} \Leftrightarrow \text{min} \ \{ D_{JS}(p \lVert q )\}$. \\
+    \\
+    From proposition $3.17.1$(p. $51$) we know $ 0 = D_{JS}(p \lVert p) = D_{JS}(q \lVert q) \leq D_{JS}(p \lVert q)$, i.e the minimum 0 is attained when 
+    $p=q$.
+\end{proof}
+
+
 
 %At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
 %dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
