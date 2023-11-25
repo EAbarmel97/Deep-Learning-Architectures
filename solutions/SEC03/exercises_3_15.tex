@@ -148,6 +148,19 @@ Using the addition identity for the logarithms we get:
 \end{equation*}
 \end{proof}
 
+\subsection*{3.15.2}
+By the inequality $\text{ln}(x) \leq x - 1, \ \forall x \in \mathbb{R}^{+}$, and the definition of cross-entropy follows:\\
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            S(p,q) &= -\displaystyle\int_{\mathbb{R}}   p(x) \text{ln}q(x) dx \geq - \int_{\mathbb{R}} p(x)(q(x) - 1) dx \\
+            &\geq -\displaystyle\int_{\mathbb{R}} - p(x) dx  -\displaystyle\int_{\mathbb{R}} p(x) q(x) dx =  1 - \displaystyle\int_{\mathbb{R}} p(x) q(x) dx.
+        \end{aligned}    
+    \end{equation*}
+\end{proof}
+
+\subsection*{3.15.3}
+
 %At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
 %dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
 %id est laborum et dolorum fuga.
