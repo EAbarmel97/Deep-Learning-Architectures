@@ -43,7 +43,7 @@ reaches its minimum for $p = q$, and the minimum is equal to zero.
 \section*{Exercise 3.15.4}
 Consider two exponential densities, $p_1 = \xi^1 e^{\xi^1 x}$ and $p_2 = \xi^2 e^{\xi^2 x}$, $x \geq 0$.
 \begin{enumerate}
-    \item Show that $D_{KL}(p_1 \lVert p_2) = \displaystyle \frac{\xi^2}{\xi^1} - \text{ln}{\xi^2}{\xi^1} - 1$.  
+    \item Show that $D_{KL}(p_1 \lVert p_2) = \displaystyle \frac{\xi^2}{\xi^1} - \text{ln}\frac{\xi^2}{\xi^1} - 1$.  
     \item Verify $D_{KL}(p_1 \lVert p_2) \neq D_{KL}(p_2 \lVert p_2 )$.
     \item Show that the triangle inequality doesn't hold for three arbitrary densities. 
 \end{enumerate}    
@@ -54,6 +54,8 @@ Let $X$ be a discrete random variable. Show the inequality\\
     H(X) \geq 0.
 \end{equation*}\\
 
+\section*{Exercise 3.15.5}
+Prove that if $p$ and $q$ are the densities of two discrete random variables, then $D_{KL}(p \lVert q ) \leq S(p,q)$
 \section*{Exercise 3.15.7}
 We asume the target variable $Z$ is $\mathcal{E}$-mesurable. What is mean squared error function in this case?
 
@@ -142,7 +144,7 @@ Using the addition identity for the logarithms we get:
 \begin{proof}
 \begin{equation*}
     \begin{aligned}
-        S(p,q_1 q_2) &= -\displaystyle\int_{\mathbb{R}} p(x) \text{ln}q_1(x) q_2(x) dx = - \int_{\mathbb{R}} p(x) \text{ln}q_1(x) dx - \int_{\mathbb{R}} p(x) \text{ln}q_1(x) \\
+        S(p,q_1 q_2) &= -\displaystyle\int_{\mathbb{R}} p(x) \text{ln}q_1(x) q_2(x) dx = - \int_{\mathbb{R}} p(x) \text{ln}q_1(x) dx - \int_{\mathbb{R}} p(x) \text{ln}q_2(x) \\
         &= S(p,q_1) + S(p,q_2).
     \end{aligned}    
 \end{equation*}
@@ -168,7 +170,19 @@ Noting that $D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) = 2 D_{JS}(p \lVert q ) $
     $p=q$.
 \end{proof}
 
-
+\subsection*{3.15.4 (a)}
+By direct calculation we find:
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+           D_{KL}(p_1 \lVert p_2) &= S(p_1,p_2) - H(p_1) = -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^2e^{-\xi^2 x}) dx  -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^1e^{-\xi^1 x}) \\
+           &= -\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} \text{ln}(\xi^2) dx + \displaystyle\int_{\mathbb{R}}  \xi^{1} e^{-\xi^1 x} \xi^{2} x d x + \displaystyle\int_{\mathbb{R}} \xi^1 e^{-\xi^1 x} \text{ln}(\xi^1) dx  - \displaystyle\int_{\mathbb{R}} \xi^{1}e^{-\xi^{1}x} \xi^{1} x d x \\
+           &= - (\text{ln}(\xi^{2}) - \text{ln}(\xi^{1}))\displaystyle\int_{\mathbb{R}}  \xi^1 e^{-\xi^1 x} dx + (\xi^{1} - \xi^{2})\displaystyle\int_{\mathbb{R}} \xi^1 x e^{-\xi^1 x} dx \\ 
+           &= - (\text{ln}(\xi^{2}) - \text{ln}(\xi^{1}))\mathbb{E}_{\tiny X \sim exp(\xi^{1})}\left[1\right] + (\xi^{2} - \xi^{1})\mathbb{E}_{\tiny X \sim exp(\xi^{1})}\left[ X \right] = - \text{ln}\frac{\xi^{2}}{\xi^{1}} + (\xi^{2} - \xi^{1})\frac{1}{\xi^{1}} \\
+           &= - \text{ln}\frac{\xi^{2}}{\xi^{1}} + \frac{\xi^{2}}{\xi^{1}} - 1
+        \end{aligned}
+    \end{equation*}
+\end{proof}
 
 %At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
 %dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
