@@ -44,7 +44,7 @@ reaches its minimum for $p = q$, and the minimum is equal to zero.
 Consider two exponential densities, $p_1 = \xi^1 e^{\xi^1 x}$ and $p_2 = \xi^2 e^{\xi^2 x}$, $x \geq 0$.
 \begin{enumerate}
     \item Show that $D_{KL}(p_1 \lVert p_2) = \displaystyle \frac{\xi^2}{\xi^1} - \text{ln}\frac{\xi^2}{\xi^1} - 1$.  
-    \item Verify $D_{KL}(p_1 \lVert p_2) \neq D_{KL}(p_2 \lVert p_2 )$.
+    \item Verify $D_{KL}(p_1 \lVert p_2) \neq D_{KL}(p_2 \lVert p_1 )$.
     \item Show that the triangle inequality doesn't hold for three arbitrary densities. 
 \end{enumerate}    
 
@@ -163,12 +163,11 @@ By the inequality $\text{ln}(x) \leq x - 1, \ \forall x \in \mathbb{R}^{+}$, and
 \end{proof}
 
 \subsection*{3.15.3}
-Noting that $D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) = 2 D_{JS}(p \lVert q ) $ is obvious then, that\\
+From proposition $3.5.1$ follows that $D_{KL}(p \lVert q) \geq 0$, $D_{KL}(q \lVert p ) \geq 0$, then $ D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) \geq 0$. Clearly the value 
+$0$ is it's minimum. Let's now prove that this minimum is attained when $p=q$.It is well known from the cross-entropy definition $S(p,p) = H(p)$ and $S(q,q) = H(q)$ then:\\
+\\
 \begin{proof}
-    $\text{min} \ \{ D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) \} \Leftrightarrow \text{min} \ \{ D_{JS}(p \lVert q )\}$. \\
-    \\
-    From proposition $3.17.1$(p. $51$) we know $ 0 = D_{JS}(p \lVert p) = D_{JS}(q \lVert q) \leq D_{JS}(p \lVert q)$, i.e the minimum 0 is attained when 
-    $p=q$.
+    $D_{KL}(p \lVert q) = D_{KL}(p \lVert p) = S(p,p) - H(p) = 0$ and $D_{KL}(q \lVert p) = D_{KL}(q \lVert q) = S(q,q) - H(q) = 0$, which in turn imply $D_{KL}(p \lVert q) + D_{KL}(q \lVert p) = 0 \text{ .}$
 \end{proof}
 
 \subsection*{3.15.4 (a)}
