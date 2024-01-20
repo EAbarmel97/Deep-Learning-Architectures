@@ -190,20 +190,36 @@ $- \text{ln}\frac{\xi^{2}}{\xi^{1}} + \frac{\xi^{2}}{\xi^{1}} - 1 = - \text{ln}\
 $\frac{\xi^{1}}{\xi^{2}} = 1$ or equivalently $\xi^{1} = \xi^{2}$, which is a contradiction. 
 
 \subsection*{3.15.4 (c)}
-Let $p_1 = exp(2)$, $p_2 = exp(3)$, $p_3 = U(1,2)$
-%At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
-%dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
-%id est laborum et dolorum fuga.
-%\begin{proof}
-    %\begin{equation*}     
-        %\begin{aligned}
-            %\sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
-            %&= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
-        %\end{aligned}
-%\end{equation*}
-%\end{proof}
-%\subsection*{x.y.2 (a)}
-%t harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est 
-%eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, 
-%omnis dolor repellendus. 
+Let $p_1 = exp(2)$, $p_2 = exp(3)$, $p_3 = exp(4)$. Suppose the triangle inequality holds for these three arbitary exponential distributions. This is:\\
+$D_{KL}(p_1 \lVert p_3) \leq D_{KL}(p_1 \lVert p_2) + D_{KL}(p_2 \lVert p_3)$. By exercise $3.15.4.b$ we would have:
+
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            D_{KL}(p_1 \lVert p_3) = \frac{4}{2} - \text{ln}\frac{4}{2} - 1  &\leq D_{KL}(p_1 \lVert p_2) + D_{KL}(p_2 \lVert p_3) = \frac{3}{2} - \text{ln}\frac{3}{2} - 1 + \frac{4}{3} - \text{ln}\frac{4}{3} - 1\\
+            2 &\leq \frac{3}{2} + \frac{4}{3} -1  = \frac{17}{6} - 1 = \frac{11}{6} = \frac{12}{6} - \frac{1}{6} = 2 - \frac{1}{6} \text{ (contradiction!)}
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\subsection*{3.15.5 (a)}
+Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies the inequality $0 \leq p(X) \leq 1$. Taking logs to both sides of the inequality $p(X) \leq 1$ we obtain:\\
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            a
+        \end{aligned}
+    \end{equation*}
+\end{proof}
+
+\subsection*{3.15.6}
+This an inmediate consecuence of exercise $3.15.5$. We have:\\
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            D_{KL}(p \lVert q) = S(p,q) - H(p) \leq S(p,q) - 0  \leq S(p,q) \text{.}
+        \end{aligned}
+    \end{equation*}
+\end{proof}
 \end{document}
+
