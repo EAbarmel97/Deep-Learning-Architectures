@@ -203,17 +203,17 @@ $D_{KL}(p_1 \lVert p_3) \leq D_{KL}(p_1 \lVert p_2) + D_{KL}(p_2 \lVert p_3)$. B
 \end{proof}
 
 \subsection*{3.15.5 (a)}
-Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies the inequality $0 \leq p(X) \leq 1$. Taking logs to both sides of the inequality $p(X) \leq 1$ we obtain:\\
+Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies the inequality $0 \leq p(X) \leq 1$. This means $p(x) \leq 1, \forall x \in \text{sup}\left( X \right)$. Taking natural logs on both sides of the inequality $p(X) \leq 1$ and multiplying by $-1$, we obtain: \ $\text{ln}p(x) \geq 0$; Multiplying by $p(x)$ and summing over the support of X, we get:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
-            a
+             \mathbb{E}\left[ - \text{ln}p(X) \right] = H(X) = \displaystyle \sum_{\tiny x \in \text{sup}\left( X \right)}-p(x) \ \text{ln}(p(x)) \geq 0 \text{.}
         \end{aligned}
     \end{equation*}
 \end{proof}
 
 \subsection*{3.15.6}
-This an inmediate consecuence of exercise $3.15.5$. We have:\\
+This an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
