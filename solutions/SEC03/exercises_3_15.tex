@@ -225,5 +225,15 @@ This an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
 If the target variable $Z$ happens to be $\mathcal{E}-$mesurable, then $Y$ is independent of the sigma algebra $\mathcal{E}$. From this follows that $C(\omega, b) = \text{d}(Z,Y)^2 = \mathbb{E} \left[ (Z - \mathbb{E}\left[ Z |\mathcal{E} \right] )^2\right]  = \mathbb{E} \left[ (Z - Z)^2\right] = 0$.
 
 \subsection*{3.15.8}
+In this case $f_{\tiny \omega, b}(x) = \omega x + b$. Therefore, the normal system of equations has the form:\\
+\begin{equation}
+        \left\{
+        \begin{aligned}
+               \partial_{\omega}C(\omega, b)&= \displaystyle \sum_{\tiny 0 \leq i\leq n } 2(\omega x_i + b -\phi(x_i)) x_i = 0 \implies \omega \displaystyle\sum_{\tiny 0 \leq i\leq n }x^2 _i + b \displaystyle\sum_{\tiny 0 \leq i\leq n } x_i = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(x_i) x_i \\
+               \partial_{b}C(\omega, b) &= \displaystyle \sum_{0 \leq i\leq n }  2(\omega x_i + b -\phi(x_i))  = 0 \implies \omega \displaystyle\sum_{\tiny 0 \leq i\leq n }x _i + nb = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(x_i)
+        \end{aligned}
+        \right.
+\end{equation}
+
 \end{document}
 
