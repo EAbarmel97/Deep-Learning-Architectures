@@ -94,7 +94,7 @@ Show the following:
 \section*{Exercise 3.15.12}
 \begin{enumerate}
     \item Show that for any function $f \in L^{1}[0,1]$ we have the inequality $\lVert \text{tanh}(f) \rVert_{1} \leq \lVert f \rVert_{1}$.
-    \item Show that for any function $f \in L^{2} [0,1]$ we have the inequality $\lVert \text{tanh} \rVert_{2} \leq \lVert f \rVert_{2}$.
+    \item Show that for any function $f \in L^{2} [0,1]$ we have the inequality $\lVert \text{tanh}(f) \rVert_{2} \leq \lVert f \rVert_{2}$.
 \end{enumerate}
 
 \section*{Exercise 3.15.13}
@@ -164,7 +164,7 @@ By the inequality $\text{ln}(x) \leq x - 1, \ \forall x \in \mathbb{R}^{+}$, and
 
 \subsection*{3.15.3}
 From proposition $3.5.1$ follows that $D_{KL}(p \lVert q) \geq 0$, $D_{KL}(q \lVert p ) \geq 0$, then $ D_{KL}(p \lVert q) +  D_{KL}(q \lVert p ) \geq 0$. Clearly the value 
-$0$ is it's minimum. Let's now prove that this minimum is attained when $p=q$.It is well known from the cross-entropy definition $S(p,p) = H(p)$ and $S(q,q) = H(q)$ then:\\
+$0$ is a minimum. Let's now prove that this minimum is attained when $p=q$.It is well known from the cross-entropy definition $S(p,p) = H(p)$ and $S(q,q) = H(q)$ then:\\
 \\
 \begin{proof}
     $D_{KL}(p \lVert q) = D_{KL}(p \lVert p) = S(p,p) - H(p) = 0$ and $D_{KL}(q \lVert p) = D_{KL}(q \lVert q) = S(q,q) - H(q) = 0$, which in turn imply $D_{KL}(p \lVert q) + D_{KL}(q \lVert p) = 0 \text{ .}$
@@ -192,7 +192,6 @@ $\frac{\xi^{1}}{\xi^{2}} = 1$ or equivalently $\xi^{1} = \xi^{2}$, which is a co
 \subsection*{3.15.4 (c)}
 Let $p_1 = exp(2)$, $p_2 = exp(3)$, $p_3 = exp(4)$. Suppose the triangle inequality holds for these three arbitary exponential distributions. This is:\\
 $D_{KL}(p_1 \lVert p_3) \leq D_{KL}(p_1 \lVert p_2) + D_{KL}(p_2 \lVert p_3)$. By exercise $3.15.4.b$ we would have:
-
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
@@ -203,7 +202,7 @@ $D_{KL}(p_1 \lVert p_3) \leq D_{KL}(p_1 \lVert p_2) + D_{KL}(p_2 \lVert p_3)$. B
 \end{proof}
 
 \subsection*{3.15.5 (a)}
-Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies the inequality $0 \leq p(X) \leq 1$. This means $p(x) \leq 1, \forall x \in \text{sup}\left( X \right)$. Taking natural logs on both sides of the inequality $p(X) \leq 1$ and multiplying by $-1$, we obtain: \ $\text{ln}p(x) \geq 0$; Multiplying by $p(x)$ and summing over the support of X, we get:\\
+Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies the inequality $0 \leq p(X) \leq 1$. This means $p(x) \leq 1, \forall x \in \text{sup}\left( X \right)$. Taking natural logs on both sides of the inequality $p(x) \leq 1$ and multiplying by $-1$, we obtain: \ $\text{ln}p(x) \geq 0$; Multiplying by $p(x)$ and summing over the support of X, we get:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
@@ -213,7 +212,7 @@ Given that $p(x)$ is a distribution, it follows that $p(X)$  as a r.v satisffies
 \end{proof}
 
 \subsection*{3.15.6}
-This an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
+This is an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
@@ -225,19 +224,31 @@ This an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
 If the target variable $Z$ happens to be $\mathcal{E}-$mesurable, then $Y$ is independent of the sigma algebra $\mathcal{E}$. From this follows that $C(\omega, b) = \text{d}(Z,Y)^2 = \mathbb{E} \left[ (Z - \mathbb{E}\left[ Z |\mathcal{E} \right] )^2\right]  = \mathbb{E} \left[ (Z - Z)^2\right] = 0$.
 
 \subsection*{3.15.8}
-In this case $f_{\tiny \bold{\omega}, b}(\bold{x}) = \bold{\omega} \cdot \bold{x} + b$. Therefore, the cost function is given by \\
-$C(\bold{\omega}, b) := \displaystyle \sum_{\tiny 0 \leq i\leq n } ( \bold{\omega} \cdot \bold{x} + b - \phi(\bold{x_i}))^{2}$. Let $\bold{x}_i$ the n-dimensional observations, i.e $\bold{x}_i = (x_{}^{})$. Then, the normal equations for the $\omega_k \text{ (the componentes of the vector $\bold{\omega}$)}, \forall k \in \left[n\right]$ and 
+In this case $ \displaystyle f_{\tiny \bold{\omega}, b}(\bold{x}) = \bold{\omega} \cdot \bold{x} + b$, definied on a compact subset of $\mathbb{R}^n$. Therefore, the cost function is given by: \\[0.25 em]
+$C(\bold{\omega}, b) := \displaystyle \sum_{\tiny 0 \leq i\leq n } ( \bold{\omega} \cdot \bold{x}^{i} + b - \phi(\bold{x}^{i}))^{2}$. Obviously we have $0 \leq C(\bold{\omega}, b)$ Let $\bold{x}^{i}$ the n-dimensional observations, i.e $\bold{x}^{i}= (x_{1}^{i}, \ldots, x_{n}^{i})$. Then, the normal equations for the $\omega_k \text{ (the componentes of the vector $\bold{\omega}$)}, \forall k \in \left[n\right]$ and 
 the bias parameter $b$ are:\\
 \begin{equation}
         \left\{
         \begin{aligned}
-               \partial_{\omega_{k}}C(\bold{\omega}, b)&= \displaystyle \sum_{\tiny 0 \leq i\leq n } (f_{\tiny \bold{\omega}, b}(\bold{x}) -\phi(x_i))\displaystyle\partial_{\omega_k} f_{\tiny \bold{\omega}, b}(\bold{x})= 0  \implies \displaystyle\sum_{\tiny 0 \leq i\leq n } (\bold{\omega} \cdot \bold{x}  b \displaystyle\sum_{\tiny 0 \leq i\leq n } x_k = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(x_i) x_i \\
-               \partial_{b}C(\omega, b) &= \displaystyle \sum_{0 \leq i\leq n }  2(f_{\tiny \bold{\omega}, b}(\bold{x}) -\phi(x_i))  = 0 \implies \omega \displaystyle\sum_{\tiny 0 \leq i\leq n }x _i + nb = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(x_i)
+                \displaystyle\sum_{\tiny 0 \leq j\leq n } \omega_j &\sum_{\tiny 0 \leq i\leq n } x^{i}_{j} x^{i}_{k}  +  b \sum_{\tiny 0 \leq i\leq n }  x^{i}_k = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(\bold{x}^{i}) x^{i}_{k}, \forall k \in \left[n\right] \\
+                \displaystyle\sum_{\tiny 0 \leq j \leq n }\omega_j &\sum_{\tiny 0 \leq i \leq n }x^{i}_{j} + nb = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(\bold{x}^{i})
         \end{aligned}
         \right.
 \end{equation}
-
-\subsection*{3.15.9}-
-The function is 
+This system of equations has the following matricial expression:\\
+\begin{equation}
+    \left\{
+    \begin{aligned}
+            \displaystyle\sum_{\tiny 0 \leq j\leq n } \omega_j &\sum_{\tiny 0 \leq i\leq n } x^{i}_{j} x^{i}_{k}  +  b \sum_{\tiny 0 \leq i\leq n }  x^{i}_k = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(\bold{x}^{i}) x^{i}_{k}, \forall k \in \left[n\right] \\
+            \displaystyle\sum_{\tiny 0 \leq j \leq n }\omega_j &\sum_{\tiny 0 \leq i \leq n }x^{i}_{j} + nb = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(\bold{x}^{i})
+    \end{aligned}
+    \right.
+\end{equation}
+Let $\displaystyle\{ v_m \}_{\tiny m \in \left[ n + 1 \right]}$ a collection of vectors in $\mathbb{R}^n$ defined as follows: $ \forall m, 0 \leq m \leq n, v_m := \displaystyle(x^{1}_{m}, \ldots ,x^{n}_{m}) \text{. For } m = n+1 \text{ we define: }v_{n+1} := \bold{1} = (1, \ldots ,1)$, and a vector $\bold{\varphi} := (\phi(\bold{x}^{1}), \ldots , \phi(\bold{x}^{n}))$; The system of equations 
+can be writen as:\\
+\\
+Then, the matrix in system $2$ is a Gramm matrix i.e $\mathcal{H}_{C(\tiny \omega, b)} = \text{G}(v_1, \ldots v_{n+1})$, which by the teorem of ... implies this matrix is postively defined. Then, the solution $(\bold{\omega}^{\star}, b^{\star})$ to such system is unique. Further more, the value of the pair $(\bold{\omega}^{\star}, b^{\star})$ are analyticaly obtainable because 
+the system is linear. 
+\subsection*{3.15.9}
 \end{document}
 
