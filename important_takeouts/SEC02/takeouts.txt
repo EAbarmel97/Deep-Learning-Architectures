@@ -1,0 +1,1 @@
+1. Activation functions serve as way to cuantify the type of response within a neural network.
