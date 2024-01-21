@@ -227,7 +227,9 @@ If the target variable $Z$ happens to be $\mathcal{E}-$mesurable, then $Y$ is in
 In this case $ \displaystyle f_{\tiny \bold{\omega}, b}(\bold{x}) = \bold{\omega} \cdot \bold{x} + b$, definied on a compact subset of $\mathbb{R}^n$. Therefore, the cost function is given by: \\[0.25 em]
 $C(\bold{\omega}, b) := \displaystyle \sum_{\tiny 0 \leq i\leq n } ( \bold{\omega} \cdot \bold{x}^{i} + b - \phi(\bold{x}^{i}))^{2}$. Obviously we have $0 \leq C(\bold{\omega}, b)$. This means the function attains such minimum inside the compact set; Let $\bold{x}^{i}$ the n-dimensional observations, i.e $\bold{x}^{i}= (x_{1}^{i}, \ldots, x_{n}^{i})$. Then, the normal equations for the $\omega_k \text{ (the componentes of the vector $\bold{\omega}$)}, \forall k \in \left[n\right]$ and 
 the bias parameter $b$ are:\\
-\begin{equation}
+
+\begin{proof}
+    \begin{equation}
         \left\{
         \begin{aligned}
                 \displaystyle\sum_{\tiny 0 \leq j\leq n } \omega_j &\sum_{\tiny 0 \leq i\leq n } x^{i}_{j} x^{i}_{k}  +  b \sum_{\tiny 0 \leq i\leq n }  x^{i}_k = \displaystyle\sum_{\tiny 0 \leq i\leq n }\phi(\bold{x}^{i}) x^{i}_{k}, \forall k \in \left[n\right] \\
@@ -264,9 +266,8 @@ This system of equations has the following matricial expression:\\
         \end{bmatrix} 
 \end{equation}
 \\
-Note that the entries of the matrix in  
-\\
-Let $\displaystyle\{ v_m \}_{\tiny m \in \left[ n + 1 \right]}$ a collection of vectors in $\mathbb{R}^n$ defined as follows: $ \forall m, 0 \leq m \leq n, v_m := \displaystyle(x^{1}_{m}, \ldots ,x^{n}_{m}) \text{. For } m = n+1 \text{ we define: }v_{n+1} := \bold{1} = (1, \ldots ,1)$, and a vector $\bold{\varphi} := (\phi(\bold{x}^{1}), \ldots , \phi(\bold{x}^{n}))$; The system of equations 
+Note that the entries of the matrix in equation $2$, are exactly the partical derivatives $\partial^2_{\omega_k\omega_k} C(\bold{\omega},b),\partial^2_{bb}C(\bold{\omega},b),\\
+\partial^2_{\omega_k \omega_j} C(\bold{\omega},b),\partial^2_{\omega_k b} C(\bold{\omega},b)$ i.e such matrix is the hessian-matrix $\mathcal{H}_{C(\tiny \omega, b)}$; Let $\displaystyle\{ v_m \}_{\tiny m \in \left[ n + 1 \right]}$ be a collection of vectors in $\mathbb{R}^n$ defined as follows: $ \forall m, 0 \leq m \leq n, v_m := \displaystyle(x^{1}_{m}, \ldots ,x^{n}_{m}) \text{. For } m = n+1 \text{ we define: }v_{n+1} := \bold{1} = (1, \ldots ,1)$, and a vector $\bold{\varphi} := (\phi(\bold{x}^{1}), \ldots , \phi(\bold{x}^{n}))$. The system of equations 
 can be writen as:\\
 \begin{equation}
     \begin{bmatrix}
@@ -294,10 +295,12 @@ can be writen as:\\
        \bold{\varphi} \cdot v_{n+1}
     \end{bmatrix} 
 \end{equation}
-Then, the matrix in system $3$ is a Gramm matrix i.e $\mathcal{H}_{C(\tiny \omega, b)} = \text{G}(v_1, \ldots v_{n+1})$, which by the teorem of ... implies this matrix is postively defined. Then, the solution $(\bold{\omega}^{\star}, b^{\star})$ to such system is unique. Further more, the values of the pair $(\bold{\omega}^{\star}, b^{\star})$ are explicitly computable because 
+This is  $\mathcal{H}_{C(\tiny \omega, b)} = \text{G}(v_1, \ldots v_{n+1})$ i.e the matrix in system $3$ is a Gramm matrix, which by the \href{https://en.wikipedia.org/wiki/Gram_matrix}{postively semidefiniteness property} of the Gramm matrices implies this matrix is postively defined. Then, the solution $(\bold{\omega}^{\star}, b^{\star})$ to such system is unique and this solution gives indeed a minimum for $C(\bold{\omega},b)$. Furthermore, the values of the pair $(\bold{\omega}^{\star}, b^{\star})$ are explicitly computable because 
 the system is linear. 
+\end{proof}
 \subsection*{3.15.9}
 First let's analyse the following function definied as a parametric integral. Let $I(\alpha)$ definied as:\\
-$I(\alpha) := \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha}d x = \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha-1}d P(x)$. 
+$I(\alpha) := \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha}d x = \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha-1}d P(x)$. In last right expression $\frac{d P}{d x} = p(x)$. This representation is a consecuence of the \href{https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem}{Radon-Nikodym Theorem}. The function $f(\alpha, x) := p(x)^{\alpha - 1}$ satisffies the following:
+
 \end{document}
 
