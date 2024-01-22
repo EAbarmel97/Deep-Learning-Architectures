@@ -58,7 +58,7 @@ Let $X$ be a discrete random variable. Show the inequality\\
 Prove that if $p$ and $q$ are the densities of two discrete random variables, then $D_{KL}(p \lVert q ) \leq S(p,q)$
 
 \section*{Exercise 3.15.7}
-We asume the target variable $Z$ is $\mathcal{E}$-mesurable. What is mean squared error function in this case?
+We asume the target variable $Z$ is $\mathcal{E}$-measurable. What is mean squared error function in this case?
 
 \section*{Exercise 3.15.8}
 Asume that a neural network has an input-output function $f_{w,b}$ linear in $w$ and $b$. Show that the cost function $(3.3.1)$ reaches its minimum for a 
@@ -79,10 +79,10 @@ operation $(f \ast g)(x) :=  \displaystyle\int f(t) g(x - t) dt $.
 \end{enumerate}
 
 \section*{Exercise 3.15.11}
-Consider two probability densitie, $p(x)$ and $q(x)$. The Cauchy-Schwartz divergence is defined by 
+Consider two probability densities, $p(x)$ and $q(x)$. The Cauchy-Schwartz divergence is defined by 
 \begin{equation*}
     D_{CS}(p,q) := -\text{ln}(\displaystyle\frac{\int p(x) q(x) d x}{\sqrt{\int p(x)^2 d x } \sqrt{\int q(x)^2 d x }})
-\end{equation*}.\\
+\end{equation*}\\
 Show the following: 
 \begin{enumerate}
     \item $D_{CS}(p,q) = 0$ if and only if $p = q$;
@@ -221,7 +221,7 @@ This is an inmediate consecuence of exercise $3.15.5$. Indeed, we have:\\
     \end{equation*}
 \end{proof}
 \subsection*{3.15.7}
-If the target variable $Z$ happens to be $\mathcal{E}-$mesurable, then $Y$ is independent of the sigma algebra $\mathcal{E}$. From this follows that $C(\omega, b) = \text{d}(Z,Y)^2 = \mathbb{E} \left[ (Z - \mathbb{E}\left[ Z |\mathcal{E} \right] )^2\right]  = \mathbb{E} \left[ (Z - Z)^2\right] = 0$.
+If the target variable $Z$ happens to be $\mathcal{E}-$measurable, then $Y$ is independent of the sigma algebra $\mathcal{E}$. From this follows that $C(\omega, b) = \text{d}(Z,Y)^2 = \mathbb{E} \left[ (Z - \mathbb{E}\left[ Z |\mathcal{E} \right] )^2\right]  = \mathbb{E} \left[ (Z - Z)^2\right] = 0$.
 
 \subsection*{3.15.8}
 In this case $ \displaystyle f_{\tiny \bold{\omega}, b}(\bold{x}) = \bold{\omega} \cdot \bold{x} + b$, definied on a compact subset of $\mathbb{R}^n$. Therefore, the cost function is given by: \\[0.25 em]
@@ -299,8 +299,26 @@ This is  $\mathcal{H}_{C(\tiny \omega, b)} = \text{G}(v_1, \ldots v_{n+1})$ i.e 
 the system is linear. 
 \end{proof}
 \subsection*{3.15.9}
-First let's analyse the following function definied as a parametric integral. Let $I(\alpha)$ definied as:\\
-$I(\alpha) := \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha}d x = \displaystyle \int_{\tiny \text{sup}(X)} p(x)^{\alpha-1}d P(x)$. In last right expression $\frac{d P}{d x} = p(x)$. This representation is a consecuence of the \href{https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem}{Radon-Nikodym Theorem}. The function $f(\alpha, x) := p(x)^{\alpha - 1}$ satisffies the following:
+Note that the Reyni entropy can be expressed as follows: \ $\text{H}_\alpha(\text{p}(X)) = \frac{\ln \mathbb{E} \left[(p(X))^{\alpha-1}\right]}{1 - \alpha} = \frac{\ln\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}{\alpha - 1}$. In last expression $\frac{d P}{d x} = p(x)$; This representation is a consecuence of the \href{https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem}{Radon-Nikodym's Theorem}. Now, let's analyse the following function definied as a parametric integral. Let $I(\alpha)$ definied as:\\
+$I(\alpha) = \displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P$\newline 
+\begin{proof}
+    \\
+    \underline{CASE $0 < p(x) < 1$}:\\
+    \\
+    Let $\{\alpha_n\}_{n \in \mathbb{N}} \subset \mathbb{R}$ a monotonicaly decreasing secuence of reals tending to 1. With this we can construct an increasing sequence of P-integrable functions of the form $\{(p(x))^{\alpha_n -1}\}_{n \in \mathbb{N}}$. Then, by 
+    construction the point limit will be the function $f(x) = 1$ which is P-integrable. Applying the \href{https://proofwiki.org/wiki/Monotone_Convergence_Theorem_(Measure_Theory)}{Lebegue's monotone convergece theorem}:\\
+    $\lim_{k \to \infty} I(\alpha_k) = \displaystyle\lim_{k \to \infty} \int_{\tiny \text{sup}(X)}(p(x))^{\alpha_k-1} d P = \displaystyle\int_{\tiny \text{sup}(X)} \lim_{k \to \infty}(p(x))^{\alpha_k-1} d P  = I(\lim_{k \to \infty} \alpha_k) = \lim_{\alpha \to 1^{+}}I(\alpha) = 1$. This proves $I(\alpha)$ is right-continuous\newline
+    \\
+    Taking $\{\alpha_n\}_{n \in \mathbb{N}} \subset \mathbb{R}$ a monotonicaly increasing sequence of reals tending to 1. Let's construct the sequence of decreasing P-integrable functions of the form $\{(p(x))^{\alpha_n -1}\}_{n \in \mathbb{N}}$. Once again the point limit function is $f(x) = 1$. Applying the monotone convergence \\
+    $\lim_{k \to \infty} I(\alpha_k) = \displaystyle\lim_{k \to \infty} \int_{\tiny \text{sup}(X)}(p(x))^{\alpha_k-1} d P = \displaystyle\int_{\tiny \text{sup}(X)} \lim_{k \to \infty}(p(x))^{\alpha_k-1} d P  = I(\lim_{k \to \infty} \alpha_k) = \lim_{\alpha \to 1^{-}}I(\alpha) = 1$. This proves $I(\alpha)$ is left-continuous. \\\
+    \\
+    \underline{CASE $p(x) > 1$}:\\
+    \\
+    The same is true in this case. It is worth to note that if the sequence $\{\alpha_n\}_{n \in \mathbb{N}}$ is choosen to be decreasing then the sequence of functions is increasing, the contrary situation still holds.\\
+    \\
+    Bacause the function $f(\alpha,x)$ is derivable the above can be then used to compute the limit $\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X))$. By a simple application $\alpha \to 1$ we find an indetermination of the type $0/0$. Using L'Hôpital's rule we get:
 
+    $\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X)) = \lim_{\alpha \to 1}\frac{1}{-1}\frac{1}{\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}$
+\end{proof}    
 \end{document}
 
