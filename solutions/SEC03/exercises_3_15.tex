@@ -299,7 +299,7 @@ This is  $\mathcal{H}_{C(\tiny \omega, b)} = \text{G}(v_1, \ldots v_{n+1})$ i.e 
 the system is linear. 
 \end{proof}
 \subsection*{3.15.9}
-Note that the Reyni entropy can be expressed as follows: \ $\text{H}_\alpha(\text{p}(X)) = \frac{\ln \mathbb{E} \left[(p(X))^{\alpha-1}\right]}{1 - \alpha} = \frac{\ln\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}{\alpha - 1}$. In last expression $\frac{d P}{d x} = p(x)$; This representation is a consecuence of the \href{https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem}{Radon-Nikodym's Theorem}. Now, let's analyse the following function definied as a parametric integral. Let $I(\alpha)$ definied as:\\
+Note that the Reyni entropy can be expressed as follows: \ $\text{H}_\alpha(\text{p}(X)) = \frac{\ln \mathbb{E} \left[(p(X))^{\alpha-1}\right]}{1 - \alpha} = \frac{\ln\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}{\alpha - 1}$. In the last expression $\frac{d P}{d x} = p(x)$; This representation is a consecuence of the \href{https://en.wikipedia.org/wiki/Radon%E2%80%93Nikodym_theorem}{Radon-Nikodym's Theorem}. Now, let's analyse the following function definied as a parametric integral. Let $I(\alpha)$ definied as:\\
 $I(\alpha) = \displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P$\newline 
 \begin{proof}
     \\
@@ -309,16 +309,17 @@ $I(\alpha) = \displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P$\newli
     construction the point limit will be the function $f(x) = 1$ which is P-integrable. Applying the \href{https://proofwiki.org/wiki/Monotone_Convergence_Theorem_(Measure_Theory)}{Lebegue's monotone convergece theorem}:\\
     $\lim_{k \to \infty} I(\alpha_k) = \displaystyle\lim_{k \to \infty} \int_{\tiny \text{sup}(X)}(p(x))^{\alpha_k-1} d P = \displaystyle\int_{\tiny \text{sup}(X)} \lim_{k \to \infty}(p(x))^{\alpha_k-1} d P  = I(\lim_{k \to \infty} \alpha_k) = \lim_{\alpha \to 1^{+}}I(\alpha) = 1$. This proves $I(\alpha)$ is right-continuous\newline
     \\
-    Taking $\{\alpha_n\}_{n \in \mathbb{N}} \subset \mathbb{R}$ a monotonicaly increasing sequence of reals tending to 1. Let's construct the sequence of decreasing P-integrable functions of the form $\{(p(x))^{\alpha_n -1}\}_{n \in \mathbb{N}}$. Once again the point limit function is $f(x) = 1$. Applying the monotone convergence \\
+    Taking $\{\alpha_n\}_{n \in \mathbb{N}} \subset \mathbb{R}$ a monotonicaly increasing sequence of reals tending to 1, let's construct the sequence of decreasing P-integrable functions of the form $\{(p(x))^{\alpha_n -1}\}_{n \in \mathbb{N}}$. Once again the point limit function is $f(x) = 1$. Applying the monotone convergence \\
     $\lim_{k \to \infty} I(\alpha_k) = \displaystyle\lim_{k \to \infty} \int_{\tiny \text{sup}(X)}(p(x))^{\alpha_k-1} d P = \displaystyle\int_{\tiny \text{sup}(X)} \lim_{k \to \infty}(p(x))^{\alpha_k-1} d P  = I(\lim_{k \to \infty} \alpha_k) = \lim_{\alpha \to 1^{-}}I(\alpha) = 1$. This proves $I(\alpha)$ is left-continuous. \\\
     \\
     \underline{CASE $p(x) > 1$}:\\
     \\
     The same is true in this case. It is worth to note that if the sequence $\{\alpha_n\}_{n \in \mathbb{N}}$ is choosen to be decreasing then the sequence of functions is increasing, the contrary situation still holds.\\
     \\
-    Bacause the function $f(\alpha,x)$ is derivable the above can be then used to compute the limit $\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X))$. By a simple application $\alpha \to 1$ we find an indetermination of the type $0/0$. Using L'Hôpital's rule we get:
-
-    $\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X)) = \lim_{\alpha \to 1}\frac{1}{-1}\frac{1}{\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}$
+    Bacause the function $f(\alpha,x) = (p(x))^{\alpha - 1}$ is derivable, and its derivative is continuous (this can be proved by the monotone convergence theorem), the above can be then used to compute the limit $\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X))$. \\
+    \\
+    By a simple application $\alpha \to 1$ we find an indetermination of the type $0/0$; Using L'Hôpital's rule we get:\\
+    $\displaystyle\lim_{\alpha \to 1 }\text{H}_\alpha(\text{p}(X)) =\displaystyle\lim_{\alpha \to 1}\frac{1}{-1}\frac{1}{\displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P}\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} \ln(p(x)) d P = \displaystyle \int_{\tiny \text{sup}(X)}-\ln(p(x)) d P = \text{H}(p).$
 \end{proof}    
 \end{document}
 
