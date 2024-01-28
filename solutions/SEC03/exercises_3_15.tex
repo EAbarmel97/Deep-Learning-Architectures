@@ -323,16 +323,15 @@ $I(\alpha) = \displaystyle\int_{\tiny \text{sup}(X)}(p(x))^{\alpha-1} d P$\newli
 \subsection*{3.15.10 (a)}
 This is a consecuence of exercise $3.15.9.b$. By taking $\sigma_1 = \sigma_2 = \sigma$ we get that $\varphi_{\sigma_1}(x) \ \star \ \varphi_{\sigma_2}(x) = \varphi_{\sigma^\prime}(x)$, with $\sigma^\prime = \displaystyle\sqrt{2\sigma^2}$
 \subsection*{3.15.10 (b)}
-We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-x^2}{2\sigma^2}}$. Then: \\
+We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\frac{-x^2}{2\sigma^2}}$; Computing $(\phi_{\sigma_1}\star \phi_{\sigma_2})(x) = \displaystyle \int_{\mathbb{R}}  \phi_{\sigma_1}(t) \phi_{\sigma_2}(t - x) d t $ we get:\\
 \begin{proof}
     \begin{equation*}
         \begin{aligned}
-            (\phi_{\sigma_1}\star \phi_{\sigma_2})(x) &= \displaystyle \int_{\mathbb{R}}  \phi_{\sigma_1}(t) \phi_{\sigma_2}(t - x) d t  = \displaystyle \int_{\mathbb{R}} \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_1}}e^{\displaystyle\frac{-t^2}{2\sigma_1^2}} \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_2}}e^{\displaystyle\frac{-(t - x)^2}{2\sigma_2^2}} d t \\
-            &= \displaystyle \int_{\mathbb{R}}\displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_1\sigma^{2}_2}\sqrt{2\pi}} e^{\displaystyle\frac{-t^2\sigma^{2}_2 -(t - x)\sigma^{2}_1}{2\sigma_1^2 \sigma_2^2}} d t = \displaystyle \int_{\mathbb{R}} \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_1\sigma^{2}_2}\sqrt{2\pi}} e^{-\displaystyle\frac{t^{2}(\sigma^{2}_1 + \sigma^{2}_2) + 2tx\sigma^{2}_1 - x^{2}\sigma^{2}_1}{2\sigma^{2}_1\sigma^{2}_2}} d t \\
+            (\phi_{\sigma_1}\star \phi_{\sigma_2})(x) &= \displaystyle \int_{\mathbb{R}}\displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_1\sigma^{2}_2}\sqrt{2\pi}} e^{\displaystyle\frac{-t^2\sigma^{2}_2 -(t - x)\sigma^{2}_1}{2\sigma_1^2 \sigma_2^2}} d t = \displaystyle \int_{\mathbb{R}} \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}_1\sigma^{2}_2}\sqrt{2\pi}} e^{-\displaystyle\frac{t^{2}(\sigma^{2}_1 + \sigma^{2}_2) + 2tx\sigma^{2}_1 - x^{2}\sigma^{2}_1}{2\sigma^{2}_1\sigma^{2}_2}} d t \\
             &= \displaystyle \int_{\mathbb{R}} \displaystyle\frac{\sqrt{\sigma_1^2 + \sigma^{2}_2}}{\sqrt{2\pi\sigma^{2}_1\sigma^{2}_2}\sqrt{2\pi}\sqrt{\sigma_1^2 + \sigma^{2}_2}} e^{-\displaystyle(\sigma^{2}_1 + \sigma^{2}_2)\frac{t^{2} - 2tx\frac{\sigma^{2}_1}{\sigma^{2}_1 + \sigma^{2}_2} + \frac{x^{2}(\sigma^{2}_1)^{2}}{(\sigma^{2}_1 + \sigma^{2}_2)^{2}} + x^{2}\sigma^{2}_1 - \frac{x^{2}(\sigma^{2}_1)^{2}}{(\sigma^{2}_1 + \sigma^{2}_2)^{2}} }{2\sigma^{2}_1\sigma^{2}_2}} d t \\
             &= \displaystyle \int_{\mathbb{R}} \displaystyle\frac{1}{\sqrt{2\pi(\sigma_1^2 + \sigma^{2}_2)}} e^{-\displaystyle\frac{x^{2}}{2(\sigma^{2}_1 + \sigma^{2}_2)}}\displaystyle\frac{1}{\sqrt{2\pi \frac{\sigma^{2}_1\sigma^{2}_2}{\sigma^{2}_1 + \sigma^{2}_2}}} e^{-\displaystyle\frac{(t - x\frac{\sigma^{2}_1}{\sigma^{2}_1 + \sigma^{2}_2})^{2}}{2 \frac{\sigma^{2}_1\sigma^{2}_2}{\sigma^{2}_1 + \sigma^{2}_2}}} d t \\
             &= \displaystyle\frac{1}{\sqrt{2\pi(\sigma_1^2 + \sigma^{2}_2)}} e^{-\displaystyle\frac{x^{2}}{2(\sigma^{2}_1 + \sigma^{2}_2)}} \displaystyle \int_{\mathbb{R}} \displaystyle\frac{1}{\sqrt{2\pi \frac{\sigma^{2}_1\sigma^{2}_2}{\sigma^{2}_1 + \sigma^{2}_2}}} e^{-\displaystyle\frac{(t - x\frac{\sigma^{2}_1}{\sigma^{2}_1 + \sigma^{2}_2})^{2}}{2 \frac{\sigma^{2}_1\sigma^{2}_2}{\sigma^{2}_1 + \sigma^{2}_2}}} d t \\
-            &=\displaystyle \frac{1}{\sqrt{2\pi(\sigma^{2}_1 + \sigma^{2}_2)}}e^{\displaystyle\frac{-x^2}{2(\sigma_1^2 + \sigma^{2}_2)}} \cdot 1 = \phi_{\sigma^{\prime}}(x) \text{ , with } \sigma^{\prime} = \sigma_1^2 + \sigma^{2}_2\\
+            &=\displaystyle \frac{1}{\sqrt{2\pi(\sigma^{2}_1 + \sigma^{2}_2)}}e^{\displaystyle\frac{-x^2}{2(\sigma_1^2 + \sigma^{2}_2)}} \cdot 1 = \phi_{\sigma^{\prime}}(x) \text{ , with } (\sigma^{\prime})^{2} = \sigma_1^2 + \sigma^{2}_2\\
         \end{aligned}
     \end{equation*}
 \end{proof}
@@ -349,7 +348,6 @@ We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\fra
         If $D_{CS}(p,q) = 0$, then applying exponentials to both sides we obtain:\newline
         $\displaystyle\frac{\displaystyle \int p(x) q(x) d x}{\sqrt{\displaystyle\int p(x)^2 d x } \sqrt{\displaystyle\int q(x)^2 d x }} = 1 \implies \lVert \displaystyle\int p(x) q(x) d x \lVert = \sqrt{\displaystyle \int p(x)^2 d x } \sqrt{\displaystyle \int q(x)^2 d x }$. This is the case of equality in
         the Cauchy–Bunyakovsky–Schwarz inequality. Then: $q = \lambda p, \lambda \neq 0$; Let's now prove $\lambda = 1$.
-        \\
         \\
         Plugging this we get: \\
         $\displaystyle\frac{\displaystyle \lambda \int p(x) p(x) d x}{\lambda^{2} \sqrt{\displaystyle\int p(x)^2 d x } \sqrt{\displaystyle\int p(x)^2 d x }} = 1 = \frac{\lambda}{\lambda^{2}} \implies \lambda  = 1 \implies p = q.$
