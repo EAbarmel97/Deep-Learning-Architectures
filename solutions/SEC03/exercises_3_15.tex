@@ -357,10 +357,16 @@ We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\fra
 \subsection*{3.15.11 (b)}
 By hypothesis both $p, q$ are densities, then they are both nonnegative. This implies: \\
 
-\begin{proof}  
-    \begin{equation*}            
-        \displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1
-    \end{equation*}
-\end{proof}
+\begin{proof} 
+    $\displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1$. Taking logarithms to both sides in the inequality we get and 
+    multiplying by $-1$:\\
+    $D_{CS}(p,q) = -\ln(\displaystyle \frac{\displaystyle \int p(x) q(x) d x }{\displaystyle\sqrt{\int p(x)^2 d x } \displaystyle\sqrt{\int q(x)^2 d x }}) \geq 0$
+\end{proof} 
+
+\subsection*{3.15.11 (c)}
+This propiety follows easily from the definition of the CS-divergence. 
+
+\subsection*{3.15.11 (d)}
+Applying the properties of the logarithms we obtain:\\
 \end{document}
 
