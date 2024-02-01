@@ -358,8 +358,8 @@ We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\fra
 By hypothesis both $p, q$ are densities, then they are both nonnegative. This implies: \\
 
 \begin{proof} 
-    $\displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1$. Taking logarithms to both sides in the inequality we get and 
-    multiplying by $-1$:\\
+    $\displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1$; Remember that $\ln(x) \geq 0 $ if $0<x<1$ then, taking logarithms to both sides in the inequality and
+    multiplying by $-1$ yields:\\
     $D_{CS}(p,q) = -\ln(\displaystyle \frac{\displaystyle \int p(x) q(x) d x }{\displaystyle\sqrt{\int p(x)^2 d x } \displaystyle\sqrt{\int q(x)^2 d x }}) \geq 0$
 \end{proof} 
 
@@ -368,5 +368,13 @@ This propiety follows easily from the definition of the CS-divergence.
 
 \subsection*{3.15.11 (d)}
 Applying the properties of the logarithms we obtain:\\
+\begin{proof}
+    \begin{equation*}
+        \begin{aligned}
+            D_{CS}(p,q) &= -\ln(\displaystyle \frac{\displaystyle \int p(x) q(x) d x }{\displaystyle\sqrt{\int p(x)^2 d x } \displaystyle\sqrt{\int q(x)^2 d x }}) = -\ln \displaystyle \int p(x) q(x) d x - \frac{1}{2}\ln \displaystyle\int p(x)^2 d x - \frac{1}{2} \displaystyle\int q(x)^2 d x\\
+                        &=  -\ln \displaystyle \int p(x) q(x) d x - \frac{1}{2}\text{H}_2(p) - \frac{1}{2}\text{H}_2(q)
+        \end{aligned}    
+    \end{equation*}    
+\end{proof}    
 \end{document}
 
