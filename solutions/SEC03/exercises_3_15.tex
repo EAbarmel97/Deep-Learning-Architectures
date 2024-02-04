@@ -105,7 +105,7 @@ Consider two distributions on the sample space $\mathcal{X} = \{ x_1, x_2\}$ giv
         \frac{1}{2} & \frac{1}{2}
         \end{pmatrix}, \ q = \begin{pmatrix}
             x_1 & x_2\\
-            \frac{1}{2} & \frac{2}{3}
+            \frac{1}{3} & \frac{2}{3}
             \end{pmatrix}
 \end{equation*}
 Consider the function $\phi: \mathcal{X} \to \mathbb{R}^2$ defined by $\phi(x_1) = (0,1)$ $\phi(x_2) = (1,0)$. Find the maximum mean discrepancy between $p$ and $q$.
@@ -399,11 +399,24 @@ given by the identity: $\displaystyle \frac{d}{du} \tanh(u) = 1 - \tanh^{2}(u), 
                 \end{equation*}\\            
     \end{itemize}
     Both cases can be summarized as $\left| u \right|  \geq \left|\tanh(u) \right|$. If $u = f(x)$ this implies $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$. Then, by the monotonicality of 
-    the integral operator we get the desired result.\\
+    the integral operator we get the desired result.
 \end{proof}
 
 \subsection*{3.15.12 (b)}
-In $3.15.12.a$ was proved the inequality $\left| u \right|  \geq \left|\tanh(u) \right|, \ \forall u \in \mathbb{R}$ so if $f \in \mathcal{L}_2[0,1]$. Then, $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$; Taking squares the latter inequality yieds: $\left| f(x) \right|^{2}  \geq \left|\tanh(f(x)) \right|^{2}$ and once again, due 
-to the monotonicality of the integral operator we get the desired inequality.
+\begin{proof} 
+    In $3.15.12.a$ was proved the inequality $\left| u \right|  \geq \left|\tanh(u) \right|, \ \forall u \in \mathbb{R}$ so if $f \in \mathcal{L}_2[0,1]$. Then, $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$; Taking squares the latter inequality yieds: $\left| f(x) \right|^{2}  \geq \left|\tanh(f(x)) \right|^{2}$ and once again, due 
+    to the monotonicality of the integral operator we get the desired inequality.
+\end{proof}
+\subsection*{3.15.13}
+First let's find $\mathbb{E}_{p} \left[\phi(X)\right]$ and $\mathbb{E}_{q} \left[\phi(X)\right]$. Computing the expectancies we find: \\$\mathbb{E}_{p} \left[\phi(X)\right]  = (0,1) \cdot \frac{1}{2} + (1,0) \cdot \frac{1}{2} = (\frac{1}{2},\frac{1}{2})$ and 
+$\mathbb{E}_{q} \left[\phi(X)\right]  = (0,1) \cdot \frac{1}{3} + (1,0) \cdot \frac{2}{3} = (\frac{2}{3},\frac{1}{3})$. By direct application of the MMD formula we obtain:\\   
+\begin{equation*}
+    \begin{aligned}
+        d^{2}_{MMD}(p,q) &= \mathbb{E}_{p} \left[\phi(X)\right]^{T}\mathbb{E}_{p} \left[\phi(X)\right] + \mathbb{E}_{q} \left[\phi(X)\right]^{T}\mathbb{E}_{q} \left[\phi(X)\right] - 2 \mathbb{E}_{p} \left[\phi(X)\right]^{T}\mathbb{E}_{q} \left[\phi(X)\right]\\
+        &= (\frac{1}{2},\frac{1}{2})^{T}(\frac{1}{2},\frac{1}{2}) + (\frac{2}{3},\frac{1}{3})^{T}(\frac{2}{3},\frac{1}{3})- 2(\frac{1}{2},\frac{1}{2})^{T}(\frac{2}{3},\frac{1}{3})\\
+        &= \frac{1}{4} + \frac{1}{4} + \frac{4}{9} + \frac{1}{9} -2\frac{1}{2}\frac{2}{3} -2\frac{1}{2}\frac{1}{3} = \frac{1}{2} + \frac{5}{9} - 2\frac{3}{6} = \frac{19}{18} -\frac{18}{18}\\
+        &= \frac{1}{9} \implies d_{MMD}(p,q) = \frac{1}{3}.
+    \end{aligned}    
+\end{equation*}  
 \end{document}
 
