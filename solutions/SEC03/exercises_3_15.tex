@@ -364,7 +364,7 @@ By hypothesis both $p, q$ are densities, then they are both nonnegative. This im
 \end{proof} 
 
 \subsection*{3.15.11 (c)}
-This propiety follows easily from the definition of the CS-divergence. 
+This property follows easily from the definition of the CS-divergence. 
 
 \subsection*{3.15.11 (d)}
 Applying the properties of the logarithms we obtain:\\
@@ -375,6 +375,29 @@ Applying the properties of the logarithms we obtain:\\
                         &=  -\ln \displaystyle \int p(x) q(x) d x - \frac{1}{2}\text{H}_2(p) - \frac{1}{2}\text{H}_2(q)
         \end{aligned}    
     \end{equation*}    
-\end{proof}    
+\end{proof}
+
+\subsection*{3.15.12 (a)}
+The claim follows from the inequality $\left| u \right|  \geq \left|\tanh(u) \right|$,  then making the substitution $u = f(x)$, with $f \in \mathcal{L}_1[0,1]$ we get $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$. On the other hand, the function $\tanh$ is derivable $\forall x \in \mathbb{R}$. Furthermore it's derivative is 
+given by the identity: $\displaystyle \frac{d}{dx} \tanh(x) = 1 - \tanh^{2}(x), \forall x \in \mathbb{R}$. Observe that $\displaystyle \frac{d}{dx} \tanh(x) \leq 1, \forall x \in \mathbb{R}$. Applying the \href{https://en.wikipedia.org/wiki/Intermediate_value_theorem}{Intermediate Value Theorem} yields:\\
+\begin{proof}
+    \begin{itemize}
+        \item  \underline{CASE $x>0$}\\
+                \begin{equation*}
+                    \begin{aligned}
+                        0 < \displaystyle \frac{\tanh(x) - \tanh(0)}{x - 0} = \displaystyle \frac{\tanh(x)}{x}  &=  \displaystyle \frac{d}{dx} \tanh(x) {\Big|}_{\tiny x=\theta} \text{ , where $\theta \in (0,x)$}\\
+                            &= 1 - \tanh^{2}(\theta) \leq 1 \implies \tanh(x) \leq x = \left| u\right| \ \text{,} \ \forall x > 0
+                    \end{aligned}    
+                \end{equation*}
+                
+        \item  \underline{CASE $u<0$}\\
+                \begin{equation*}
+                    \begin{aligned}
+                        0 < \displaystyle \frac{\tanh(0) - \tanh(u)}{u - 0} = \displaystyle \frac{-\tanh(u)}{u}  &=  \displaystyle -\frac{d}{du} \tanh(u) {\Big|}_{\tiny u=\theta} \text{ , where $\theta \in (u,0)$}\\
+                            &=  -1 + \tanh^{2}(\theta) \leq 1 \implies -\tanh(u) \geq u = - \left| u\right|
+                    \end{aligned}    
+                \end{equation*}            
+    \end{itemize}
+\end{proof}
 \end{document}
 
