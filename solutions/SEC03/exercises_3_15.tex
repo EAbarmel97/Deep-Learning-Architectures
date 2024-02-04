@@ -358,7 +358,7 @@ We have $\phi_{\sigma}(x) := \displaystyle\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{\fra
 By hypothesis both $p, q$ are densities, then they are both nonnegative. This implies: \\
 
 \begin{proof} 
-    $\displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1$; Remember that $\ln(x) \geq 0 $ if $0<x<1$ then, taking logarithms to both sides in the inequality and
+    $\displaystyle \int p(x) q(x) d x  = \displaystyle \int \left| \ p(x) q(x) \ \right| d x \leq  {\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2} \implies 0 < \displaystyle\frac{\displaystyle \int p(x) q(x) d x}{{\lVert p \lVert}^{2}_{2} {\lVert q \lVert}^{2}_{2}} \leq 1$; Remember that $\ln(x) \leq 0 $ if $0<x<1$ then, taking logarithms to both sides in the inequality and
     multiplying by $-1$ yields:\\
     $D_{CS}(p,q) = -\ln(\displaystyle \frac{\displaystyle \int p(x) q(x) d x }{\displaystyle\sqrt{\int p(x)^2 d x } \displaystyle\sqrt{\int q(x)^2 d x }}) \geq 0$
 \end{proof} 
@@ -378,26 +378,31 @@ Applying the properties of the logarithms we obtain:\\
 \end{proof}
 
 \subsection*{3.15.12 (a)}
-The claim follows from the inequality $\left| u \right|  \geq \left|\tanh(u) \right|$,  then making the substitution $u = f(x)$, with $f \in \mathcal{L}_1[0,1]$ we get $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$. On the other hand, the function $\tanh$ is derivable $\forall x \in \mathbb{R}$. Furthermore it's derivative is 
-given by the identity: $\displaystyle \frac{d}{dx} \tanh(x) = 1 - \tanh^{2}(x), \forall x \in \mathbb{R}$. Observe that $\displaystyle \frac{d}{dx} \tanh(x) \leq 1, \forall x \in \mathbb{R}$. Applying the \href{https://en.wikipedia.org/wiki/Intermediate_value_theorem}{Intermediate Value Theorem} yields:\\
+The claim follows from the inequality $\left| u \right|  \geq \left|\tanh(u) \right|$,  then making the substitution $u = f(x)$, with $f \in \mathcal{L}_1[0,1]$ we get $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$. On the other hand, the function $\tanh$ is derivable $\forall u \in \mathbb{R}$. Furthermore it's derivative is 
+given by the identity: $\displaystyle \frac{d}{du} \tanh(u) = 1 - \tanh^{2}(u), \forall u \in \mathbb{R}$. Observe that $\displaystyle \frac{d}{du} \tanh(u) \leq 1, \forall u \in \mathbb{R}$. Applying the \href{https://en.wikipedia.org/wiki/Intermediate_value_theorem}{Intermediate Value Theorem} yields:\\
 \begin{proof}
     \begin{itemize}
-        \item  \underline{CASE $x>0$}\\
+        \item  \underline{CASE $u>0$}\\
                 \begin{equation*}
                     \begin{aligned}
-                        0 < \displaystyle \frac{\tanh(x) - \tanh(0)}{x - 0} = \displaystyle \frac{\tanh(x)}{x}  &=  \displaystyle \frac{d}{dx} \tanh(x) {\Big|}_{\tiny x=\theta} \text{ , where $\theta \in (0,x)$}\\
-                            &= 1 - \tanh^{2}(\theta) \leq 1 \implies \tanh(x) \leq x = \left| u\right| \ \text{,} \ \forall x > 0
+                        0 < \displaystyle \frac{\tanh(u) - \tanh(0)}{u - 0} = \displaystyle \frac{\tanh(u)}{u}  &=  \displaystyle \frac{d}{du} \tanh(u) {\Big|}_{\tiny u=\theta} \text{ , where $\theta \in (0,u)$}\\
+                            &= 1 - \tanh^{2}(\theta) \leq 1 \implies \tanh(u) \leq u = \left| u\right| \ \text{,} \ \forall u > 0
                     \end{aligned}    
                 \end{equation*}
                 
         \item  \underline{CASE $u<0$}\\
                 \begin{equation*}
                     \begin{aligned}
-                        0 < \displaystyle \frac{\tanh(0) - \tanh(u)}{u - 0} = \displaystyle \frac{-\tanh(u)}{u}  &=  \displaystyle -\frac{d}{du} \tanh(u) {\Big|}_{\tiny u=\theta} \text{ , where $\theta \in (u,0)$}\\
-                            &=  -1 + \tanh^{2}(\theta) \leq 1 \implies -\tanh(u) \geq u = - \left| u\right|
+                        0 < \displaystyle \frac{\tanh(u) - \tanh(0)}{u - 0} = \displaystyle \frac{\tanh(u)}{u}  &=  \displaystyle \frac{d}{du} \tanh(u) {\Big|}_{\tiny u=\theta} \text{ , where $\theta \in (u,0)$}\\
+                            &=  -1 + \tanh^{2}(\theta) \leq 1 \implies \tanh(u) \geq u = - \left| u\right| \ \text{,} \ \forall u < 0
                     \end{aligned}    
-                \end{equation*}            
+                \end{equation*}\\            
     \end{itemize}
+    Both cases can be summarized as $\left| u \right|  \geq \left|\tanh(u) \right|$. If $u = f(x)$ this implies $\left| f(x) \right|  \geq \left|\tanh(f(x)) \right|$. Then, by the monotonicality of 
+    the integral operator we get the desired result.\\
 \end{proof}
+
+\subsection*{3.15.12 (b)}
+
 \end{document}
 
