@@ -6,6 +6,7 @@
 \usepackage{lmodern}
 \usepackage{tcolorbox}
 \usepackage{hyperref}
+\usepackage{verbatim}
 
 \pagestyle{empty}
 \renewcommand{\theenumi}{\alph{enumi}}
@@ -40,11 +41,22 @@ Consider the quadratic function $Q(\bold{x}) = \frac{1}{2} \bold{x}^{T} A x - b 
 Let A be a nonsingular square matrix of order $n$ and $b \in \mathbb{R}^{n}$ a given vector. Consider the linear system $A\bold{x} = b$. The solution can be approximated using 
 the following steps:\\
 \begin{enumerate}
-    \item 
-    \item 
-    \item 
+    \item Associate the cost function $C(\bold{x}) = \frac{1}{2} \lVert A \bold{x} - b \lVert^{2}.$ Find its gradient, $\nabla C(\bold{x})$,
+    and Hessian $H_{C}(\bold{x})$;
+    \item Write the gradient descent algorithm iteration which converges to the system solution $\bold{x}$ with the inital value $\bold{x}^{0} = 0$;
+    \item Write Newton's iteration which converges to the system solution $\bold{x}$ with the initial value $\bold{x}^{0} = 0$.
 \end{enumerate}
 
+\section*{Exercise 4.17.4}
+\begin{enumerate}
+   \item Let $(a_n)_{n}$ be a sequence with $a_0 > 0$ satisfying the inequality \\
+   $a_{n+1} \leq \mu a_n + K, \ \forall n \geq 1$, with $\mu \in (0,1)$ and $K > 0$. Show that the sequence $(a_n)_{n}$ is bounded from above.
+   \item Consider the momentum method equations $(4.4.16)-(4.4.17)$, and asume that the function $f$ has a bounded gradient $\lVert \nabla f \lVert \leq M$. Show that the 
+   sequence of velocities, $(v^n)_{n}$ is bounded.
+\end{enumerate}
+
+\section*{Exercise 4.17.5}
+Let $f$ and $g$ two integrable functions. \\
 % % Solutions to other exercises in Chapter X...
 
 \newpage
@@ -53,23 +65,25 @@ the following steps:\\
     \section*{SOLUTIONS}
 \end{center}
 
-\subsection*{Exercise x.y.1 (a)}
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
-dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
-id est laborum et dolorum fuga.
-\begin{proof}
-    \begin{equation*}     
-        \begin{aligned}
-            \sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
-            &= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
-        \end{aligned}
-\end{equation*}
-\end{proof}
-\subsection*{Exercise x.y.2 (a)}
-Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est 
-eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, 
-omnis dolor repellendus. 
-\begin{proof}
-     a = a
-\end{proof}
+\begin{comment}
+    \subsection*{Exercise x.y.1 (a)}
+    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
+    dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
+    id est laborum et dolorum fuga.
+    \begin{proof}
+        \begin{equation*}     
+            \begin{aligned}
+                \sigma^{\prime\prime\prime}(x) &= \frac{d}{ d x} \frac{e^{x}-e^{2x}}{(1 + e^{x})^3} = \frac{(e^x - 2e^{2x})(1 + e^x)^3 - 3(1 + e^x)^2 e^{x}(e^x - e^{2x})}{(1 + e^x)^6}\\
+                &= \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}(1 + e^x)^2}{(1 + e^x)^{6}} = \frac{e^{x} \{ 1 - 4e^x + e^{2x} \}}{(1 + e^x)^{4}}
+            \end{aligned}
+    \end{equation*}
+    \end{proof}
+    \subsection*{Exercise x.y.2 (a)}
+    Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est 
+    eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, 
+    omnis dolor repellendus. 
+    \begin{proof}
+         a = a
+    \end{proof}
+\end{comment}
 \end{document}
