@@ -56,9 +56,21 @@ the following steps:\\
 \end{enumerate}
 
 \section*{Exercise 4.17.5}
-Let $f$ and $g$ two integrable functions. \\
-% % Solutions to other exercises in Chapter X...
+\begin{enumerate}
+   \item  Let $f$ and $g$ two integrable functions. Verify that
+            \begin{equation*}
+                \int (f \star g) (x) d x  = \displaystyle \int f(x) d x \displaystyle \int g(x) d x 
+            \end{equation*}
 
+    \item Show that $\lVert f \star g \lVert \leq {\lVert f \lVert}_{1} {\lVert g \lVert}_{1}$
+    \item Let $f_{\sigma} := g \star G_{\sigma}$ where $G_{\sigma} = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^{2}}{2\sigma^{2}}}$. Prove that ${\lVert f_{\sigma}\lVert}_{1} \leq {\lVert f \lVert}_{1}$ for $\sigma > 0$
+\end{enumerate}
+
+\section*{Exercise 4.17.6}
+Show that the convolution of two Gaussians is also a Gaussian:\\
+\begin{equation*}
+    G_{\sigma_{1}} \star G_{\sigma_{2}} = G_{\sigma} \text{, where} \sigma = \sqrt{\sigma_1^{2} + \sigma_2^{2}}
+\end{equation*}
 \newpage
 
 \begin{center}    
