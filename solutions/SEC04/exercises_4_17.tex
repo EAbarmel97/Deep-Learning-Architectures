@@ -103,15 +103,22 @@ By the pythagorean identity between the trigonometric functions $\sin$ and $\cos
 \begin{equation*}
     \lVert \nabla f \lVert = \sqrt{\nabla f \cdot \nabla f} = \sqrt{(e^{x_1}\cos(x_2))^{2} + (e^{x_1}\sin{x_2})^{2}} = e^{x_1}
 \end{equation*}
-
-\begin{comment}
+\subsection*{Exercise 4.17.1 (c)}
+\begin{proof}
+    \begin{equation*}     
+        \begin{aligned}
+            \nabla f = (e^{x_1}\cos(x_2), e^{x_1}\sin(x_2)) = 0 \iff e^{x_1} = 0 
+        \end{aligned}
+\end{equation*}
+Such equation ($e^{x} = 0$) is known to not have a solution. Therefore, $\nabla f = 0$ is not solvable.
+\end{proof}
+\subsection*{Exercise 4.17.1 (d)}
+\begin{proof}
+    Let's define the extension of $f$ over the compact $K := [0,1] \times [0, \frac{\pi}{2}]$ with the same association rule as above. On this set $f$ is also harmonic. Then, 
+    f reaches its minimun and maximum  on the boundaries of the set $K$; note that both functions $e^{x_1}$ and $\sin(x_2)$ are increasing, then the maxima is met at the point when both functions
+    reach their maximum. \\
     
-    \subsection*{Exercise x.y.2 (a)}
-    Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est 
-    eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, 
-    omnis dolor repellendus. 
-    \begin{proof}
-         a = a
-    \end{proof}
-\end{comment}
+    \noindent This means the maximum of the function $f$ is met on the point $(1,\frac{\pi}{2})$. Likewise, the minimum is reached at the point $(0,0)$.
+\end{proof}
+
 \end{document}
