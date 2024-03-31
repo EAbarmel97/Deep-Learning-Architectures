@@ -7,6 +7,7 @@
 \usepackage{tcolorbox}
 \usepackage{hyperref}
 \usepackage{verbatim}
+\usepackage[bottom]{footmisc}
 
 \pagestyle{empty}
 \renewcommand{\theenumi}{\alph{enumi}}
@@ -42,7 +43,7 @@ Consider the quadratic function $Q(\bold{x}) = \frac{1}{2} \bold{x}^{T} A \bold{
 Let A be a nonsingular square matrix of order $n$ and $b \in \mathbb{R}^{n}$ a given vector. Consider the linear system $A\bold{x} = b$. The solution can be approximated using 
 the following steps:\\
 \begin{enumerate}
-    \item Associate the cost function $C(\bold{x}) = \frac{1}{2} \lVert A \bold{x} - b \lVert^{2}.$ Find its gradient, $\nabla C(\bold{x})$,
+    \item Associate the cost function $C(\bold{x}) = \frac{1}{2} \lVert A \bold{x} - \bold{b} \lVert^{2}.$ Find its gradient, $\nabla C(\bold{x})$,
     and Hessian $H_{C}(\bold{x})$;
     \item Write the gradient descent algorithm iteration which converges to the system solution $\bold{x}$ with the inital value $\bold{x}^{0} = 0$;
     \item Write Newton's iteration which converges to the system solution $\bold{x}$ with the initial value $\bold{x}^{0} = 0$.
@@ -64,7 +65,7 @@ the following steps:\\
             \end{equation*}
 
     \item Show that $\lVert f \star g \lVert \leq {\lVert f \lVert}_{1} {\lVert g \lVert}_{1}$
-    \item Let $f_{\sigma} := g \star G_{\sigma}$ where $G_{\sigma} = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^{2}}{2\sigma^{2}}}$. Prove that ${\lVert f_{\sigma}\lVert}_{1} \leq {\lVert f \lVert}_{1}$ for $\sigma > 0$
+    \item Let $f_{\sigma} := f \star G_{\sigma}$ where $G_{\sigma} = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{x^{2}}{2\sigma^{2}}}$. Prove that ${\lVert f_{\sigma}\lVert}_{1} \leq {\lVert f \lVert}_{1}$ for $\sigma > 0$
 \end{enumerate}
 
 \section*{Exercise 4.17.6}
@@ -118,29 +119,118 @@ The equation $e^{x} = 0$ is known to not have a solution. Therefore, $\nabla f =
     f reaches its minimun and maximum  on the boundaries of the set $K$; note that both functions $e^{x_1}$ and $\sin(x_2)$ are increasing, then the maxima is met at the point when both functions
     reach their maximum. \\
     
-    \noindent This means the maximum of the function $f$ is met on the point $(1,\frac{\pi}{2})$. Likewise, the minimum is reached at the point $(0,0)$.
+    \noindent This means the maximum of the function $f$ is met on the point $(1,\frac{\pi}{2})$ with a value of $f(1,\pi) = e$. Likewise, the minimum is reached at the point $(0,0)$ with a value of $f(0,0) = 0$.
 \end{proof}
 
 \subsection*{Exercise 4.17.2 (a)}
-Computing the gradient we get: $\nabla Q = \frac{1}{2}(\bold{A}  + \bold{A}^{T})\bold{x} + b\boldsymbol{1}$.
+Computing the gradient we get: $\nabla Q = \frac{1}{2}(A  + {A}^{T})\bold{x} - b\boldsymbol{1}$. Then, expressing the norm in terms of the interior product we have:\\
+$\lVert \nabla Q(\bold{x}) \lVert = \displaystyle (\frac{1}{4}\bold{x}^{T}(A + {A}^{T})^{2}\bold{x} - b\boldsymbol{1}(A + {A}^{T})\bold{x} + b^{2}{\boldsymbol{1}}^{T}\boldsymbol{1})^{\frac{1}{2}}$
 
 \subsection*{Exercise 4.17.2 (b)}
-The equations that describe the iterations made in the GDA is the sequence of vectors ${\bold{x}^n}_{n \in \mathbb{N}}$ sattisfying the following 
+The equations that describe the iterations made in the GDA\footnotemark[1]\footnotetext[1]{From now on, the learning rate $\delta$ in the GDA an its variants will be supposed constant, unless is stated otherwise. } is the sequence of vectors $\{\bold{x}^n\}_{n \in \mathbb{N}}$ satisfying the following 
 recursion:
-$\bold{x}^{n+1} = \bold{x}^{n} - \eta \displaystyle\frac{\frac{1}{2}(\bold{A}  + \bold{A}^{T})\bold{x}^{n} + b\boldsymbol{1}}{\lVert \frac{1}{2}(\bold{A}  + \bold{A}^{T})\bold{x}^{n} + b\boldsymbol{1} \lVert}$ 
-\subsection*{Exercise 4.17.2 (c)}
-From excercise $4.17.2.a$ we know that $\nabla Q = \frac{1}{2}(\bold{A}  + \bold{A}^{T})\bold{x} + b\boldsymbol{1}$. Note that taking the derivative of a vectorial 
-function is indeed the same as computing its Hessian-matrix; By using the afore mentioned observation, we get:\\
+$\bold{x}^{n+1} = \bold{x}^{n} - \delta \displaystyle(\frac{1}{2}(A  + {A}^{T})\bold{x}^{n} - b\boldsymbol{1})$ 
 
-$H_{Q}(\bold{x}) = \frac{\partial}{\partial \bold{x}} \nabla Q = \frac{1}{2}(\bold{A}  + \bold{A}^{T})$.
+
+\subsection*{Exercise 4.17.2 (c)}
+From excercise $4.17.2.a$ we know that $\nabla Q = \frac{1}{2}(A  + {A}^{T})\bold{x} + b\boldsymbol{1}$. Note that taking the derivative of a vectorial 
+function is indeed the same as computing its Hessian-matrix. By using the afore mentioned observation, we get:\\
+
+$H_{Q}(\bold{x}) = \frac{\partial}{\partial \bold{x}} \nabla Q = \frac{1}{2}(A  + {A}^{T})$.
 
 \subsection*{Exercise 4.17.2 (d)}
-The sequence of iterations $\{\bold{x}^n\}_{n \in \mathbb{N}}$ using the Newton method areg given with following recurrence 
+The sequence of iterations produced by Newton's method $\{\bold{x}^n\}_{n \in \mathbb{N}}$ are given with following recurrence 
 relationship:\\
 \begin{equation*}
     \begin{aligned}
-        \bold{x}^{n+1} &= \bold{x}^{n} - \displaystyle (\frac{1}{2}(\bold{A}  + \bold{A}^{T}))^{-1}(\frac{1}{2}(\bold{A}  + \bold{A}^{T})\bold{x}^{n} - b\boldsymbol{1})\\
-        &= \displaystyle (\frac{1}{2}(\bold{A}  + \bold{A}^{T}))^{-1} b\boldsymbol{1}.
+        \bold{x}^{n+1} &= \bold{x}^{n} - \displaystyle (\frac{1}{2}(A  + {A}^{T}))^{-1}(\frac{1}{2}(A  + {A}^{T})\bold{x}^{n} - b\boldsymbol{1})\\
+        &= \displaystyle (\frac{1}{2}(A  + {A}^{T}))^{-1} b\boldsymbol{1}.
     \end{aligned}
 \end{equation*}
+We note that the sequence is a constant. This in turn implies the limit is trivialy given by the expression: $\bold{x}^{\star} = \displaystyle (\frac{1}{2}(A  + {A}^{T}))^{-1} b\boldsymbol{1}$.
+
+
+\subsection*{Exercise 4.17.3 (a)}
+Expressing $C$ as a quadratic form and simplifying we get: 
+$C(\bold{x}) = \frac{1}{2}\bold{x}^{T} {A}^{T} A \bold{x} - \bold{b}^{T} A \bold{x} + \frac{1}{2} \bold{b}^{T} \bold{b}$. On the other hand, the fact that the matrix $A^{T}A$ is symmetric, yields:
+\begin{itemize}
+    \item $\nabla C(\bold{x})$ : 
+    \begin{equation*}
+        \hspace{-6cm}
+        \begin{aligned}
+            \frac{\partial}{\partial \bold{x}}C(\bold{x})&= \frac{\partial}{\partial \bold{x}}\left[\frac{1}{2}\bold{x}^{T} {A}^{T} A \bold{x} - \bold{b}^{T} A \bold{x} + \frac{1}{2} \bold{b}^{T} \bold{b}\right] \\  
+            &= {A}^{T} A \bold{x} - \bold{b}^{T} A 
+        \end{aligned}    
+    \end{equation*}
+
+    \item $H_{C}(\bold{x})$ : 
+    \begin{equation*}
+        \hspace{-8cm}
+        \begin{aligned}
+            \frac{\partial^{2}}{\partial^{2} \bold{x}}C(\bold{x})&= \frac{\partial}{\partial \bold{x}}\left[ {A}^{T} A \bold{x} - \bold{b}^{T} A \right] \\  
+            &= {A}^{T} A 
+        \end{aligned}    
+    \end{equation*}
+\end{itemize}
+
+\subsection*{Exercise 4.17.3 (b)}
+Using exercise 4.17.3.a is clear that the iteration in the GDA method is: $\bold{x}^{n+1} = (Id - \delta A^{T}A)\bold{x}^{n} + \delta \bold{b}^{T}A$. Iterating the latter 
+equations gives: \\
+\begin{equation*}
+    \begin{aligned}
+        \bold{x}^{n+1} &= \displaystyle (Id - \delta A^{T}A)\bold{x}^{n} + \delta \bold{b}^{T}A \\
+        \vdots&\\
+        \bold{x}^{n+1} &= \displaystyle (Id - \delta A^{T}A)^{n}\bold{x}^{0} + \delta \sum_{k=0}^{n-1}(Id - \delta A^{T}A)^{n}\bold{b}^{T}A
+    \end{aligned}    
+\end{equation*}
+
+\noindent Note that the eigenvalues of are all positive, and furthermore in absolute value less than one (The proof of this can be found in the Apendix G). Implying the sequence \\
+$\displaystyle\sum_{k=0}^{n-1}(Id - \delta A^{T}A)^{n}$ converges, which in turn implies 
+$\displaystyle(Id -\delta A^{T}A)^{n} \to \mathbb{O}$  and that the limit $\bold{x}^{\star}$ is well definied and has the value: $\bold{x}^{\star} = (A^{T}A)^{-1}\bold{b}^{T}A$.
+
+\subsection*{Exercise 4.17.3 (c)}
+The sequence of Newton's method iterations is given by:\\
+\begin{equation*}
+    \begin{aligned}
+        \bold{x}^{n+1} &= \bold{x}^{n} - (A^{T}A)^{-1}(A^{T}A\bold{x}^{n} - \bold{b}^{T}A)\\
+        &= \bold{x}^{n} - \bold{x}^{n} + (A^{T}A)^{-1}\bold{b}^{T}A \implies \bold{x}^{\star} = \displaystyle \lim_{n \to \infty}\bold{x}^{n} = (A^{T}A)^{-1}\bold{b}^{T}A .
+    \end{aligned} 
+\end{equation*}
+
+\subsection*{Exercise 4.17.5 (a)}
+\begin{proof}
+    Without loss of generality let's assume that the convolution product $f \star g$ is being integrated over the whole real line. Then, by the definition of the 
+    convolution product we get:\\
+    \begin{equation*}
+        \begin{aligned}
+            \int_{\mathbb{R}} (f \star g) (x) d x  &= \displaystyle \int_{\mathbb{R}} \int_{\mathbb{R}} f(u) g(u-x) du dx = \displaystyle \int_{\mathbb{R}} \int_{\mathbb{R}} f(v) g(t) dv dt   \ \text{ (applying the substitution: } u = v \text{,}  u- x = t \text{)}\\
+            &= \int_{\mathbb{R}} f(v) d v \displaystyle \int_{\mathbb{R}} g(t) dt
+        \end{aligned}    
+    \end{equation*}
+    
+Where the last equality follows from \href{https://en.wikipedia.org/wiki/Fubini%27s_theorem}{Fubbini's theorem}.
+\end{proof}
+\subsection*{Exercise 4.17.5 (b)}
+\begin{proof}
+    An application of the integral triangle inequality to the above identity, yields:
+    \begin{equation*}
+        \begin{aligned}
+        \left| \int_{\mathbb{R}} (f \star g) (x) d x  \right| &= \left| \int_{\mathbb{R}} f (x) d x  \right| \left| \int_{\mathbb{R}} g (x) d x  \right|
+        &\leq \int_{\mathbb{R}} \left|  f (x) \right| d x  \int_{\mathbb{R}} \left|  g (x) \right| d x = {\lVert (f\star g )(x) \lVert}_{1} = {\lVert f(x) \lVert}_{1}{\lVert g(x) \lVert}_{1}
+        \end{aligned}    
+    \end{equation*} 
+\end{proof}
+\subsection*{Exercise 4.17.5 (c)}
+\begin{proof}
+    \noindent Noting that $G_{\sigma}$ is a density, then ${\lVert G_{\sigma}(x) \lVert}_{1} = 1$. Using the inequality porven in excercise 4.17.5.b we get:\\
+    \begin{equation}
+        {\lVert f_{\sigma}(x) \lVert}_{1} \leq {\lVert f(x) \lVert}_{1}{\lVert G_{\sigma}(x) \lVert}_{1} \leq {\lVert f(x) \lVert}_{1} 
+    \end{equation}
+\end{proof}    
+
+\subsection*{Exercise 4.17.6}
+This is in esence what was proven in Exercise 3.15.10.b  
+
+\subsection*{Exercise 4.17.7}
+Using the Lagrange multipliers method one finds that ..
 \end{document}
