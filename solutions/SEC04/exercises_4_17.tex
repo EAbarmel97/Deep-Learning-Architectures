@@ -260,5 +260,27 @@ If the function $f$ satisfies $\lVert \nabla f \lVert \leq M$. Then, the set of 
 This is in esence what was proven in Exercise 3.15.10.b  
 
 \subsection*{Exercise 4.17.7}
-Using the Lagrange multipliers method one finds that ..
+Let $\boldsymbol{\sigma} := (\sigma_1, \ldots, \sigma_n)$. One has to optimize the function $\displaystyle f(\boldsymbol{\sigma}) = \boldsymbol{\sigma}^{T}\boldsymbol{\sigma}$ constrained to $\sigma_{1} + \ldots + \sigma_{n} = s$. This is solved by Lagrange's multipliers method. The Lagrangian function 
+to optimize is then:\\
+\begin{proof}
+    $\displaystyle \mathcal{L}(\boldsymbol{\sigma}, \lambda) = \boldsymbol{\sigma}^{T}\boldsymbol{\sigma} - \lambda (\sum_{j=0}^{n}\sigma_{j} - s)$.\\
+\\
+Note the constraining condition can be abbrebiated to ${\lVert \boldsymbol{\sigma} \lVert}_{1} = s$; computing the Lagrangian gradient and equating it to zero, we get:
+
+\begin{equation*}
+    {\nabla}_{\sigma, \lambda} \mathcal{L} = 0 
+    \Longleftrightarrow \begin{cases}
+        \sigma = -\lambda \cdot \boldsymbol{1} \\
+        {\lVert \boldsymbol{\sigma} \lVert}_{1} - s = 0.
+    \end{cases}
+\end{equation*}
+\noindent From the first and second equations follows that $\sigma_k  = \frac{s}{n} \text{ , } \forall k \in \{ 1, \ldots ,n \}$. On the other hand, the \href{https://en.wikipedia.org/wiki/Hessian_matrix}{Bordered Hessian} has the form: \\
+\begin{equation*}
+    H_{\mathcal{L}}(\boldsymbol{\sigma}, \lambda) =  \begin{bmatrix}
+        0 & \boldsymbol{\sigma}\\
+        \boldsymbol{\sigma}^{T} & Id 
+    \end{bmatrix}
+\end{equation*}    
+Which is obvously positively definite. Thus, the application of Lagrange's multipliers method gives a contrained minimum. \\
+\end{proof}
 \end{document}
