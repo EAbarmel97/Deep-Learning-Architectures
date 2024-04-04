@@ -243,8 +243,8 @@ If the function $f$ satisfies $\lVert \nabla f \lVert \leq M$. Then, the set of 
     An application of the integral triangle inequality to the above identity, yields:
     \begin{equation*}
         \begin{aligned}
-        \left| \int_{\mathbb{R}} (f \star g) (x) d x  \right| &= \left| \int_{\mathbb{R}} f (x) d x  \right| \left| \int_{\mathbb{R}} g (x) d x  \right|
-        &\leq \int_{\mathbb{R}} \left|  f (x) \right| d x  \int_{\mathbb{R}} \left|  g (x) \right| d x = {\lVert (f\star g )(x) \lVert}_{1} \leq {\lVert f(x) \lVert}_{1}{\lVert g(x) \lVert}_{1}
+        \left| \int_{\mathbb{R}} (f \star g) (x) d x  \right| &\leq \int_{\mathbb{R}} \left|  (f \star g )(x) \right|d x = {\lVert (f\star g )(x) \lVert}_{1} = \int_{\mathbb{R}} \int_{\mathbb{R}} \left|  f (x) \right| \left|  g(u-x) \right| du dx \\
+        &\leq \int_{\mathbb{R}} \left|  f (x) \right| d x  \int_{\mathbb{R}} \left|  g (x) \right| d x =  {\lVert f(x) \lVert}_{1}{\lVert g(x) \lVert}_{1}
         \end{aligned}    
     \end{equation*} 
 \end{proof}
