@@ -1,4 +1,7 @@
-solutions/SEC*/*.log
-solutions/SEC*/*.aux
-solutions/SEC*/*.out
-texput.log
+#ignoring Latex build files
+solutions/**/*.aux
+solutions/**/*.fdb_latexmk
+solutions/**/*.fls
+solutions/**/*.log
+solutions/**/*.out
+solutions/**/*.synctex.gz
