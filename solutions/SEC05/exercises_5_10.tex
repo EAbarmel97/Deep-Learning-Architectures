@@ -1,5 +1,5 @@
 \documentclass{exam}
-\usepackage{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{ragged2e}
@@ -112,9 +112,104 @@ Let $\boldsymbol{1}_{A}(x)$ denote the characteristic function of the set $A$, n
 Show that if all input vectors $x_k$ have the same length, then the $\alpha-LMS$ algorithm minimizes the mean square error and in this case the updating 
 rule $(5.6.6)$ becomes the gradient descent rule.
 \section*{Exercise 5.10.10}
-Find the weights of a Madaline with two Adaline units which implements the $XNOR$ function.
+Find the weights of a Madaline with two Adaline units which implements the $XNOR$ function.\\
 \begin{center}    
     \section*{SOLUTIONS}
 \end{center}
+\subsection*{Exercise 5.10.1 (a)}
+Let's analyze the values taken by the boolean function $f(x_1, x_2) = x_{1} \land \neg x_{2}$. We get the following table:\\
+\\
+\begin{tabular}{|c c c c|}
+    \hline
+    $x_1$ & $x_2$ & $\neg x_2$ & $x_{1}\land \neg x_{2}$ \\ [0.5ex]
+    \hline
+    0     & 0     & 1      & 0 \\
+    \hline
+    0     & 1     & 0      & 0 \\
+    \hline
+    1     & 0     & 1      & 1 \\
+    \hline
+    1     & 1     & 0      & 0 \\
+    \hline
+\end{tabular}\\
+\\
+It's easy to see that the function $A(x_1, x_2) := \mathbf{\varphi}((1,-1)\cdot(x_1, x_2) -\frac{1}{2}) = \begin{cases}
+1 \text{ if } x_1 - x_2 \geq \frac{1}{2} \\ 0 \text{ if } x_1 - x_2 < \frac{1}{2}\\
+\end{cases}$ is an adequate choice because it can learn the 
+points presented in the above. This in turn means that the desired neuron is given by the quadruple
+$((-1,x_1,x_2),(1,-1,\frac{1}{2}),A,(0,0,1,0))$.
+
+\subsection*{Exercise 5.10.1 (b)}                                                                                                  
+Let's analyze the values taken by the boolean function $f(x_1, x_2) = x_{1}\land \neg x_{2}$. We get the following table:\\        
+\\                                                                                                                                 
+\begin{tabular}{|c c c c|}                                                                                                         
+    \hline                                                                                                                         
+    $x_1$ & $x_2$ & $\neg x_2$ & $x_{1}\lor \neg x_{2}$ \\ [0.5ex]                                                                
+    \hline                                                                                                                         
+    0     & 0     & 1      & 1 \\                                                                                                  
+    \hline                                                                                                                         
+    0     & 1     & 0      & 0 \\                                                                                                  
+    \hline                                                                                                                         
+    1     & 0     & 1      & 1 \\                                                                                                  
+    \hline                                                                                                                         
+    1     & 1     & 0      & 1 \\                                                                                                  
+    \hline                                                                                                                         
+\end{tabular}\\                                                                                                                    
+\\                                                                                                                                 
+It's easy to see that the function $\mathbf{\varphi}(x_1, x_2) = $ is an adequate choice because it can learn the       
+points presented in the above. This in turn means that $(\{0,1\}^{2},\mathbf{I}_{\{x_1 + x_2 > 0\}}(x_1, x_2), ,\{0,1\}^{2})$
+
+\subsection*{Exercise 5.10.1 (c)}                                                                                             
+Let's analyze the values taken by the boolean function $f(x_1) = \neg x_{1}$. We get the following table:\\   
+\\                                                                                                                            
+\begin{tabular}{|c c|}                                                                                                    
+    \hline                                                                                                                    
+    $x_1$ & $\neg x_{1}$ \\ [0.5ex]                                                            
+    \hline                                                                                                                    
+    0  & 1 \\                                                                                             
+    \hline                                                                                                                    
+    1  & 0 \\
+    \hline
+\end{tabular}\\                                                                                                               
+\\                                                                                                                            
+It's easy to see that the function $\mathbf{I}_{\{x_1 + x_2 > 0\}}(x_1, x_2)$ is an adequate choice because it can learn the  
+points presented in the above. This in turn means that $(\{0,1\}^{2},\mathbf{I}_{\{x_1 + x_2 > 0\}}(x_1, x_2), ,\{0,1\}^{2})$
+
+\subsection*{Exercise 5.10.1 (d)}                                                                                             
+Let's analyze the values taken by the boolean function $f(x_1, x_2) = x_{1}\land \neg x_{2}$. We get the following table:\\   
+\\                                                                                                                            
+\begin{tabular}{|c c c c|}                                                                                                    
+    \hline                                                                                                                    
+    $x_1$ & $x_2$ & $\neg x_2$ & $x_{1}\lor \neg x_{2}$ \\ [0.5ex]                                                            
+    \hline                                                                                                                    
+    0     & 0     & 1      & 1 \\                                                                                             
+    \hline                                                                                                                    
+    0     & 1     & 0      & 0 \\                                                                                             
+    \hline                                                                                                                    
+    1     & 0     & 1      & 1 \\                                                                                             
+    \hline                                                                                                                    
+    1     & 1     & 0      & 1 \\                                                                                             
+    \hline                                                                                                                    
+\end{tabular}\\
+\\
+On the other hand, analyzing the boolean function ...\\
+\begin{tabular}{|c c c c|}                                           
+    \hline                                                           
+    $x_1$ & $x_2$ & $\neg x_2$ & $x_{1}\lor \neg x_{2}$ \\ [0.5ex]   
+    \hline                                                           
+    0     & 0     & 1      & 1 \\                                    
+    \hline                                                           
+    0     & 1     & 0      & 0 \\                                    
+    \hline                                                           
+    1     & 0     & 1      & 1 \\                                    
+    \hline                                                           
+    1     & 1     & 0      & 1 \\                                    
+    \hline                                                           
+\end{tabular}\\                                                      
+
+It's easy to see that the function $\mathbf{I}_{\{x_1 + x_2 > 0\}}(x_1, x_2)$ is an adequate choice because it can learn the  
+points presented in the above. This in turn means that $(\{0,1\}^{2},\mathbf{I}_{\{x_1 + x_2 > 0\}}(x_1, x_2), ,\{0,1\}^{2})$
+
+\subsection*{Exercise 5.10.2}
 
 \end{document}
